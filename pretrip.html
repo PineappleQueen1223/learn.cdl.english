@@ -57,72 +57,10 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 <footer><div class="wrap">TGA Truck Driving School &middot; <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div></footer>
 
 <script>
-var GROUPS = [
- {name:"Engine compartment", parts:[
-  ["Dipstick / oil level","varilla del aceite","Oil level is between the marks; no leaks.","I'm checking the oil level on the dipstick."],
-  ["Coolant","refrigerante","Level in the reservoir is correct; no leaks.","I'm checking the coolant level."],
-  ["Power steering fluid","líquido de la dirección","Fluid level is correct; hoses are not cracked.","I'm checking the power steering fluid and hoses."],
-  ["Belts","bandas / correas","Not cracked or frayed; proper tension.","I'm checking the belts for cracks and tension."],
-  ["Hoses","mangueras","No cracks, bulges, or leaks.","I'm checking the hoses for leaks."],
-  ["Air compressor","compresor de aire","Mounted tight; air lines not cracked.","I'm checking the air compressor and air lines."],
-  ["Battery","batería","Secure, clean, and no corrosion.","I'm checking that the battery is secure and clean."]
- ]},
- {name:"In the cab", parts:[
-  ["Steering wheel","volante","Play is no more than 10 degrees (about 2 inches).","I'm checking the steering wheel for free play."],
-  ["Gauges","indicadores","Oil pressure, air pressure, and temperature work.","I'm checking that all the gauges work."],
-  ["Mirrors","espejos","Clean, adjusted, and not cracked.","I'm adjusting and checking the mirrors."],
-  ["Horn","bocina","Works when pressed.","I'm testing the horn."],
-  ["Windshield wipers","limpiaparabrisas","Blades are not torn; they work.","I'm checking the windshield wipers."],
-  ["Seat belt","cinturón de seguridad","Buckles and unbuckles; not frayed.","I'm checking the seat belt."],
-  ["Emergency equipment","equipo de emergencia","Fire extinguisher, 3 warning triangles, and spare fuses.","I have a fire extinguisher, warning triangles, and spare fuses."]
- ]},
- {name:"Lights and signals", parts:[
-  ["Headlights","faros","Low and high beams work.","I'm checking the low and high beams."],
-  ["Turn signals","direccionales","Left and right work, front and back.","I'm checking the turn signals."],
-  ["Brake lights","luces de freno","Come on when the brake is pressed.","I'm checking the brake lights."],
-  ["Hazard lights","luces de emergencia","All flash together.","I'm checking the four-way hazard lights."],
-  ["Reflectors","reflectores","Clean, not missing, correct colors.","I'm checking the reflectors."]
- ]},
- {name:"Wheels, brakes, and suspension", parts:[
-  ["Tires","llantas","Good tread; no cuts or bulges; correct pressure.","I'm checking the tires for tread, cuts, and bulges."],
-  ["Rims","rines","No cracks or bent parts.","I'm checking the rims for cracks."],
-  ["Lug nuts","tuercas de rueda","None missing; no rust streaks.","I'm checking that no lug nuts are loose or missing."],
-  ["Hub seal","sello del cubo","No oil or grease leaking.","I'm checking the hub seal for leaks."],
-  ["Brake drum","tambor de freno","No cracks; no oil on it.","I'm checking the brake drum for cracks."],
-  ["Slack adjuster","ajustador de holgura","Pulls no more than one inch.","I'm checking the slack adjuster."],
-  ["Springs and shock absorbers","resortes y amortiguadores","No cracked, broken, or missing parts; no leaks.","I'm checking the springs and shock absorbers."],
-  ["Air lines","mangueras de aire","Connected, not cut, no air leaking.","I'm checking the air lines for cuts and leaks."]
- ]},
- {name:"Coupling and trailer", parts:[
-  ["Fifth wheel","quinta rueda","Locked, no gap, and not cracked.","I'm checking that the fifth wheel is locked with no gap."],
-  ["Kingpin","perno rey","Not bent or worn; the jaws are around it.","I'm checking the kingpin and the locking jaws."],
-  ["Landing gear","patas de apoyo","Fully raised; crank handle is secure.","I'm checking that the landing gear is fully up."],
-  ["Mud flaps","guardafangos","Not torn; they hang correctly.","I'm checking the mud flaps."],
-  ["Cargo doors","puertas de carga","Closed and latched; load is secure.","I'm checking that the doors are closed and latched."],
-  ["Fuel tank","tanque de combustible","Secure; cap is on; no leaks.","I'm checking the fuel tank and cap."]
- ]}
-];
-
-var ALL=[]; var gdiv=document.getElementById("groups");
-GROUPS.forEach(function(g){
-  var wrap=document.createElement("div"); wrap.className="group";
-  var h=document.createElement("h3"); h.textContent=g.name; wrap.appendChild(h);
-  var grid=document.createElement("div"); grid.className="grid";
-  g.parts.forEach(function(p){
-    var o={en:p[0],es:p[1],chk:p[2],say:p[3]}; ALL.push(o);
-    var s=document.createElement("div"); s.className="sq";
-    s.innerHTML="<h4></h4>";
-    s.querySelector("h4").textContent=o.en;
-    grid.appendChild(s);
-  });
-  wrap.appendChild(grid); gdiv.appendChild(wrap);
-});
-
-function speak(t){
-  try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.speak(u);}catch(e){}
-}
-function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-
+var NAMES=["Engine compartment","In the cab","Lights and signals","Wheels, brakes, and suspension","Coupling and trailer"];
+var grid=document.createElement("div");grid.className="grid";
+NAMES.forEach(function(n){var s=document.createElement("div");s.className="sq";var h=document.createElement("h4");h.textContent=n;s.appendChild(h);grid.appendChild(s);});
+document.getElementById("groups").appendChild(grid);
 </script>
 </body>
 </html>
