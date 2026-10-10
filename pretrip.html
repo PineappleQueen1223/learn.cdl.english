@@ -44,6 +44,7 @@ section{padding:24px 0}
 #groups .grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 #groups .sq{min-height:140px;align-items:center;text-align:center}
 #groups .sq h4{font-size:22px}
+.quiz{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:24px 0}.q{font-size:26px;font-weight:700;margin:0 0 14px}.opts{display:grid;gap:10px}.opt{text-align:left;background:transparent;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:17px;cursor:pointer}.opt:hover{border-color:var(--green)}.opt.ok{border-color:var(--green);background:#143026}.opt.bad{border-color:var(--red);background:#35201c}.prog{color:var(--mute);font-size:14px;margin-bottom:8px}.result h3{font-size:32px;margin:0 0 8px}.miss{color:var(--mute);margin:8px 0 16px;padding-left:18px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;text-align:center;margin-top:30px}
 </style>
 </head>
@@ -57,6 +58,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
   <h1>Pre-Trip Inspection</h1>
   <p class="lets">Let's see what you know?</p>
   <div id="groups"></div>
+  <div style="text-align:center;margin:32px 0"><button class="btn" id="start" style="font-size:20px;padding:14px 36px">Get started</button></div>
+  <div class="quiz" id="game" style="display:none"></div>
 
 </main>
 
@@ -67,6 +70,41 @@ var NAMES=["Engine compartment","In the cab","Lights and signals","Wheels, brake
 var grid=document.createElement("div");grid.className="grid";
 NAMES.forEach(function(n){var s=document.createElement("div");s.className="sq";var h=document.createElement("h4");h.textContent=n;s.appendChild(h);grid.appendChild(s);});
 document.getElementById("groups").appendChild(grid);
+
+var PARTS=[["Dipstick / oil level", "varilla del aceite"], ["Coolant", "refrigerante"], ["Power steering fluid", "líquido de la dirección"], ["Belts", "bandas / correas"], ["Hoses", "mangueras"], ["Air compressor", "compresor de aire"], ["Battery", "batería"], ["Steering wheel", "volante"], ["Gauges", "indicadores"], ["Mirrors", "espejos"], ["Horn", "bocina"], ["Windshield wipers", "limpiaparabrisas"], ["Seat belt", "cinturón de seguridad"], ["Emergency equipment", "equipo de emergencia"], ["Headlights", "faros"], ["Turn signals", "direccionales"], ["Brake lights", "luces de freno"], ["Hazard lights", "luces de emergencia"], ["Reflectors", "reflectores"], ["Tires", "llantas"], ["Rims", "rines"], ["Lug nuts", "tuercas de rueda"], ["Hub seal", "sello del cubo"], ["Brake drum", "tambor de freno"], ["Slack adjuster", "ajustador de holgura"], ["Springs and shock absorbers", "resortes y amortiguadores"], ["Air lines", "mangueras de aire"], ["Fifth wheel", "quinta rueda"], ["Kingpin", "perno rey"], ["Landing gear", "patas de apoyo"], ["Mud flaps", "guardafangos"], ["Cargo doors", "puertas de carga"], ["Fuel tank", "tanque de combustible"]];
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+var game=document.getElementById("game"),startBtn=document.getElementById("start"),order,i,score,missed;
+startBtn.onclick=begin;
+function begin(){order=shuffle(PARTS);i=0;score=0;missed=[];startBtn.parentNode.style.display="none";document.getElementById("groups").style.display="none";game.style.display="block";next();}
+function next(){
+  if(i>=order.length)return done();
+  var q=order[i];
+  var opts=shuffle([q].concat(shuffle(PARTS.filter(function(x){return x!==q})).slice(0,3)));
+  game.innerHTML='<div class="prog"></div><p class="q"></p><div class="opts"></div>';
+  game.querySelector(".prog").textContent="Part "+(i+1)+" of "+order.length;
+  game.querySelector(".q").textContent=q[0];
+  var od=game.querySelector(".opts");
+  opts.forEach(function(o){
+    var b=document.createElement("button");b.className="opt";b.textContent=o[1];
+    b.onclick=function(){
+      od.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.textContent===q[1])x.classList.add("ok")});
+      if(o===q){score++}else{b.classList.add("bad");missed.push(q)}
+      setTimeout(function(){i++;next()},900);
+    };
+    od.appendChild(b);
+  });
+}
+function done(){
+  game.innerHTML='<div class="result"><h3></h3><div class="mw"></div><button class="btn">Play again</button></div>';
+  game.querySelector("h3").textContent=score+" / "+order.length;
+  if(missed.length){
+    var l=document.createElement("div");l.textContent="Review these:";
+    var ul=document.createElement("ul");ul.className="miss";
+    missed.forEach(function(m){var li=document.createElement("li");li.textContent=m[0]+" = "+m[1];ul.appendChild(li)});
+    game.querySelector(".mw").appendChild(l);game.querySelector(".mw").appendChild(ul);
+  }
+  game.querySelector(".btn").onclick=begin;
+}
 </script>
 </body>
 </html>
