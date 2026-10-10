@@ -1,0 +1,188 @@
+/* ============================================================
+   TGA TRUCK DRIVING SCHOOL — Colors & Type
+   Transportation Guidance & Assistance · est. 1991
+   ------------------------------------------------------------
+   Industrial, no-nonsense, blue-collar-professional. Deep
+   oxblood maroon pulled straight from the wordmark, asphalt
+   neutrals, a hot brand red for action, and signage-grade
+   type (Barlow is modeled on US highway lettering).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+:root {
+  /* ---- BRAND ---------------------------------------------- */
+  --tga-oxblood:    #2A1110; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #5C1A1D; /* PRIMARY brand color */
+  --tga-maroon-700: #7A2226; /* lifted maroon — hovers, gradients */
+  --tga-red:        #C0202A; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #9C1820; /* pressed red */
+  --tga-amber:      #E8A22E; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #1E2A66; /* patriotic / CNG diamond blue — secondary, rare */
+
+  /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
+  --tga-ink:        #1B1817; /* near-black warm — body text on light */
+  --asphalt-900:    #262220;
+  --asphalt-800:    #34302D;
+  --asphalt-700:    #4A4541;
+  --asphalt-600:    #635C57;
+  --asphalt-500:    #837B74; /* muted text */
+  --asphalt-400:    #A39B93;
+  --asphalt-300:    #C9C2BB; /* borders, dividers */
+  --asphalt-200:    #E4DFD9; /* hairlines, input borders */
+  --asphalt-100:    #F0ECE7; /* subtle fills */
+  --concrete:       #F5F2ED; /* default page background (off-white) */
+  --white:          #FFFFFF;
+
+  /* ---- SEMANTIC ------------------------------------------- */
+  --fg-1: var(--tga-ink);        /* primary text */
+  --fg-2: var(--asphalt-600);    /* secondary text */
+  --fg-3: var(--asphalt-500);    /* tertiary / captions */
+  --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
+  --fg-on-dark-muted:  #C9B7B4;  /* muted text on maroon */
+
+  --bg-1: var(--white);          /* cards / surfaces */
+  --bg-2: var(--concrete);       /* page background */
+  --bg-3: var(--asphalt-100);    /* sunken / inset */
+  --bg-dark: var(--tga-oxblood); /* dark sections */
+
+  --border-1: var(--asphalt-200);
+  --border-2: var(--asphalt-300);
+  --border-strong: var(--asphalt-700);
+
+  --accent:       var(--tga-red);
+  --accent-press: var(--tga-red-700);
+  --link:         var(--tga-maroon);
+
+  --success: #2E7D46;
+  --warning: var(--tga-amber);
+  --danger:  var(--tga-red);
+
+  /* ---- TYPE FAMILIES ------------------------------------- */
+  --font-display:   'Archivo', 'Arial Black', sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Barlow', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Barlow Semi Condensed', ui-monospace, monospace; /* plate numbers, codes */
+
+  /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
+  --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
+  --fs-h1:       clamp(38px, 5vw, 60px); /* @kind font */
+  --fs-h2:       clamp(30px, 3.4vw, 42px); /* @kind font */
+  --fs-h3:       26px;
+  --fs-h4:       21px;
+  --fs-lg:       19px;
+  --fs-body:     17px;
+  --fs-sm:       15px;
+  --fs-xs:       13px;
+  --fs-kicker:   14px;
+
+  /* ---- RADII --------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---- SPACING (4pt base) -------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- SHADOWS — low, grounded, asphalt-tinted ----------- */
+  --shadow-sm: 0 1px 2px rgba(27,24,23,.10);
+  --shadow-md: 0 4px 14px rgba(27,24,23,.10);
+  --shadow-lg: 0 14px 36px rgba(27,24,23,.16);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ---- MOTION -------------------------------------------- */
+  --ease: cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --dur: 170ms; /* @kind other */
+}
+
+/* ============================================================
+   ELEMENT DEFAULTS
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--fg-1);
+  background: var(--bg-2);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display / headlines — heavy Archivo, tight, slight negative tracking */
+.tga-display, h1.tga {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--fg-1);
+}
+h1, .tga-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h1);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+h2, .tga-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+h3, .tga-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+}
+h4, .tga-h4 {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+/* Kicker / eyebrow — condensed, uppercase, wide-tracked, in red */
+.tga-kicker {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--tga-red);
+}
+
+/* Stat / big number — condensed heavy */
+.tga-stat {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.9;
+  color: var(--tga-maroon);
+  font-feature-settings: 'tnum' 1;
+}
+
+p, .tga-body { font-family: var(--font-body); font-size: var(--fs-body); }
+.tga-lead { font-size: var(--fs-lg); color: var(--fg-2); line-height: 1.55; }
+small, .tga-sm { font-size: var(--fs-sm); }
+.tga-caption { font-size: var(--fs-xs); color: var(--fg-3); }
+
+/* Plate / code — semi-condensed, tabular */
+.tga-plate {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-feature-settings: 'tnum' 1;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }

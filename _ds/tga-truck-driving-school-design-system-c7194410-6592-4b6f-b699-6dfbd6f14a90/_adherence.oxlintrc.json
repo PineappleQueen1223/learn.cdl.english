@@ -1,0 +1,251 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/badge/**",
+              "components/button/**",
+              "components/kicker/**",
+              "ui_kits/forms/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Archivo|Barlow|Barlow Condensed|Barlow Semi Condensed))/i]",
+        "message": "Font not provided by the design system. Available: Archivo, Barlow, Barlow Condensed, Barlow Semi Condensed."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|children|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: tone, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:maroon|amber|green|soft|onDark)$/]",
+        "message": "<Badge> tone must be one of 'maroon' | 'amber' | 'green' | 'soft' | 'onDark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|type|onClick|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, size, type, onClick, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|maroon|outline|ghost)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'maroon' | 'outline' | 'ghost'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:md|lg)$/]",
+        "message": "<Button> size must be one of 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit|reset)$/]",
+        "message": "<Button> type must be one of 'button' | 'submit' | 'reset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Kicker'] > JSXAttribute > JSXIdentifier[name!=/^(?:onDark|children|key|ref|className|style|children)$/]",
+        "message": "<Kicker> doesn't accept that prop. Declared props: onDark, children."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Badge": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Kicker": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--accent-press",
+      "--asphalt-100",
+      "--asphalt-200",
+      "--asphalt-300",
+      "--asphalt-400",
+      "--asphalt-500",
+      "--asphalt-600",
+      "--asphalt-700",
+      "--asphalt-800",
+      "--asphalt-900",
+      "--bg-1",
+      "--bg-2",
+      "--bg-3",
+      "--bg-dark",
+      "--border-1",
+      "--border-2",
+      "--border-strong",
+      "--concrete",
+      "--danger",
+      "--dur",
+      "--ease",
+      "--fg-1",
+      "--fg-2",
+      "--fg-3",
+      "--fg-on-dark",
+      "--fg-on-dark-muted",
+      "--font-body",
+      "--font-condensed",
+      "--font-display",
+      "--font-mono",
+      "--fs-body",
+      "--fs-display",
+      "--fs-h1",
+      "--fs-h2",
+      "--fs-h3",
+      "--fs-h4",
+      "--fs-kicker",
+      "--fs-lg",
+      "--fs-sm",
+      "--fs-xs",
+      "--link",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xs",
+      "--shadow-inset",
+      "--shadow-lg",
+      "--shadow-md",
+      "--shadow-sm",
+      "--sp-1",
+      "--sp-10",
+      "--sp-2",
+      "--sp-3",
+      "--sp-4",
+      "--sp-5",
+      "--sp-6",
+      "--sp-7",
+      "--sp-8",
+      "--sp-9",
+      "--success",
+      "--tga-amber",
+      "--tga-ink",
+      "--tga-maroon",
+      "--tga-maroon-700",
+      "--tga-navy",
+      "--tga-oxblood",
+      "--tga-red",
+      "--tga-red-700",
+      "--warning",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--tga-oxblood": "color",
+      "--tga-maroon": "color",
+      "--tga-maroon-700": "color",
+      "--tga-red": "color",
+      "--tga-red-700": "color",
+      "--tga-amber": "color",
+      "--tga-navy": "color",
+      "--tga-ink": "color",
+      "--asphalt-900": "color",
+      "--asphalt-800": "color",
+      "--asphalt-700": "color",
+      "--asphalt-600": "color",
+      "--asphalt-500": "color",
+      "--asphalt-400": "color",
+      "--asphalt-300": "color",
+      "--asphalt-200": "color",
+      "--asphalt-100": "color",
+      "--concrete": "color",
+      "--white": "color",
+      "--fg-1": "color",
+      "--fg-2": "color",
+      "--fg-3": "color",
+      "--fg-on-dark": "color",
+      "--fg-on-dark-muted": "color",
+      "--bg-1": "color",
+      "--bg-2": "color",
+      "--bg-3": "color",
+      "--bg-dark": "color",
+      "--border-1": "color",
+      "--border-2": "color",
+      "--border-strong": "color",
+      "--accent": "color",
+      "--accent-press": "color",
+      "--link": "color",
+      "--success": "color",
+      "--warning": "color",
+      "--danger": "color",
+      "--font-display": "font",
+      "--font-condensed": "font",
+      "--font-body": "font",
+      "--font-mono": "font",
+      "--fs-display": "font",
+      "--fs-h1": "font",
+      "--fs-h2": "font",
+      "--fs-h3": "spacing",
+      "--fs-h4": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-body": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-xs": "spacing",
+      "--fs-kicker": "spacing",
+      "--r-xs": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-pill": "spacing",
+      "--sp-1": "spacing",
+      "--sp-2": "spacing",
+      "--sp-3": "spacing",
+      "--sp-4": "spacing",
+      "--sp-5": "spacing",
+      "--sp-6": "spacing",
+      "--sp-7": "spacing",
+      "--sp-8": "spacing",
+      "--sp-9": "spacing",
+      "--sp-10": "spacing",
+      "--shadow-sm": "shadow",
+      "--shadow-md": "shadow",
+      "--shadow-lg": "shadow",
+      "--shadow-inset": "shadow",
+      "--ease": "other",
+      "--dur": "other"
+    },
+    "fontFamilies": [
+      "Archivo",
+      "Barlow",
+      "Barlow Condensed",
+      "Barlow Semi Condensed"
+    ]
+  }
+}
