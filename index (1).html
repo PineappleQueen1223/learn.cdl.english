@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CDL English Academy</title>
+<meta name="description" content="Learn the English you need to pass your CDL tests and talk on the job. Buy a single lesson or subscribe.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+:root {
+  /* ---- BRAND ---------------------------------------------- */
+  --tga-oxblood:    #2A1110; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #5C1A1D; /* PRIMARY brand color */
+  --tga-maroon-700: #7A2226; /* lifted maroon — hovers, gradients */
+  --tga-red:        #C0202A; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #9C1820; /* pressed red */
+  --tga-amber:      #E8A22E; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #1E2A66; /* patriotic / CNG diamond blue — secondary, rare */
+
+  /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
+  --tga-ink:        #1B1817; /* near-black warm — body text on light */
+  --asphalt-900:    #262220;
+  --asphalt-800:    #34302D;
+  --asphalt-700:    #4A4541;
+  --asphalt-600:    #635C57;
+  --asphalt-500:    #837B74; /* muted text */
+  --asphalt-400:    #A39B93;
+  --asphalt-300:    #C9C2BB; /* borders, dividers */
+  --asphalt-200:    #E4DFD9; /* hairlines, input borders */
+  --asphalt-100:    #F0ECE7; /* subtle fills */
+  --concrete:       #F5F2ED; /* default page background (off-white) */
+  --white:          #FFFFFF;
+
+  /* ---- SEMANTIC ------------------------------------------- */
+  --fg-1: var(--tga-ink);        /* primary text */
+  --fg-2: var(--asphalt-600);    /* secondary text */
+  --fg-3: var(--asphalt-500);    /* tertiary / captions */
+  --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
+  --fg-on-dark-muted:  #C9B7B4;  /* muted text on maroon */
+
+  --bg-1: var(--white);          /* cards / surfaces */
+  --bg-2: var(--concrete);       /* page background */
+  --bg-3: var(--asphalt-100);    /* sunken / inset */
+  --bg-dark: var(--tga-oxblood); /* dark sections */
+
+  --border-1: var(--asphalt-200);
+  --border-2: var(--asphalt-300);
+  --border-strong: var(--asphalt-700);
+
+  --accent:       var(--tga-red);
+  --accent-press: var(--tga-red-700);
+  --link:         var(--tga-maroon);
+
+  --success: #2E7D46;
+  --warning: var(--tga-amber);
+  --danger:  var(--tga-red);
+
+  /* ---- TYPE FAMILIES ------------------------------------- */
+  --font-display:   'Archivo', 'Arial Black', sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Barlow', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Barlow Semi Condensed', ui-monospace, monospace; /* plate numbers, codes */
+
+  /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
+  --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
+  --fs-h1:       clamp(38px, 5vw, 60px); /* @kind font */
+  --fs-h2:       clamp(30px, 3.4vw, 42px); /* @kind font */
+  --fs-h3:       26px;
+  --fs-h4:       21px;
+  --fs-lg:       19px;
+  --fs-body:     17px;
+  --fs-sm:       15px;
+  --fs-xs:       13px;
+  --fs-kicker:   14px;
+
+  /* ---- RADII --------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---- SPACING (4pt base) -------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- SHADOWS — low, grounded, asphalt-tinted ----------- */
+  --shadow-sm: 0 1px 2px rgba(27,24,23,.10);
+  --shadow-md: 0 4px 14px rgba(27,24,23,.10);
+  --shadow-lg: 0 14px 36px rgba(27,24,23,.16);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ---- MOTION -------------------------------------------- */
+  --ease: cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --dur: 170ms; /* @kind other */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--concrete);color:var(--tga-ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--tga-maroon)}a:hover{color:var(--tga-red)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:var(--tga-maroon);color:var(--fg-on-dark);position:relative;margin-bottom:6px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:url(assets/tread-motif.png) repeat-x center/auto 6px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg-on-dark);font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:16px}
+.logo img{height:36px;display:block}
+.btn{display:inline-block;background:var(--tga-red);color:#fff;font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:16px;border:1px solid transparent;border-radius:var(--r-sm);padding:12px 22px;text-decoration:none;cursor:pointer;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.btn:hover{background:var(--tga-red-700);color:#fff}.btn:active{transform:translateY(1px)}
+.btn.alt{background:#fff;color:var(--tga-maroon);border-color:var(--asphalt-300)}
+.btn.alt:hover{border-color:var(--tga-maroon);background:#fff;color:var(--tga-maroon)}
+header .btn.alt{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+header .btn.alt:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.btn.sm{padding:7px 14px;font-size:14px}
+h1,h2,h3,h4{font-family:var(--font-display);text-transform:uppercase;color:var(--tga-ink)}
+h1{font-weight:900;letter-spacing:-.015em;line-height:1}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;line-height:1.05;margin:0 0 8px}
+h3{font-weight:800;font-size:22px;line-height:1.1;margin:0 0 6px}
+.hero{padding:64px 0 48px;text-align:center;background:var(--white);border-bottom:1px solid var(--asphalt-200)}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--tga-red)}
+.hero p{color:var(--asphalt-600);max-width:620px;margin:0 auto 28px;font-size:19px}
+.hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sub{color:var(--asphalt-600);margin:0 0 28px}
+section{padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;transition:box-shadow var(--dur)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card p{color:var(--asphalt-600);margin:0 0 16px;flex:1}
+.tag,.kick{font-family:var(--font-condensed);font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tga-red);margin-bottom:6px}
+.plan{border-top-color:var(--tga-red);background:#fff}
+.plan ul{margin:0 0 16px;padding-left:18px;color:var(--asphalt-600)}
+details{margin:0 0 16px}summary{cursor:pointer;color:var(--tga-maroon);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--asphalt-600)}
+.card>div:last-child{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.card>div:last-child .btn.sm{margin-left:0!important}
+footer{background:var(--tga-oxblood);color:var(--fg-on-dark-muted);padding:28px 0;font-size:14px;text-align:center;margin-top:30px}
+footer a{color:#fff}
+/* pre-trip page */
+.sub2{color:var(--asphalt-600)}
+.lets{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,5vw,40px);color:var(--tga-maroon);text-align:center;margin:48px 0 0;letter-spacing:-.01em}
+#groups{margin-top:40px}
+.sq{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;justify-content:center;align-items:center;text-align:center}
+.sq h4{margin:0;font-family:var(--font-condensed);font-weight:800;font-size:22px;letter-spacing:.04em}
+#groups .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#groups .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#groups .grid{grid-template-columns:1fr}}
+#groups a.sq{text-decoration:none;color:#fff;background:var(--tga-maroon);border-color:var(--tga-maroon);border-top-color:var(--tga-red);transition:background var(--dur),transform var(--dur)}
+#groups a.sq h4{color:#fff}
+#groups a.sq:hover{background:var(--tga-maroon-700);transform:translateY(-2px)}
+#groups a.sq small{font-family:var(--font-condensed);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-on-dark-muted);font-size:14px}
+.quiz{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:24px;margin:24px 0}
+.prog{font-family:var(--font-condensed);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--asphalt-500);font-size:14px;margin-bottom:8px}
+.q{font-family:var(--font-display);font-weight:800;font-size:28px;text-transform:uppercase;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:#fff;color:var(--tga-ink);border:1px solid var(--asphalt-300);border-radius:var(--r-sm);padding:12px 14px;font-family:var(--font-body);font-size:17px;cursor:pointer;transition:border-color var(--dur),background var(--dur)}
+.opt:hover{border-color:var(--tga-maroon);background:var(--asphalt-100)}
+.opt.ok{border-color:var(--success);background:#E5F1E8}
+.opt.bad{border-color:var(--tga-red);background:#F7E9E9}
+.result h3{font-size:34px}
+.miss{color:var(--asphalt-600);margin:8px 0 16px;padding-left:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="./"><img src="assets/tga-logo-white.png" alt="TGA Truck Driving School"><span>CDL English Academy</span></a>
+  <a class="btn alt sm" href="#lessons">Lessons</a>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Pass your CDL tests. <em>Speak with confidence</em> on the road.</h1>
+    <p>Short, practical English lessons for commercial drivers: pre-trip inspection, air brakes, the road exam, the permit test, endorsements, and everyday talk with dispatchers and receivers.</p>
+    <div class="row">
+      <a class="btn" href="#subscribe">Subscribe</a>
+      <a class="btn alt" href="#lessons">Buy a single lesson</a>
+    </div>
+  </div>
+</section>
+
+<section id="subscribe">
+  <div class="wrap">
+    <div class="card plan">
+      <div class="tag">Best value</div>
+      <h3>Full Access Subscription</h3>
+      <ul>
+        <li>All six lesson areas, including new lessons as they are added</li>
+        <li>Flashcards, quizzes, and progress tracking</li>
+        <li>Cancel any time</li>
+      </ul>
+      <div><button class="btn buy" data-product="subscription">Subscribe</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="lessons">
+  <div class="wrap">
+    <h2>Choose a lesson</h2>
+    <p class="sub">Buy one lesson at a time, or subscribe above for everything.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">TGA Truck Driving School &middot; Questions? <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div>
+</footer>
+
+<script>
+// ---- SET YOUR PAYMENT LINKS HERE (e.g. Stripe Payment Links). Empty = falls back to an email request. ----
+var LINKS = {
+  "subscription": "",
+  "pre-trip": "",
+  "air-brakes": "",
+  "road-exam": "",
+  "permit-test": "",
+  "endorsements": "",
+  "conversation": ""
+};
+var LESSONS = [
+  {id:"pre-trip", href:"pretrip.html", covers:["Engine compartment", "Cab and in-cab checks", "Lights and signals", "Coupling system", "Wheels, tires, and rims", "Suspension and brake lines", "Emergency equipment", "How to say each check out loud"], tag:"Inspection", name:"Pre-Trip Inspection", desc:"Name every part, describe what you check, and say it clearly to the examiner."},
+  {id:"air-brakes", covers:["Compressor, governor, and air tanks", "Cut-in and cut-out pressure", "Leakage test", "Low air warning", "Spring brake pop-out", "Service and parking brake tests", "Words and phrases for the exam"], tag:"Inspection", name:"Air Brake Inspection", desc:"The air brake test step by step, with the exact words and phrases you need."},
+  {id:"road-exam", covers:["Examiner commands and questions", "Turns, lanes, and intersections", "Railroad crossings", "Backing and parking", "Shifting and speed", "What to say while driving"], tag:"Skills test", name:"Road Exam", desc:"Understand the examiner's instructions and speak up during the driving test."},
+  {id:"permit-test", covers:["General knowledge vocabulary", "Traffic signs and signals", "Air brakes questions", "Combination vehicles", "How test questions are worded"], tag:"Knowledge test", name:"Permit Test", desc:"Key vocabulary and question patterns for the written CDL permit test."},
+  {id:"endorsements", covers:["Hazmat (H)", "Tanker (N)", "Doubles/Triples (T)", "Passenger (P)", "School Bus (S)", "Vocabulary for each knowledge test"], tag:"Knowledge test", name:"Endorsements", desc:"Language for Hazmat, Tanker, Doubles/Triples, Passenger, and more."},
+  {id:"conversation", covers:["Calls with dispatchers", "Checking in with shippers and receivers", "Delays and detention", "Weigh stations and fuel stops", "Roadside inspections", "Emergencies and breakdowns"], tag:"On the job", name:"Conversational Commercial Talk", desc:"Real conversations with dispatchers, shippers, receivers, and officers."}
+];
+var grid = document.getElementById("grid");
+LESSONS.forEach(function(l){
+  var d = document.createElement("div");
+  d.className = "card";
+  d.innerHTML = '<div class="tag"></div><h3></h3><p></p><details><summary>What does this cover?</summary><ul></ul></details><div><button class="btn alt buy">Buy this lesson</button></div>';
+  d.querySelector(".tag").textContent = l.tag;
+  d.querySelector("h3").textContent = l.name;
+  d.querySelector("p").textContent = l.desc;
+  l.covers.forEach(function(c){var li=document.createElement("li");li.textContent=c;d.querySelector("ul").appendChild(li);});
+  if(l.href){var a=document.createElement("a");a.href=l.href;a.className="btn sm";a.textContent="Open lesson";a.style.marginLeft="8px";d.querySelector(".buy").parentNode.appendChild(a);}
+  d.querySelector(".buy").dataset.product = l.id;
+  grid.appendChild(d);
+});
+document.addEventListener("click", function(e){
+  var b = e.target.closest(".buy");
+  if(!b) return;
+  var id = b.dataset.product;
+  if(LINKS[id]){ window.location.href = LINKS[id]; return; }
+  var label = id === "subscription" ? "the Full Access Subscription" : "the lesson: " + id;
+  window.location.href = "mailto:caroline@tgatruckschool.com?subject=" + encodeURIComponent("CDL English Academy purchase") +
+    "&body=" + encodeURIComponent("I would like to buy " + label + ".");
+});
+</script>
+</body>
+</html>

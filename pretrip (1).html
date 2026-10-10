@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-Trip Inspection · CDL English Academy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+:root {
+  /* ---- BRAND ---------------------------------------------- */
+  --tga-oxblood:    #2A1110; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #5C1A1D; /* PRIMARY brand color */
+  --tga-maroon-700: #7A2226; /* lifted maroon — hovers, gradients */
+  --tga-red:        #C0202A; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #9C1820; /* pressed red */
+  --tga-amber:      #E8A22E; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #1E2A66; /* patriotic / CNG diamond blue — secondary, rare */
+
+  /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
+  --tga-ink:        #1B1817; /* near-black warm — body text on light */
+  --asphalt-900:    #262220;
+  --asphalt-800:    #34302D;
+  --asphalt-700:    #4A4541;
+  --asphalt-600:    #635C57;
+  --asphalt-500:    #837B74; /* muted text */
+  --asphalt-400:    #A39B93;
+  --asphalt-300:    #C9C2BB; /* borders, dividers */
+  --asphalt-200:    #E4DFD9; /* hairlines, input borders */
+  --asphalt-100:    #F0ECE7; /* subtle fills */
+  --concrete:       #F5F2ED; /* default page background (off-white) */
+  --white:          #FFFFFF;
+
+  /* ---- SEMANTIC ------------------------------------------- */
+  --fg-1: var(--tga-ink);        /* primary text */
+  --fg-2: var(--asphalt-600);    /* secondary text */
+  --fg-3: var(--asphalt-500);    /* tertiary / captions */
+  --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
+  --fg-on-dark-muted:  #C9B7B4;  /* muted text on maroon */
+
+  --bg-1: var(--white);          /* cards / surfaces */
+  --bg-2: var(--concrete);       /* page background */
+  --bg-3: var(--asphalt-100);    /* sunken / inset */
+  --bg-dark: var(--tga-oxblood); /* dark sections */
+
+  --border-1: var(--asphalt-200);
+  --border-2: var(--asphalt-300);
+  --border-strong: var(--asphalt-700);
+
+  --accent:       var(--tga-red);
+  --accent-press: var(--tga-red-700);
+  --link:         var(--tga-maroon);
+
+  --success: #2E7D46;
+  --warning: var(--tga-amber);
+  --danger:  var(--tga-red);
+
+  /* ---- TYPE FAMILIES ------------------------------------- */
+  --font-display:   'Archivo', 'Arial Black', sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Barlow', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Barlow Semi Condensed', ui-monospace, monospace; /* plate numbers, codes */
+
+  /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
+  --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
+  --fs-h1:       clamp(38px, 5vw, 60px); /* @kind font */
+  --fs-h2:       clamp(30px, 3.4vw, 42px); /* @kind font */
+  --fs-h3:       26px;
+  --fs-h4:       21px;
+  --fs-lg:       19px;
+  --fs-body:     17px;
+  --fs-sm:       15px;
+  --fs-xs:       13px;
+  --fs-kicker:   14px;
+
+  /* ---- RADII --------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---- SPACING (4pt base) -------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- SHADOWS — low, grounded, asphalt-tinted ----------- */
+  --shadow-sm: 0 1px 2px rgba(27,24,23,.10);
+  --shadow-md: 0 4px 14px rgba(27,24,23,.10);
+  --shadow-lg: 0 14px 36px rgba(27,24,23,.16);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ---- MOTION -------------------------------------------- */
+  --ease: cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --dur: 170ms; /* @kind other */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--concrete);color:var(--tga-ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--tga-maroon)}a:hover{color:var(--tga-red)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:var(--tga-maroon);color:var(--fg-on-dark);position:relative;margin-bottom:6px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:url(assets/tread-motif.png) repeat-x center/auto 6px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg-on-dark);font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:16px}
+.logo img{height:36px;display:block}
+.btn{display:inline-block;background:var(--tga-red);color:#fff;font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:16px;border:1px solid transparent;border-radius:var(--r-sm);padding:12px 22px;text-decoration:none;cursor:pointer;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.btn:hover{background:var(--tga-red-700);color:#fff}.btn:active{transform:translateY(1px)}
+.btn.alt{background:#fff;color:var(--tga-maroon);border-color:var(--asphalt-300)}
+.btn.alt:hover{border-color:var(--tga-maroon);background:#fff;color:var(--tga-maroon)}
+header .btn.alt{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+header .btn.alt:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.btn.sm{padding:7px 14px;font-size:14px}
+h1,h2,h3,h4{font-family:var(--font-display);text-transform:uppercase;color:var(--tga-ink)}
+h1{font-weight:900;letter-spacing:-.015em;line-height:1}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;line-height:1.05;margin:0 0 8px}
+h3{font-weight:800;font-size:22px;line-height:1.1;margin:0 0 6px}
+.hero{padding:64px 0 48px;text-align:center;background:var(--white);border-bottom:1px solid var(--asphalt-200)}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--tga-red)}
+.hero p{color:var(--asphalt-600);max-width:620px;margin:0 auto 28px;font-size:19px}
+.hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sub{color:var(--asphalt-600);margin:0 0 28px}
+section{padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;transition:box-shadow var(--dur)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card p{color:var(--asphalt-600);margin:0 0 16px;flex:1}
+.tag,.kick{font-family:var(--font-condensed);font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tga-red);margin-bottom:6px}
+.plan{border-top-color:var(--tga-red);background:#fff}
+.plan ul{margin:0 0 16px;padding-left:18px;color:var(--asphalt-600)}
+details{margin:0 0 16px}summary{cursor:pointer;color:var(--tga-maroon);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--asphalt-600)}
+footer{background:var(--tga-oxblood);color:var(--fg-on-dark-muted);padding:28px 0;font-size:14px;text-align:center;margin-top:30px}
+footer a{color:#fff}
+/* pre-trip page */
+.sub2{color:var(--asphalt-600)}
+.lets{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,5vw,40px);color:var(--tga-maroon);text-align:center;margin:48px 0 0;letter-spacing:-.01em}
+#groups{margin-top:40px}
+.sq{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;justify-content:center;align-items:center;text-align:center}
+.sq h4{margin:0;font-family:var(--font-condensed);font-weight:800;font-size:22px;letter-spacing:.04em}
+#groups .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#groups .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#groups .grid{grid-template-columns:1fr}}
+#groups a.sq{text-decoration:none;color:#fff;background:var(--tga-maroon);border-color:var(--tga-maroon);border-top-color:var(--tga-red);transition:background var(--dur),transform var(--dur)}
+#groups a.sq h4{color:#fff}
+#groups a.sq:hover{background:var(--tga-maroon-700);transform:translateY(-2px)}
+#groups a.sq small{font-family:var(--font-condensed);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-on-dark-muted);font-size:14px}
+.quiz{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:24px;margin:24px 0}
+.prog{font-family:var(--font-condensed);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--asphalt-500);font-size:14px;margin-bottom:8px}
+.q{font-family:var(--font-display);font-weight:800;font-size:28px;text-transform:uppercase;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:#fff;color:var(--tga-ink);border:1px solid var(--asphalt-300);border-radius:var(--r-sm);padding:12px 14px;font-family:var(--font-body);font-size:17px;cursor:pointer;transition:border-color var(--dur),background var(--dur)}
+.opt:hover{border-color:var(--tga-maroon);background:var(--asphalt-100)}
+.opt.ok{border-color:var(--success);background:#E5F1E8}
+.opt.bad{border-color:var(--tga-red);background:#F7E9E9}
+.result h3{font-size:34px}
+.miss{color:var(--asphalt-600);margin:8px 0 16px;padding-left:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="./"><img src="assets/tga-logo-white.png" alt="TGA Truck Driving School"><span>CDL English Academy</span></a>
+  <a class="btn alt sm" href="./#lessons">All lessons</a>
+</div></header>
+
+<main class="wrap">
+  <h1 style="font-size:clamp(34px,5vw,52px);margin:36px 0 0">Pre-Trip Inspection</h1>
+  <p class="lets">Let's see what you know?</p>
+  <div id="groups"></div>
+  <div style="text-align:center;margin:32px 0"><button class="btn" id="start" style="font-size:20px;padding:14px 36px">Get started</button></div>
+  <div class="quiz" id="game" style="display:none"></div>
+
+</main>
+
+<footer><div class="wrap">TGA Truck Driving School &middot; <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div></footer>
+
+<script>
+var NAMES=["Engine compartment","In the cab","Lights and signals","Wheels, brakes, and suspension","Coupling and trailer"];
+var grid=document.createElement("div");grid.className="grid";
+NAMES.forEach(function(n){var s=document.createElement("div");s.className="sq";var h=document.createElement("h4");h.textContent=n;s.appendChild(h);grid.appendChild(s);});
+var ia=document.createElement("a");ia.className="sq";ia.href="pretrip3d.html";ia.innerHTML="<h4>Interactive Pre-Trip</h4><small>3D truck walkaround &rarr;</small>";grid.appendChild(ia);
+document.getElementById("groups").appendChild(grid);
+
+var PARTS=[["Dipstick / oil level", "varilla del aceite"], ["Coolant", "refrigerante"], ["Power steering fluid", "líquido de la dirección"], ["Belts", "bandas / correas"], ["Hoses", "mangueras"], ["Air compressor", "compresor de aire"], ["Battery", "batería"], ["Steering wheel", "volante"], ["Gauges", "indicadores"], ["Mirrors", "espejos"], ["Horn", "bocina"], ["Windshield wipers", "limpiaparabrisas"], ["Seat belt", "cinturón de seguridad"], ["Emergency equipment", "equipo de emergencia"], ["Headlights", "faros"], ["Turn signals", "direccionales"], ["Brake lights", "luces de freno"], ["Hazard lights", "luces de emergencia"], ["Reflectors", "reflectores"], ["Tires", "llantas"], ["Rims", "rines"], ["Lug nuts", "tuercas de rueda"], ["Hub seal", "sello del cubo"], ["Brake drum", "tambor de freno"], ["Slack adjuster", "ajustador de holgura"], ["Springs and shock absorbers", "resortes y amortiguadores"], ["Air lines", "mangueras de aire"], ["Fifth wheel", "quinta rueda"], ["Kingpin", "perno rey"], ["Landing gear", "patas de apoyo"], ["Mud flaps", "guardafangos"], ["Cargo doors", "puertas de carga"], ["Fuel tank", "tanque de combustible"]];
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+var game=document.getElementById("game"),startBtn=document.getElementById("start"),order,i,score,missed;
+startBtn.onclick=begin;
+function begin(){order=shuffle(PARTS);i=0;score=0;missed=[];startBtn.parentNode.style.display="none";document.getElementById("groups").style.display="none";game.style.display="block";next();}
+function next(){
+  if(i>=order.length)return done();
+  var q=order[i];
+  var opts=shuffle([q].concat(shuffle(PARTS.filter(function(x){return x!==q})).slice(0,3)));
+  game.innerHTML='<div class="prog"></div><p class="q"></p><div class="opts"></div>';
+  game.querySelector(".prog").textContent="Part "+(i+1)+" of "+order.length;
+  game.querySelector(".q").textContent=q[0];
+  var od=game.querySelector(".opts");
+  opts.forEach(function(o){
+    var b=document.createElement("button");b.className="opt";b.textContent=o[1];
+    b.onclick=function(){
+      od.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.textContent===q[1])x.classList.add("ok")});
+      if(o===q){score++}else{b.classList.add("bad");missed.push(q)}
+      setTimeout(function(){i++;next()},900);
+    };
+    od.appendChild(b);
+  });
+}
+function done(){
+  game.innerHTML='<div class="result"><h3></h3><div class="mw"></div><button class="btn">Play again</button></div>';
+  game.querySelector("h3").textContent=score+" / "+order.length;
+  if(missed.length){
+    var l=document.createElement("div");l.textContent="Review these:";
+    var ul=document.createElement("ul");ul.className="miss";
+    missed.forEach(function(m){var li=document.createElement("li");li.textContent=m[0]+" = "+m[1];ul.appendChild(li)});
+    game.querySelector(".mw").appendChild(l);game.querySelector(".mw").appendChild(ul);
+  }
+  game.querySelector(".btn").onclick=begin;
+}
+</script>
+</body>
+</html>
