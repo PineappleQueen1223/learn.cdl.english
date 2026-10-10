@@ -1,0 +1,4667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permit Test Practice · CDL English Academy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+:root {
+  /* ---- BRAND ---------------------------------------------- */
+  --tga-oxblood:    #131946; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #0A3161; /* PRIMARY brand color */
+  --tga-maroon-700: #14487F; /* lifted maroon — hovers, gradients */
+  --tga-red:        #BA0C2F; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #8F0A24; /* pressed red */
+  --tga-amber:      #FFCB05; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #0A3161; /* patriotic / CNG diamond blue — secondary, rare */
+
+  /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
+  --tga-ink:        #1B1817; /* near-black warm — body text on light */
+  --asphalt-900:    #262220;
+  --asphalt-800:    #34302D;
+  --asphalt-700:    #4A4541;
+  --asphalt-600:    #635C57;
+  --asphalt-500:    #837B74; /* muted text */
+  --asphalt-400:    #A39B93;
+  --asphalt-300:    #C9C2BB; /* borders, dividers */
+  --asphalt-200:    #E4DFD9; /* hairlines, input borders */
+  --asphalt-100:    #F0ECE7; /* subtle fills */
+  --concrete:       #FAF9F5; /* default page background (off-white) */
+  --white:          #FFFFFF;
+
+  /* ---- SEMANTIC ------------------------------------------- */
+  --fg-1: var(--tga-ink);        /* primary text */
+  --fg-2: var(--asphalt-600);    /* secondary text */
+  --fg-3: var(--asphalt-500);    /* tertiary / captions */
+  --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
+  --fg-on-dark-muted:  #B9C6DD;  /* muted text on maroon */
+
+  --bg-1: var(--white);          /* cards / surfaces */
+  --bg-2: var(--concrete);       /* page background */
+  --bg-3: var(--asphalt-100);    /* sunken / inset */
+  --bg-dark: var(--tga-oxblood); /* dark sections */
+
+  --border-1: var(--asphalt-200);
+  --border-2: var(--asphalt-300);
+  --border-strong: var(--asphalt-700);
+
+  --accent:       var(--tga-red);
+  --accent-press: var(--tga-red-700);
+  --link:         var(--tga-maroon);
+
+  --success: #2E7D46;
+  --warning: var(--tga-amber);
+  --danger:  var(--tga-red);
+
+  /* ---- TYPE FAMILIES ------------------------------------- */
+  --font-display:   'Montserrat', Arial, sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Montserrat', Arial, sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Montserrat', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Montserrat', ui-monospace, monospace; /* plate numbers, codes */
+
+  /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
+  --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
+  --fs-h1:       clamp(38px, 5vw, 60px); /* @kind font */
+  --fs-h2:       clamp(30px, 3.4vw, 42px); /* @kind font */
+  --fs-h3:       26px;
+  --fs-h4:       21px;
+  --fs-lg:       19px;
+  --fs-body:     17px;
+  --fs-sm:       15px;
+  --fs-xs:       13px;
+  --fs-kicker:   14px;
+
+  /* ---- RADII --------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---- SPACING (4pt base) -------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- SHADOWS — low, grounded, asphalt-tinted ----------- */
+  --shadow-sm: 0 1px 2px rgba(27,24,23,.10);
+  --shadow-md: 0 4px 14px rgba(27,24,23,.10);
+  --shadow-lg: 0 14px 36px rgba(27,24,23,.16);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ---- MOTION -------------------------------------------- */
+  --ease: cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --dur: 170ms; /* @kind other */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--concrete);color:var(--tga-ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--tga-maroon)}a:hover{color:var(--tga-red)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:var(--tga-maroon);color:var(--fg-on-dark);position:relative;margin-bottom:6px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:url(assets/tread-motif.png) repeat-x center/auto 6px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg-on-dark);font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:16px}
+.logo img{height:36px;display:block}
+.btn{display:inline-block;background:var(--tga-red);color:#fff;font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:16px;border:1px solid transparent;border-radius:var(--r-sm);padding:12px 22px;text-decoration:none;cursor:pointer;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.btn:hover{background:var(--tga-red-700);color:#fff}.btn:active{transform:translateY(1px)}
+.btn.alt{background:#fff;color:var(--tga-maroon);border-color:var(--asphalt-300)}
+.btn.alt:hover{border-color:var(--tga-maroon);background:#fff;color:var(--tga-maroon)}
+header .btn.alt{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+header .btn.alt:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.btn.sm{padding:7px 14px;font-size:14px}
+h1,h2,h3,h4{font-family:var(--font-display);text-transform:uppercase;color:var(--tga-ink)}
+h1{font-weight:900;letter-spacing:-.015em;line-height:1}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;line-height:1.05;margin:0 0 8px}
+h3{font-weight:800;font-size:22px;line-height:1.1;margin:0 0 6px}
+.hero{padding:64px 0 48px;text-align:center;background:var(--white);border-bottom:1px solid var(--asphalt-200)}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--tga-red)}
+.hero p{color:var(--asphalt-600);max-width:620px;margin:0 auto 28px;font-size:19px}
+.hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sub{color:var(--asphalt-600);margin:0 0 28px}
+section{padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;transition:box-shadow var(--dur)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card p{color:var(--asphalt-600);margin:0 0 16px;flex:1}
+.tag,.kick{font-family:var(--font-condensed);font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tga-red);margin-bottom:6px}
+.plan{border-top-color:var(--tga-red);background:#fff}
+.plan ul{margin:0 0 16px;padding-left:18px;color:var(--asphalt-600)}
+details{margin:0 0 16px}summary{cursor:pointer;color:var(--tga-maroon);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--asphalt-600)}
+footer{background:var(--tga-oxblood);color:var(--fg-on-dark-muted);padding:28px 0;font-size:14px;text-align:center;margin-top:30px}
+footer a{color:#fff}
+/* pre-trip page */
+.sub2{color:var(--asphalt-600)}
+.lets{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,5vw,40px);color:var(--tga-maroon);text-align:center;margin:48px 0 0;letter-spacing:-.01em}
+#groups{margin-top:40px}
+.sq{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;justify-content:center;align-items:center;text-align:center}
+.sq h4{margin:0;font-family:var(--font-condensed);font-weight:800;font-size:22px;letter-spacing:.04em}
+#groups .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#groups .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#groups .grid{grid-template-columns:1fr}}
+#groups a.sq{text-decoration:none;color:#fff;background:var(--tga-maroon);border-color:var(--tga-maroon);border-top-color:var(--tga-red);transition:background var(--dur),transform var(--dur)}
+#groups a.sq h4{color:#fff}
+#groups a.sq:hover{background:var(--tga-maroon-700);transform:translateY(-2px)}
+#groups a.sq small{font-family:var(--font-condensed);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-on-dark-muted);font-size:14px}
+.quiz{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:24px;margin:24px 0}
+.prog{font-family:var(--font-condensed);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--asphalt-500);font-size:14px;margin-bottom:8px}
+.q{font-family:var(--font-display);font-weight:800;font-size:28px;text-transform:uppercase;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:#fff;color:var(--tga-ink);border:1px solid var(--asphalt-300);border-radius:var(--r-sm);padding:12px 14px;font-family:var(--font-body);font-size:17px;cursor:pointer;transition:border-color var(--dur),background var(--dur)}
+.opt:hover{border-color:var(--tga-maroon);background:var(--asphalt-100)}
+.opt.ok{border-color:var(--success);background:#E5F1E8}
+.opt.bad{border-color:var(--tga-red);background:#E5EBFA}
+.result h3{font-size:34px}
+.miss{color:var(--asphalt-600);margin:8px 0 16px;padding-left:18px}
+
+/* match truckdriversed.com */
+h1,h2,h3{text-transform:none!important;letter-spacing:-.01em!important}
+h1{font-weight:700!important}h2,h3{font-weight:700!important}
+.lets,.q{text-transform:none!important;font-weight:700!important}
+header::after{background:var(--tga-red)!important;height:4px!important;bottom:-4px!important}
+.btn,.sq h4,.logo,.tag,.kick{letter-spacing:.06em!important}
+
+.bar{height:6px;background:var(--asphalt-200);border-radius:3px;overflow:hidden;margin:0 0 20px}.bar i{display:block;height:100%;width:0;background:var(--tga-red);transition:width .3s}
+.fb{margin:16px 0 0;padding:12px 14px;border-radius:var(--r-sm);font-weight:600}
+.fb.ok{background:#E5F1E8;color:#1F5A32}.fb.bad{background:#FBE9EC;color:#8F0A24}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.score{font-size:48px;font-weight:800;color:var(--tga-maroon);margin:0}
+.pill{display:inline-block;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.pill.pass{background:#E5F1E8;color:#1F5A32}.pill.keep{background:#FBE9EC;color:#8F0A24}
+.sec{cursor:pointer;text-align:left;font:inherit;align-items:flex-start;text-align:left}
+.sec:hover{box-shadow:var(--shadow-md)}.sec small{color:var(--asphalt-600);font-weight:500}
+.review{padding:0;list-style:none}.review li{padding:12px 0;border-top:1px solid var(--asphalt-200)}.review b{display:block}.review .a{color:#1F5A32}.review .w{color:#8F0A24}
+#sections{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){#sections{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#sections{grid-template-columns:1fr}}
+#sections .sq h4{font-size:19px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="./"><img src="assets/tga-logo-white.png" alt="TGA Truck Driving School"><span>CDL English Academy</span></a>
+  <a class="btn alt sm" href="./#lessons">All lessons</a>
+</div></header>
+<main class="wrap">
+  <h1 style="font-size:clamp(34px,5vw,52px);margin:36px 0 0">Permit Test Practice</h1>
+  <p class="sub" style="margin-top:8px">Pick a section, answer each question, and see right away how you did.</p>
+  <div id="home">
+    <div class="grid" id="sections"></div>
+  </div>
+  <div class="quiz" id="game" style="display:none"></div>
+</main>
+<footer><div class="wrap">TGA Truck Driving School &middot; <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div></footer>
+<script>
+var QUESTIONS = [
+ {
+  "category": "General Knowledge",
+  "question": "What is the primary purpose of a pre-trip inspection?",
+  "choices": [
+   "Save fuel",
+   "Find safety defects",
+   "Improve comfort",
+   "Check paperwork"
+  ],
+  "answer": "Find safety defects"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why should drivers check mirrors frequently?",
+  "choices": [
+   "To improve fuel economy",
+   "To monitor traffic conditions",
+   "To cool the vehicle",
+   "To reduce engine wear"
+  ],
+  "answer": "To monitor traffic conditions"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the safest action when feeling drowsy while driving?",
+  "choices": [
+   "Open a window",
+   "Drink soda",
+   "Stop and rest",
+   "Increase speed"
+  ],
+  "answer": "Stop and rest"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Which factor increases stopping distance?",
+  "choices": [
+   "Reduced weight",
+   "Dry pavement",
+   "Higher speed",
+   "Fresh tires"
+  ],
+  "answer": "Higher speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What should you do before changing lanes?",
+  "choices": [
+   "Accelerate immediately",
+   "Check mirrors and blind spots",
+   "Sound the horn continuously",
+   "Turn off headlights"
+  ],
+  "answer": "Check mirrors and blind spots"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of vehicle inspection reports?",
+  "choices": [
+   "Track attendance",
+   "Document vehicle defects",
+   "Record routes",
+   "Calculate pay"
+  ],
+  "answer": "Document vehicle defects"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "When driving in rain, traction is generally:",
+  "choices": [
+   "Improved",
+   "Reduced",
+   "Unaffected",
+   "Doubled"
+  ],
+  "answer": "Reduced"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why is maintaining following distance important?",
+  "choices": [
+   "Allows faster travel",
+   "Provides reaction time",
+   "Reduces paperwork",
+   "Improves radio signal"
+  ],
+  "answer": "Provides reaction time"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Which condition can lead to skids?",
+  "choices": [
+   "Smooth acceleration",
+   "Excessive speed",
+   "Good traction",
+   "Light loads"
+  ],
+  "answer": "Excessive speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is a blind spot?",
+  "choices": [
+   "A damaged mirror",
+   "Area not visible in mirrors",
+   "A dark road",
+   "A traffic zone"
+  ],
+  "answer": "Area not visible in mirrors"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What should a driver do when visibility becomes poor?",
+  "choices": [
+   "Increase speed",
+   "Use caution and reduce speed",
+   "Close mirrors",
+   "Ignore conditions"
+  ],
+  "answer": "Use caution and reduce speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Road conditions are most likely to be slippery:",
+  "choices": [
+   "After several hours of rain",
+   "During sunny weather",
+   "Early in a light rain",
+   "After sweeping"
+  ],
+  "answer": "Early in a light rain"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What can cause hydroplaning?",
+  "choices": [
+   "Deep water on roadway",
+   "Low radio volume",
+   "Cold weather only",
+   "Heavy cargo only"
+  ],
+  "answer": "Deep water on roadway"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "A driver should signal before turning to:",
+  "choices": [
+   "Warn other road users",
+   "Reduce fuel use",
+   "Test lighting",
+   "Check brakes"
+  ],
+  "answer": "Warn other road users"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "The best way to handle a tire blowout is to:",
+  "choices": [
+   "Brake hard",
+   "Maintain control and slow gradually",
+   "Turn sharply",
+   "Accelerate aggressively"
+  ],
+  "answer": "Maintain control and slow gradually"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of hazard awareness?",
+  "choices": [
+   "Avoid planning",
+   "Identify risks early",
+   "Reduce inspections",
+   "Increase speed"
+  ],
+  "answer": "Identify risks early"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why should cargo be secured?",
+  "choices": [
+   "For appearance",
+   "To prevent shifting",
+   "For paperwork",
+   "To improve radio reception"
+  ],
+  "answer": "To prevent shifting"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "When approaching a work zone, drivers should:",
+  "choices": [
+   "Speed up",
+   "Follow signs and reduce speed",
+   "Ignore cones",
+   "Use opposite lane"
+  ],
+  "answer": "Follow signs and reduce speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Fatigue affects driving by:",
+  "choices": [
+   "Improving concentration",
+   "Reducing alertness",
+   "Reducing stopping distance",
+   "Improving reaction time"
+  ],
+  "answer": "Reducing alertness"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of lane positioning?",
+  "choices": [
+   "Reduce mirror checks",
+   "Maintain safety and visibility",
+   "Increase cargo weight",
+   "Shorten vehicle length"
+  ],
+  "answer": "Maintain safety and visibility"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the primary purpose of a fifth wheel?",
+  "choices": [
+   "Support engine weight",
+   "Connect tractor and trailer",
+   "Control braking pressure",
+   "Provide suspension"
+  ],
+  "answer": "Connect tractor and trailer"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before coupling, the trailer should be:",
+  "choices": [
+   "Higher than the fifth wheel",
+   "At the proper height",
+   "Fully loaded",
+   "Moving slowly"
+  ],
+  "answer": "At the proper height"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A trailer that is too high during coupling may:",
+  "choices": [
+   "Improve traction",
+   "Cause improper coupling",
+   "Reduce offtracking",
+   "Increase fuel efficiency"
+  ],
+  "answer": "Cause improper coupling"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What locks around the trailer kingpin?",
+  "choices": [
+   "Air compressor",
+   "Fifth-wheel jaws",
+   "Slack adjuster",
+   "Brake chamber"
+  ],
+  "answer": "Fifth-wheel jaws"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "After coupling, a visual inspection should confirm:",
+  "choices": [
+   "The trailer lights are off",
+   "The jaws are locked around the kingpin",
+   "The wheels are spinning",
+   "The cargo doors are open"
+  ],
+  "answer": "The jaws are locked around the kingpin"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is a tug test used for?",
+  "choices": [
+   "Testing suspension",
+   "Checking trailer brakes",
+   "Verifying coupling security",
+   "Checking fuel level"
+  ],
+  "answer": "Verifying coupling security"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before connecting air lines, drivers should inspect for:",
+  "choices": [
+   "Leaks and damage",
+   "Cargo weight",
+   "Engine temperature",
+   "Mirror adjustment"
+  ],
+  "answer": "Leaks and damage"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Glad hands are used to:",
+  "choices": [
+   "Connect air lines",
+   "Attach mirrors",
+   "Secure cargo",
+   "Adjust suspension"
+  ],
+  "answer": "Connect air lines"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What can happen if air lines are crossed?",
+  "choices": [
+   "Improved braking",
+   "Brake malfunction",
+   "Better fuel economy",
+   "Reduced tire wear"
+  ],
+  "answer": "Brake malfunction"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Trailer hand valves should not be used for:",
+  "choices": [
+   "Testing brakes",
+   "Parking",
+   "Routine driving control",
+   "Checking response"
+  ],
+  "answer": "Routine driving control"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles generally require:",
+  "choices": [
+   "Less stopping distance",
+   "More stopping distance",
+   "No braking adjustments",
+   "Smaller mirrors"
+  ],
+  "answer": "More stopping distance"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Offtracking occurs when:",
+  "choices": [
+   "The engine misfires",
+   "Trailer wheels follow a different path than tractor wheels",
+   "Fuel pressure drops",
+   "The trailer is empty"
+  ],
+  "answer": "Trailer wheels follow a different path than tractor wheels"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Offtracking is most noticeable during:",
+  "choices": [
+   "Straight driving",
+   "Turning",
+   "Parking only",
+   "Refueling"
+  ],
+  "answer": "Turning"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles are more likely to roll over because they:",
+  "choices": [
+   "Are lighter",
+   "Have a higher center of gravity",
+   "Use smaller tires",
+   "Have shorter wheelbases"
+  ],
+  "answer": "Have a higher center of gravity"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "To reduce rollover risk, drivers should:",
+  "choices": [
+   "Take curves slowly",
+   "Accelerate through curves",
+   "Turn sharply",
+   "Ignore load placement"
+  ],
+  "answer": "Take curves slowly"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is trailer swing?",
+  "choices": [
+   "Movement of cargo",
+   "Outward movement of the trailer during turns",
+   "Engine vibration",
+   "Brake fade"
+  ],
+  "answer": "Outward movement of the trailer during turns"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When backing a combination vehicle, drivers should:",
+  "choices": [
+   "Use small steering corrections",
+   "Turn steering wheel rapidly",
+   "Avoid mirrors",
+   "Increase speed"
+  ],
+  "answer": "Use small steering corrections"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A jackknife occurs when:",
+  "choices": [
+   "The trailer disconnects",
+   "The tractor and trailer fold toward each other",
+   "The cargo shifts",
+   "The suspension fails"
+  ],
+  "answer": "The tractor and trailer fold toward each other"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Which condition increases jackknife risk?",
+  "choices": [
+   "Excessive braking",
+   "Proper spacing",
+   "Moderate speed",
+   "Dry pavement"
+  ],
+  "answer": "Excessive braking"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "During coupling, landing gear should be:",
+  "choices": [
+   "Damaged",
+   "Inspected for condition",
+   "Removed",
+   "Lubricated daily"
+  ],
+  "answer": "Inspected for condition"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before moving a newly connected trailer, drivers should:",
+  "choices": [
+   "Complete a brake check",
+   "Disconnect airlines",
+   "Retract mirrors",
+   "Unload cargo"
+  ],
+  "answer": "Complete a brake check"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The emergency air line is commonly associated with:",
+  "choices": [
+   "Supplying trailer air pressure",
+   "Engine cooling",
+   "Cargo temperature",
+   "ABS sensors only"
+  ],
+  "answer": "Supplying trailer air pressure"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be checked on the kingpin?",
+  "choices": [
+   "Cracks and wear",
+   "Paint color",
+   "Tire pressure",
+   "Fuel level"
+  ],
+  "answer": "Cracks and wear"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A damaged kingpin can:",
+  "choices": [
+   "Improve handling",
+   "Create coupling hazards",
+   "Increase traction",
+   "Reduce offtracking"
+  ],
+  "answer": "Create coupling hazards"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The trailer service line is primarily used for:",
+  "choices": [
+   "Applying trailer brakes",
+   "Fuel delivery",
+   "Cooling systems",
+   "Lighting circuits"
+  ],
+  "answer": "Applying trailer brakes"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When inspecting the fifth wheel, drivers should look for:",
+  "choices": [
+   "Cracks and damage",
+   "Engine leaks",
+   "Seat belt wear",
+   "Low coolant"
+  ],
+  "answer": "Cracks and damage"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What helps prevent improper coupling?",
+  "choices": [
+   "Visual inspection",
+   "Driving immediately",
+   "Skipping brake checks",
+   "Higher speed"
+  ],
+  "answer": "Visual inspection"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles require extra caution because:",
+  "choices": [
+   "They turn like passenger cars",
+   "They handle differently than single vehicles",
+   "They use bicycle brakes",
+   "They can't back up"
+  ],
+  "answer": "They handle differently than single vehicles"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What may happen if cargo shifts inside a trailer?",
+  "choices": [
+   "Improved balance",
+   "Loss of stability",
+   "Better braking",
+   "Increased mileage"
+  ],
+  "answer": "Loss of stability"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When uncoupling, trailer wheels should be:",
+  "choices": [
+   "Blocked if necessary",
+   "Removed",
+   "Lubricated",
+   "Turned sideways"
+  ],
+  "answer": "Blocked if necessary"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the purpose of landing gear?",
+  "choices": [
+   "Support the trailer when disconnected",
+   "Cool the brakes",
+   "Hold fuel tanks",
+   "Control steering"
+  ],
+  "answer": "Support the trailer when disconnected"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Drivers should avoid sudden steering because it may:",
+  "choices": [
+   "Reduce visibility",
+   "Cause rollover",
+   "Increase cooling",
+   "Improve tracking"
+  ],
+  "answer": "Cause rollover"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The heavier the combination vehicle, the more important it is to:",
+  "choices": [
+   "Maintain space ahead",
+   "Drive faster",
+   "Reduce inspections",
+   "Ignore grades"
+  ],
+  "answer": "Maintain space ahead"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before uncoupling, trailer air pressure should be:",
+  "choices": [
+   "Properly secured",
+   "Released from tires",
+   "Ignored",
+   "Increased"
+  ],
+  "answer": "Properly secured"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be checked after releasing fifth-wheel locking jaws?",
+  "choices": [
+   "Trailer support",
+   "Fuel level",
+   "Horn operation",
+   "Seat position"
+  ],
+  "answer": "Trailer support"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles need wider turns because of:",
+  "choices": [
+   "Offtracking",
+   "Engine size",
+   "Wheel color",
+   "Fuel capacity"
+  ],
+  "answer": "Offtracking"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Trailer air connections should be:",
+  "choices": [
+   "Secure",
+   "Loose",
+   "Optional",
+   "Disconnected"
+  ],
+  "answer": "Secure"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the safest way to approach coupling?",
+  "choices": [
+   "Straight alignment",
+   "Sharp angles",
+   "High speed",
+   "Reverse acceleration"
+  ],
+  "answer": "Straight alignment"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The purpose of a trailer brake check is to:",
+  "choices": [
+   "Verify brake operation",
+   "Measure fuel use",
+   "Adjust mirrors",
+   "Inspect cargo"
+  ],
+  "answer": "Verify brake operation"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Why should drivers avoid excessive speed on curves?",
+  "choices": [
+   "Risk of rollover",
+   "Lower fuel economy only",
+   "Bright headlights",
+   "ABS activation"
+  ],
+  "answer": "Risk of rollover"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is one sign of improper trailer coupling?",
+  "choices": [
+   "Gap between fifth wheel and trailer apron",
+   "Clean mirrors",
+   "Inflated tires",
+   "Level cargo"
+  ],
+  "answer": "Gap between fifth wheel and trailer apron"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles require planning because they:",
+  "choices": [
+   "Need more maneuvering space",
+   "Use less road",
+   "Stop instantly",
+   "Turn tighter"
+  ],
+  "answer": "Need more maneuvering space"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be done before retracting landing gear?",
+  "choices": [
+   "Ensure trailer is properly coupled",
+   "Disconnect airlines",
+   "Remove kingpin",
+   "Unload cargo"
+  ],
+  "answer": "Ensure trailer is properly coupled"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Which component joins the trailer to the fifth wheel?",
+  "choices": [
+   "Kingpin",
+   "Slack adjuster",
+   "Air compressor",
+   "Drive shaft"
+  ],
+  "answer": "Kingpin"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Empty trailers may be more difficult to handle because they:",
+  "choices": [
+   "Can bounce more easily",
+   "Are too long",
+   "Have larger engines",
+   "Use more brakes"
+  ],
+  "answer": "Can bounce more easily"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "During backing, the driver's primary reference should be:",
+  "choices": [
+   "Mirrors",
+   "Radio",
+   "Dashboard lights",
+   "GPS only"
+  ],
+  "answer": "Mirrors"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should a driver do if uncertain about trailer clearance?",
+  "choices": [
+   "Get out and look",
+   "Accelerate",
+   "Continue blindly",
+   "Sound horn repeatedly"
+  ],
+  "answer": "Get out and look"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Proper coupling inspections help prevent:",
+  "choices": [
+   "Trailer separation",
+   "Fuel theft",
+   "Weather delays",
+   "Engine overheating"
+  ],
+  "answer": "Trailer separation"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The best way to control a combination vehicle on downgrades is to:",
+  "choices": [
+   "Use proper speed and gear selection",
+   "Coast in neutral",
+   "Turn off engine",
+   "Brake continuously"
+  ],
+  "answer": "Use proper speed and gear selection"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the main goal of combination vehicle inspections?",
+  "choices": [
+   "Ensure safe operation",
+   "Increase cargo volume",
+   "Reduce paperwork",
+   "Improve paint condition"
+  ],
+  "answer": "Ensure safe operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What provides the force used in an air brake system?",
+  "choices": [
+   "Hydraulic fluid",
+   "Compressed air",
+   "Engine oil",
+   "Coolant"
+  ],
+  "answer": "Compressed air"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the primary function of the air compressor?",
+  "choices": [
+   "Cool the brakes",
+   "Compress air for the brake system",
+   "Lubricate components",
+   "Charge the battery"
+  ],
+  "answer": "Compress air for the brake system"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Where is compressed air typically stored?",
+  "choices": [
+   "Fuel tanks",
+   "Air tanks",
+   "Engine block",
+   "Radiator"
+  ],
+  "answer": "Air tanks"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the purpose of an air governor?",
+  "choices": [
+   "Control engine speed",
+   "Control air compressor cut-in and cut-out pressure",
+   "Adjust mirrors",
+   "Regulate fuel pressure"
+  ],
+  "answer": "Control air compressor cut-in and cut-out pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What can water in the air brake system cause?",
+  "choices": [
+   "Brake damage and freezing",
+   "Better braking",
+   "More horsepower",
+   "Improved fuel economy"
+  ],
+  "answer": "Brake damage and freezing"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Why are air tank drains important?",
+  "choices": [
+   "Increase fuel efficiency",
+   "Remove moisture and contaminants",
+   "Improve tire pressure",
+   "Control suspension"
+  ],
+  "answer": "Remove moisture and contaminants"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What happens when the brake pedal is pressed?",
+  "choices": [
+   "Air pressure applies the brakes",
+   "Fuel is injected",
+   "The compressor stops",
+   "The tires lock automatically"
+  ],
+  "answer": "Air pressure applies the brakes"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The foundation brakes are located:",
+  "choices": [
+   "At the wheels",
+   "In the engine",
+   "On top of the trailer",
+   "Inside the fuel tank"
+  ],
+  "answer": "At the wheels"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What component pushes the brake linkage?",
+  "choices": [
+   "Governor",
+   "Brake chamber",
+   "Alternator",
+   "Radiator"
+  ],
+  "answer": "Brake chamber"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Slack adjusters help:",
+  "choices": [
+   "Maintain proper brake adjustment",
+   "Control fuel flow",
+   "Adjust mirrors",
+   "Inflate tires"
+  ],
+  "answer": "Maintain proper brake adjustment"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What may indicate an air leak?",
+  "choices": [
+   "Hissing sound",
+   "Clear mirrors",
+   "Good braking",
+   "Warm engine"
+  ],
+  "answer": "Hissing sound"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What warning should activate when air pressure becomes dangerously low?",
+  "choices": [
+   "Low air warning device",
+   "Turn signal",
+   "Cruise control",
+   "ABS lamp only"
+  ],
+  "answer": "Low air warning device"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Spring brakes are primarily used for:",
+  "choices": [
+   "Parking and emergencies",
+   "Cooling",
+   "Steering",
+   "Suspension"
+  ],
+  "answer": "Parking and emergencies"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What causes spring brakes to release?",
+  "choices": [
+   "Air pressure",
+   "Gravity",
+   "Fuel pressure",
+   "Engine speed"
+  ],
+  "answer": "Air pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A major air leak can cause:",
+  "choices": [
+   "Automatic spring brake application",
+   "Improved braking",
+   "Better traction",
+   "Engine shutdown"
+  ],
+  "answer": "Automatic spring brake application"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of the low-air warning system is to:",
+  "choices": [
+   "Alert the driver to unsafe pressure levels",
+   "Improve mileage",
+   "Reduce emissions",
+   "Monitor cargo"
+  ],
+  "answer": "Alert the driver to unsafe pressure levels"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "ABS stands for:",
+  "choices": [
+   "Automatic Brake System",
+   "Anti-lock Braking System",
+   "Air Brake Support",
+   "Automatic Balance System"
+  ],
+  "answer": "Anti-lock Braking System"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of ABS is to:",
+  "choices": [
+   "Prevent wheel lock during hard braking",
+   "Increase speed",
+   "Reduce vehicle weight",
+   "Control steering wheel movement"
+  ],
+  "answer": "Prevent wheel lock during hard braking"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "During an inspection, brake hoses should be checked for:",
+  "choices": [
+   "Cracks and leaks",
+   "Paint damage only",
+   "Fuel contamination",
+   "Cargo weight"
+  ],
+  "answer": "Cracks and leaks"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake drums should be inspected for:",
+  "choices": [
+   "Cracks and excessive wear",
+   "Fuel level",
+   "Electrical output",
+   "Mirror alignment"
+  ],
+  "answer": "Cracks and excessive wear"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Excessive brake heat can lead to:",
+  "choices": [
+   "Brake fade",
+   "Improved braking",
+   "Less stopping distance",
+   "More horsepower"
+  ],
+  "answer": "Brake fade"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake fade occurs when:",
+  "choices": [
+   "Brakes become less effective",
+   "Brakes become stronger",
+   "Engine stalls",
+   "Tires cool down"
+  ],
+  "answer": "Brakes become less effective"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The best way to prevent brake fade on downgrades is to:",
+  "choices": [
+   "Use proper speed and gear selection",
+   "Ride the brakes continuously",
+   "Shift into neutral",
+   "Accelerate downhill"
+  ],
+  "answer": "Use proper speed and gear selection"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should be tested before driving?",
+  "choices": [
+   "Brake system operation",
+   "Radio volume",
+   "Cargo temperature",
+   "Phone signal"
+  ],
+  "answer": "Brake system operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Air pressure build-up should be:",
+  "choices": [
+   "Monitored during inspection",
+   "Ignored",
+   "Disabled",
+   "Reset frequently"
+  ],
+  "answer": "Monitored during inspection"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is a common function of the air gauge?",
+  "choices": [
+   "Show system pressure",
+   "Measure fuel level",
+   "Measure temperature",
+   "Track mileage"
+  ],
+  "answer": "Show system pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A driver should never:",
+  "choices": [
+   "Ignore low air pressure warnings",
+   "Inspect brakes",
+   "Monitor gauges",
+   "Drain tanks"
+  ],
+  "answer": "Ignore low air pressure warnings"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What can happen if brakes are out of adjustment?",
+  "choices": [
+   "Reduced braking performance",
+   "Improved stopping",
+   "Better tire life",
+   "Lower air usage"
+  ],
+  "answer": "Reduced braking performance"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The parking brake control is commonly identified by:",
+  "choices": [
+   "A yellow knob",
+   "A green light",
+   "A blue switch",
+   "A black button"
+  ],
+  "answer": "A yellow knob"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The trailer air supply control is often identified by:",
+  "choices": [
+   "A red knob",
+   "A white lever",
+   "A yellow pedal",
+   "A blue light"
+  ],
+  "answer": "A red knob"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Before moving a vehicle, air pressure should:",
+  "choices": [
+   "Reach operating range",
+   "Be zero",
+   "Be ignored",
+   "Be reduced"
+  ],
+  "answer": "Reach operating range"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should happen when spring brakes are applied?",
+  "choices": [
+   "Vehicle remains secured",
+   "Engine stalls",
+   "ABS turns off",
+   "Trailer detaches"
+  ],
+  "answer": "Vehicle remains secured"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A straight truck equipped with air brakes should have:",
+  "choices": [
+   "A functioning low-air warning device",
+   "An open air tank",
+   "Disabled spring brakes",
+   "No pressure gauges"
+  ],
+  "answer": "A functioning low-air warning device"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Air brake inspections should include checking:",
+  "choices": [
+   "Leaks, pressure, and warning devices",
+   "Seat cushions only",
+   "Paint condition",
+   "Radio settings"
+  ],
+  "answer": "Leaks, pressure, and warning devices"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the purpose of emergency brakes?",
+  "choices": [
+   "Stop or hold the vehicle if normal air pressure is lost",
+   "Increase speed",
+   "Reduce fuel costs",
+   "Stabilize cargo"
+  ],
+  "answer": "Stop or hold the vehicle if normal air pressure is lost"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The brake chamber converts air pressure into:",
+  "choices": [
+   "Mechanical force",
+   "Fuel pressure",
+   "Electrical energy",
+   "Heat only"
+  ],
+  "answer": "Mechanical force"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should drivers do if they discover a significant air leak?",
+  "choices": [
+   "Repair before operating",
+   "Ignore it",
+   "Increase speed",
+   "Drain fuel tanks"
+  ],
+  "answer": "Repair before operating"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Why is checking air pressure important?",
+  "choices": [
+   "Ensures safe brake operation",
+   "Improves paint quality",
+   "Tracks mileage",
+   "Improves GPS accuracy"
+  ],
+  "answer": "Ensures safe brake operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake system defects should be:",
+  "choices": [
+   "Reported and repaired",
+   "Ignored",
+   "Covered with tape",
+   "Used for training only"
+  ],
+  "answer": "Reported and repaired"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What may result from driving with insufficient air pressure?",
+  "choices": [
+   "Brake failure risk",
+   "Better braking",
+   "Improved fuel economy",
+   "Faster acceleration"
+  ],
+  "answer": "Brake failure risk"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of a brake check is to:",
+  "choices": [
+   "Verify brake response",
+   "Check fuel consumption",
+   "Test cargo weight",
+   "Measure tire age"
+  ],
+  "answer": "Verify brake response"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A driver descending a mountain grade should:",
+  "choices": [
+   "Control speed before the downgrade",
+   "Coast downhill",
+   "Shift into neutral",
+   "Ignore brake temperature"
+  ],
+  "answer": "Control speed before the downgrade"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What does excessive brake use on long downgrades increase?",
+  "choices": [
+   "Brake fade risk",
+   "Tire pressure",
+   "Horsepower",
+   "Fuel efficiency"
+  ],
+  "answer": "Brake fade risk"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should be inspected on slack adjusters?",
+  "choices": [
+   "Proper movement and condition",
+   "Paint color",
+   "Fuel level",
+   "Electrical wiring only"
+  ],
+  "answer": "Proper movement and condition"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "An air brake vehicle should be parked using:",
+  "choices": [
+   "Spring brakes",
+   "Cruise control",
+   "ABS",
+   "Service brakes only"
+  ],
+  "answer": "Spring brakes"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is one purpose of the service brake system?",
+  "choices": [
+   "Slow and stop the vehicle",
+   "Cool the engine",
+   "Power the lights",
+   "Adjust suspension"
+  ],
+  "answer": "Slow and stop the vehicle"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Drivers should check brake drums and linings for:",
+  "choices": [
+   "Wear and damage",
+   "Paint color",
+   "Fuel leaks",
+   "Battery charge"
+  ],
+  "answer": "Wear and damage"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "When air pressure drops too low, spring brakes may:",
+  "choices": [
+   "Apply automatically",
+   "Release automatically",
+   "Inflate tires",
+   "Lock steering"
+  ],
+  "answer": "Apply automatically"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The safest response to a brake system warning is to:",
+  "choices": [
+   "Investigate immediately",
+   "Ignore it until later",
+   "Increase speed",
+   "Mute the alarm"
+  ],
+  "answer": "Investigate immediately"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the overall purpose of regular air brake inspections?",
+  "choices": [
+   "Ensure safe vehicle operation",
+   "Increase cargo capacity",
+   "Improve paint quality",
+   "Reduce paperwork"
+  ],
+  "answer": "Ensure safe vehicle operation"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is the primary purpose of hazardous materials regulations?",
+  "choices": [
+   "Increase shipping speed",
+   "Protect people, property, and the environment",
+   "Reduce fuel consumption",
+   "Improve cargo capacity"
+  ],
+  "answer": "Protect people, property, and the environment"
+ },
+ {
+  "category": "HazMat",
+  "question": "What are placards used for?",
+  "choices": [
+   "Display company logos",
+   "Identify hazardous materials",
+   "Track fuel purchases",
+   "Monitor tire pressure"
+  ],
+  "answer": "Identify hazardous materials"
+ },
+ {
+  "category": "HazMat",
+  "question": "Where are placards typically displayed?",
+  "choices": [
+   "Inside the cab only",
+   "On all four sides of the vehicle",
+   "On the dashboard",
+   "On the fuel tank"
+  ],
+  "answer": "On all four sides of the vehicle"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is the purpose of shipping papers?",
+  "choices": [
+   "Track driver hours",
+   "Provide hazardous material information",
+   "Document fuel purchases",
+   "Assign routes"
+  ],
+  "answer": "Provide hazardous material information"
+ },
+ {
+  "category": "HazMat",
+  "question": "Who is responsible for knowing what hazardous materials are being transported?",
+  "choices": [
+   "Only the shipper",
+   "Only law enforcement",
+   "The driver",
+   "Other motorists"
+  ],
+  "answer": "The driver"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should a driver do before accepting a HazMat load?",
+  "choices": [
+   "Verify shipping papers",
+   "Increase tire pressure",
+   "Check fuel economy",
+   "Inspect cargo seals only"
+  ],
+  "answer": "Verify shipping papers"
+ },
+ {
+  "category": "HazMat",
+  "question": "Hazardous materials are classified based on:",
+  "choices": [
+   "Color",
+   "Weight only",
+   "Type of hazard",
+   "Vehicle size"
+  ],
+  "answer": "Type of hazard"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is the main purpose of emergency response information?",
+  "choices": [
+   "Track mileage",
+   "Provide guidance during incidents",
+   "Schedule deliveries",
+   "Record maintenance"
+  ],
+  "answer": "Provide guidance during incidents"
+ },
+ {
+  "category": "HazMat",
+  "question": "A driver should keep shipping papers:",
+  "choices": [
+   "Accessible during transport",
+   "At home",
+   "With maintenance records",
+   "Inside cargo containers"
+  ],
+  "answer": "Accessible during transport"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should a driver do if a package appears damaged?",
+  "choices": [
+   "Accept it",
+   "Report the problem before transporting",
+   "Hide the damage",
+   "Discard the package"
+  ],
+  "answer": "Report the problem before transporting"
+ },
+ {
+  "category": "HazMat",
+  "question": "The word 'hazardous' refers to materials that:",
+  "choices": [
+   "May pose risks to health, safety, or property",
+   "Are expensive",
+   "Require refrigeration",
+   "Are oversized"
+  ],
+  "answer": "May pose risks to health, safety, or property"
+ },
+ {
+  "category": "HazMat",
+  "question": "Placards help emergency responders:",
+  "choices": [
+   "Identify hazards quickly",
+   "Increase traffic speed",
+   "Determine fuel type",
+   "Verify registrations"
+  ],
+  "answer": "Identify hazards quickly"
+ },
+ {
+  "category": "HazMat",
+  "question": "When transporting HazMat, drivers should avoid:",
+  "choices": [
+   "Unnecessary delays",
+   "Following regulations",
+   "Checking paperwork",
+   "Vehicle inspections"
+  ],
+  "answer": "Unnecessary delays"
+ },
+ {
+  "category": "HazMat",
+  "question": "Why is cargo securement important for HazMat loads?",
+  "choices": [
+   "Prevents spills and releases",
+   "Reduces paperwork",
+   "Improves radio reception",
+   "Increases trailer space"
+  ],
+  "answer": "Prevents spills and releases"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should be done before moving a HazMat vehicle?",
+  "choices": [
+   "Conduct a thorough inspection",
+   "Disable warning devices",
+   "Open all containers",
+   "Remove placards"
+  ],
+  "answer": "Conduct a thorough inspection"
+ },
+ {
+  "category": "HazMat",
+  "question": "A leaking hazardous material package should be:",
+  "choices": [
+   "Reported and handled appropriately",
+   "Hidden",
+   "Loaded anyway",
+   "Placed in the cab"
+  ],
+  "answer": "Reported and handled appropriately"
+ },
+ {
+  "category": "HazMat",
+  "question": "The driver should know:",
+  "choices": [
+   "The hazards of the cargo",
+   "Only the destination",
+   "Only the cargo weight",
+   "Only fuel costs"
+  ],
+  "answer": "The hazards of the cargo"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is a major goal of HazMat training?",
+  "choices": [
+   "Safety awareness",
+   "Speed improvement",
+   "Fuel reduction",
+   "Paperwork elimination"
+  ],
+  "answer": "Safety awareness"
+ },
+ {
+  "category": "HazMat",
+  "question": "What information is commonly found on shipping papers?",
+  "choices": [
+   "Hazard description",
+   "Driver's vacation schedule",
+   "Fuel receipts",
+   "Tire rotations"
+  ],
+  "answer": "Hazard description"
+ },
+ {
+  "category": "HazMat",
+  "question": "Drivers should inspect HazMat cargo:",
+  "choices": [
+   "Periodically during transport",
+   "Only at delivery",
+   "Never",
+   "Only when requested"
+  ],
+  "answer": "Periodically during transport"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should a driver do if involved in a HazMat incident?",
+  "choices": [
+   "Follow emergency procedures",
+   "Leave the scene",
+   "Discard shipping papers",
+   "Remove placards"
+  ],
+  "answer": "Follow emergency procedures"
+ },
+ {
+  "category": "HazMat",
+  "question": "HazMat placards should remain visible:",
+  "choices": [
+   "During transport",
+   "Only at loading",
+   "Only during inspections",
+   "Only at delivery"
+  ],
+  "answer": "During transport"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is an important reason to inspect cargo securement?",
+  "choices": [
+   "Prevent shifting and releases",
+   "Reduce tire wear",
+   "Improve navigation",
+   "Increase engine life"
+  ],
+  "answer": "Prevent shifting and releases"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should drivers do if they discover a dangerous leak?",
+  "choices": [
+   "Notify emergency personnel",
+   "Continue driving normally",
+   "Ignore it",
+   "Wash the vehicle"
+  ],
+  "answer": "Notify emergency personnel"
+ },
+ {
+  "category": "HazMat",
+  "question": "Hazardous material incidents may require:",
+  "choices": [
+   "Special emergency response",
+   "Faster delivery",
+   "Routine fueling",
+   "Additional cargo"
+  ],
+  "answer": "Special emergency response"
+ },
+ {
+  "category": "HazMat",
+  "question": "The purpose of marking hazardous materials is to:",
+  "choices": [
+   "Communicate risks",
+   "Improve branding",
+   "Increase profits",
+   "Track mileage"
+  ],
+  "answer": "Communicate risks"
+ },
+ {
+  "category": "HazMat",
+  "question": "A driver should understand the hazards associated with:",
+  "choices": [
+   "Every hazardous load transported",
+   "Only flammable materials",
+   "Only explosives",
+   "Only liquids"
+  ],
+  "answer": "Every hazardous load transported"
+ },
+ {
+  "category": "HazMat",
+  "question": "Emergency response information should be:",
+  "choices": [
+   "Immediately available",
+   "Stored at headquarters only",
+   "Kept confidential from responders",
+   "Discarded after loading"
+  ],
+  "answer": "Immediately available"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should be checked before departure?",
+  "choices": [
+   "Packages for damage",
+   "Passenger seating",
+   "Cab decorations",
+   "Entertainment systems"
+  ],
+  "answer": "Packages for damage"
+ },
+ {
+  "category": "HazMat",
+  "question": "Drivers transporting HazMat should remain alert for:",
+  "choices": [
+   "Leaks and unusual conditions",
+   "Fuel discounts",
+   "Weather apps only",
+   "Paint scratches"
+  ],
+  "answer": "Leaks and unusual conditions"
+ },
+ {
+  "category": "HazMat",
+  "question": "The safest action when unsure about a HazMat requirement is to:",
+  "choices": [
+   "Seek clarification before proceeding",
+   "Guess",
+   "Ignore the issue",
+   "Remove labels"
+  ],
+  "answer": "Seek clarification before proceeding"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is a major benefit of proper placarding?",
+  "choices": [
+   "Improved hazard communication",
+   "Reduced tire wear",
+   "Lower insurance automatically",
+   "Higher speeds"
+  ],
+  "answer": "Improved hazard communication"
+ },
+ {
+  "category": "HazMat",
+  "question": "HazMat loads often require:",
+  "choices": [
+   "Additional attention to safety",
+   "Less inspection",
+   "Faster travel",
+   "Less paperwork"
+  ],
+  "answer": "Additional attention to safety"
+ },
+ {
+  "category": "HazMat",
+  "question": "A driver should never:",
+  "choices": [
+   "Transport unidentified hazardous materials",
+   "Review paperwork",
+   "Inspect cargo",
+   "Follow routes"
+  ],
+  "answer": "Transport unidentified hazardous materials"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should be done if placards become damaged?",
+  "choices": [
+   "Replace them promptly",
+   "Ignore the issue",
+   "Paint over them",
+   "Remove all placards"
+  ],
+  "answer": "Replace them promptly"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is the purpose of hazard classes?",
+  "choices": [
+   "Categorize types of risk",
+   "Measure fuel economy",
+   "Determine tire size",
+   "Assign routes"
+  ],
+  "answer": "Categorize types of risk"
+ },
+ {
+  "category": "HazMat",
+  "question": "Why should shipping papers be accurate?",
+  "choices": [
+   "They support safe transportation and emergency response",
+   "They improve fuel mileage",
+   "They replace inspections",
+   "They reduce taxes"
+  ],
+  "answer": "They support safe transportation and emergency response"
+ },
+ {
+  "category": "HazMat",
+  "question": "A HazMat inspection should include checking:",
+  "choices": [
+   "Placards and package condition",
+   "Radio settings",
+   "Dashboard color",
+   "Seat position"
+  ],
+  "answer": "Placards and package condition"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should a driver know about emergency equipment?",
+  "choices": [
+   "How to locate and use it",
+   "Only where it was purchased",
+   "Its color",
+   "Its manufacturer"
+  ],
+  "answer": "How to locate and use it"
+ },
+ {
+  "category": "HazMat",
+  "question": "Transporting hazardous materials safely requires:",
+  "choices": [
+   "Attention to regulations and procedures",
+   "Higher speeds",
+   "Shorter inspections",
+   "Less planning"
+  ],
+  "answer": "Attention to regulations and procedures"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is one purpose of cargo inspections en route?",
+  "choices": [
+   "Identify problems early",
+   "Increase travel time",
+   "Reduce fuel levels",
+   "Check entertainment systems"
+  ],
+  "answer": "Identify problems early"
+ },
+ {
+  "category": "HazMat",
+  "question": "The driver should review shipping papers before:",
+  "choices": [
+   "Beginning the trip",
+   "Refueling",
+   "Parking overnight",
+   "Washing the truck"
+  ],
+  "answer": "Beginning the trip"
+ },
+ {
+  "category": "HazMat",
+  "question": "HazMat awareness helps prevent:",
+  "choices": [
+   "Accidents and unsafe situations",
+   "Engine wear",
+   "Flat tires",
+   "Long routes"
+  ],
+  "answer": "Accidents and unsafe situations"
+ },
+ {
+  "category": "HazMat",
+  "question": "Packages containing hazardous materials should be:",
+  "choices": [
+   "Properly labeled and handled",
+   "Hidden from responders",
+   "Stored in the cab",
+   "Opened for inspection"
+  ],
+  "answer": "Properly labeled and handled"
+ },
+ {
+  "category": "HazMat",
+  "question": "Drivers should monitor their vehicles for:",
+  "choices": [
+   "Signs of leaks or releases",
+   "Paint color changes only",
+   "Radio interference",
+   "Fuel brand"
+  ],
+  "answer": "Signs of leaks or releases"
+ },
+ {
+  "category": "HazMat",
+  "question": "Proper documentation helps:",
+  "choices": [
+   "Support safe transportation",
+   "Increase truck speed",
+   "Avoid inspections",
+   "Reduce tire usage"
+  ],
+  "answer": "Support safe transportation"
+ },
+ {
+  "category": "HazMat",
+  "question": "A driver should follow company and regulatory procedures when:",
+  "choices": [
+   "Handling hazardous materials",
+   "Changing radio stations",
+   "Buying fuel",
+   "Cleaning windows"
+  ],
+  "answer": "Handling hazardous materials"
+ },
+ {
+  "category": "HazMat",
+  "question": "What should be done if shipping papers appear incorrect?",
+  "choices": [
+   "Resolve the discrepancy before transporting",
+   "Ignore the issue",
+   "Throw them away",
+   "Create new placards"
+  ],
+  "answer": "Resolve the discrepancy before transporting"
+ },
+ {
+  "category": "HazMat",
+  "question": "The goal of hazardous materials communication is to:",
+  "choices": [
+   "Ensure everyone understands the risks",
+   "Increase cargo weight",
+   "Reduce maintenance",
+   "Speed loading"
+  ],
+  "answer": "Ensure everyone understands the risks"
+ },
+ {
+  "category": "HazMat",
+  "question": "What is the most important priority when transporting hazardous materials?",
+  "choices": [
+   "Safety",
+   "Speed",
+   "Profit",
+   "Convenience"
+  ],
+  "answer": "Safety"
+ },
+ {
+  "category": "Tanker",
+  "question": "What is the primary safety concern when transporting liquids in a tank vehicle?",
+  "choices": [
+   "Cargo surge",
+   "Flat tires",
+   "Engine overheating",
+   "Radio interference"
+  ],
+  "answer": "Cargo surge"
+ },
+ {
+  "category": "Tanker",
+  "question": "Cargo surge occurs when:",
+  "choices": [
+   "Liquid moves inside the tank",
+   "The engine stalls",
+   "Tires lose traction",
+   "The trailer disconnects"
+  ],
+  "answer": "Liquid moves inside the tank"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why can liquid surge be dangerous?",
+  "choices": [
+   "It affects vehicle control",
+   "It increases radio noise",
+   "It changes fuel type",
+   "It cools the brakes"
+  ],
+  "answer": "It affects vehicle control"
+ },
+ {
+  "category": "Tanker",
+  "question": "A tank with no internal dividers is called:",
+  "choices": [
+   "Unbaffled",
+   "Compartmentalized",
+   "Reinforced",
+   "Segmented"
+  ],
+  "answer": "Unbaffled"
+ },
+ {
+  "category": "Tanker",
+  "question": "Baffles are designed to:",
+  "choices": [
+   "Reduce liquid movement",
+   "Increase fuel economy",
+   "Support suspension",
+   "Cool cargo"
+  ],
+  "answer": "Reduce liquid movement"
+ },
+ {
+  "category": "Tanker",
+  "question": "Even with baffles, liquid can still:",
+  "choices": [
+   "Surge",
+   "Freeze instantly",
+   "Become solid",
+   "Detach the trailer"
+  ],
+  "answer": "Surge"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why do partially filled tanks require extra caution?",
+  "choices": [
+   "More liquid movement occurs",
+   "They are lighter",
+   "They use less fuel",
+   "They are shorter"
+  ],
+  "answer": "More liquid movement occurs"
+ },
+ {
+  "category": "Tanker",
+  "question": "A high center of gravity increases the risk of:",
+  "choices": [
+   "Rollover",
+   "Better handling",
+   "Reduced stopping distance",
+   "Engine failure"
+  ],
+  "answer": "Rollover"
+ },
+ {
+  "category": "Tanker",
+  "question": "Tank vehicles should take curves:",
+  "choices": [
+   "Slowly",
+   "At maximum speed",
+   "In neutral",
+   "Using only engine braking"
+  ],
+  "answer": "Slowly"
+ },
+ {
+  "category": "Tanker",
+  "question": "Liquid surge is strongest during:",
+  "choices": [
+   "Braking and acceleration",
+   "Refueling",
+   "Parking",
+   "Inspections"
+  ],
+  "answer": "Braking and acceleration"
+ },
+ {
+  "category": "Tanker",
+  "question": "What should drivers do before entering a curve?",
+  "choices": [
+   "Reduce speed",
+   "Accelerate",
+   "Shift to neutral",
+   "Turn sharply"
+  ],
+  "answer": "Reduce speed"
+ },
+ {
+  "category": "Tanker",
+  "question": "What can happen if a tanker is driven too fast around a curve?",
+  "choices": [
+   "Rollover",
+   "Improved stability",
+   "Reduced surge",
+   "Stronger brakes"
+  ],
+  "answer": "Rollover"
+ },
+ {
+  "category": "Tanker",
+  "question": "A compartment tank contains:",
+  "choices": [
+   "Separate sections within the tank",
+   "Two engines",
+   "Extra tires",
+   "Additional trailers"
+  ],
+  "answer": "Separate sections within the tank"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why are tanker stopping distances important?",
+  "choices": [
+   "Surging liquid affects braking",
+   "Tires are smaller",
+   "The vehicle is shorter",
+   "Brakes are weaker"
+  ],
+  "answer": "Surging liquid affects braking"
+ },
+ {
+  "category": "Tanker",
+  "question": "The safest driving style for a tanker is:",
+  "choices": [
+   "Smooth and controlled",
+   "Aggressive",
+   "Fast and direct",
+   "Frequent hard braking"
+  ],
+  "answer": "Smooth and controlled"
+ },
+ {
+  "category": "Tanker",
+  "question": "During acceleration, liquid typically moves:",
+  "choices": [
+   "Toward the rear of the tank",
+   "Toward the front",
+   "Out of the tank",
+   "Into the engine"
+  ],
+  "answer": "Toward the rear of the tank"
+ },
+ {
+  "category": "Tanker",
+  "question": "During braking, liquid typically moves:",
+  "choices": [
+   "Toward the front of the tank",
+   "Toward the rear",
+   "Upward only",
+   "Outward only"
+  ],
+  "answer": "Toward the front of the tank"
+ },
+ {
+  "category": "Tanker",
+  "question": "The force created by liquid movement can:",
+  "choices": [
+   "Push the vehicle unexpectedly",
+   "Improve traction",
+   "Reduce cargo weight",
+   "Increase visibility"
+  ],
+  "answer": "Push the vehicle unexpectedly"
+ },
+ {
+  "category": "Tanker",
+  "question": "Tanker drivers should maintain:",
+  "choices": [
+   "Extra following distance",
+   "Less following distance",
+   "The same distance as a car",
+   "No following distance"
+  ],
+  "answer": "Extra following distance"
+ },
+ {
+  "category": "Tanker",
+  "question": "Abrupt lane changes in a tanker can:",
+  "choices": [
+   "Increase rollover risk",
+   "Improve stability",
+   "Reduce surge",
+   "Help braking"
+  ],
+  "answer": "Increase rollover risk"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why must drivers inspect tanker valves?",
+  "choices": [
+   "To prevent leaks",
+   "To improve MPG",
+   "To cool cargo",
+   "To support suspension"
+  ],
+  "answer": "To prevent leaks"
+ },
+ {
+  "category": "Tanker",
+  "question": "Manhole covers should be inspected for:",
+  "choices": [
+   "Leaks and proper sealing",
+   "Paint color",
+   "Road dust",
+   "Cargo labels only"
+  ],
+  "answer": "Leaks and proper sealing"
+ },
+ {
+  "category": "Tanker",
+  "question": "What should a driver check during a tanker pre-trip inspection?",
+  "choices": [
+   "Valves, pipes, and tank condition",
+   "Radio controls only",
+   "Seat adjustment",
+   "GPS route only"
+  ],
+  "answer": "Valves, pipes, and tank condition"
+ },
+ {
+  "category": "Tanker",
+  "question": "A leak in a tanker can create:",
+  "choices": [
+   "A serious safety hazard",
+   "Better balance",
+   "Improved mileage",
+   "Cooler brakes"
+  ],
+  "answer": "A serious safety hazard"
+ },
+ {
+  "category": "Tanker",
+  "question": "What contributes to a tank vehicle's higher rollover risk?",
+  "choices": [
+   "High center of gravity",
+   "Smaller mirrors",
+   "Larger fuel tanks",
+   "Longer mud flaps"
+  ],
+  "answer": "High center of gravity"
+ },
+ {
+  "category": "Tanker",
+  "question": "The safest approach to turns is to:",
+  "choices": [
+   "Slow before entering",
+   "Brake heavily in the turn",
+   "Accelerate through the turn",
+   "Shift into neutral"
+  ],
+  "answer": "Slow before entering"
+ },
+ {
+  "category": "Tanker",
+  "question": "Unbaffled tanks generally allow:",
+  "choices": [
+   "Greater liquid movement",
+   "No liquid movement",
+   "Cargo separation",
+   "Reduced center of gravity"
+  ],
+  "answer": "Greater liquid movement"
+ },
+ {
+  "category": "Tanker",
+  "question": "What effect does liquid surge have on steering?",
+  "choices": [
+   "It can make steering more difficult",
+   "It improves steering",
+   "It has no effect",
+   "It eliminates offtracking"
+  ],
+  "answer": "It can make steering more difficult"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why should tanker drivers avoid sudden braking?",
+  "choices": [
+   "It increases surge forces",
+   "It improves stopping",
+   "It reduces tire grip",
+   "It improves balance"
+  ],
+  "answer": "It increases surge forces"
+ },
+ {
+  "category": "Tanker",
+  "question": "Cargo movement inside a tanker affects:",
+  "choices": [
+   "Vehicle stability",
+   "Radio reception",
+   "Fuel octane",
+   "Engine compression"
+  ],
+  "answer": "Vehicle stability"
+ },
+ {
+  "category": "Tanker",
+  "question": "A partially loaded tank may be more difficult to control because:",
+  "choices": [
+   "The liquid can move more freely",
+   "The tank weighs less",
+   "It uses different brakes",
+   "It has fewer tires"
+  ],
+  "answer": "The liquid can move more freely"
+ },
+ {
+  "category": "Tanker",
+  "question": "When descending a hill, tanker drivers should:",
+  "choices": [
+   "Control speed before descending",
+   "Coast in neutral",
+   "Accelerate downhill",
+   "Ignore brake temperatures"
+  ],
+  "answer": "Control speed before descending"
+ },
+ {
+  "category": "Tanker",
+  "question": "The best way to manage liquid surge is:",
+  "choices": [
+   "Use smooth driving techniques",
+   "Brake harder",
+   "Accelerate rapidly",
+   "Make quick turns"
+  ],
+  "answer": "Use smooth driving techniques"
+ },
+ {
+  "category": "Tanker",
+  "question": "Tanker inspections should look for:",
+  "choices": [
+   "Leaks and structural damage",
+   "Paint fading only",
+   "Radio issues",
+   "Mirror scratches"
+  ],
+  "answer": "Leaks and structural damage"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why should a tanker driver scan farther ahead?",
+  "choices": [
+   "To avoid sudden maneuvers",
+   "To increase speed",
+   "To reduce cargo weight",
+   "To conserve fuel"
+  ],
+  "answer": "To avoid sudden maneuvers"
+ },
+ {
+  "category": "Tanker",
+  "question": "Sharp steering movements can cause:",
+  "choices": [
+   "Vehicle instability",
+   "Improved handling",
+   "Better fuel economy",
+   "Cargo cooling"
+  ],
+  "answer": "Vehicle instability"
+ },
+ {
+  "category": "Tanker",
+  "question": "What role do baffles serve?",
+  "choices": [
+   "Limit cargo movement",
+   "Increase load capacity",
+   "Improve tire wear",
+   "Support braking systems"
+  ],
+  "answer": "Limit cargo movement"
+ },
+ {
+  "category": "Tanker",
+  "question": "A driver should brake early because:",
+  "choices": [
+   "Surging liquid can continue pushing the vehicle",
+   "The brakes are weak",
+   "Tankers stop instantly",
+   "Steering improves"
+  ],
+  "answer": "Surging liquid can continue pushing the vehicle"
+ },
+ {
+  "category": "Tanker",
+  "question": "When should tanker valves be inspected?",
+  "choices": [
+   "Before and during trips",
+   "Once a year",
+   "Only after delivery",
+   "Only when leaking"
+  ],
+  "answer": "Before and during trips"
+ },
+ {
+  "category": "Tanker",
+  "question": "A compartment tank helps:",
+  "choices": [
+   "Reduce the effects of surge",
+   "Increase surge",
+   "Increase rollovers",
+   "Reduce visibility"
+  ],
+  "answer": "Reduce the effects of surge"
+ },
+ {
+  "category": "Tanker",
+  "question": "What can happen if liquid shifts unexpectedly?",
+  "choices": [
+   "Vehicle control may be affected",
+   "The engine stops",
+   "The transmission disconnects",
+   "The fuel tanks empty"
+  ],
+  "answer": "Vehicle control may be affected"
+ },
+ {
+  "category": "Tanker",
+  "question": "The safest speed for a tanker is one that:",
+  "choices": [
+   "Matches conditions and allows full control",
+   "Is always the speed limit",
+   "Exceeds traffic speed",
+   "Minimizes travel time"
+  ],
+  "answer": "Matches conditions and allows full control"
+ },
+ {
+  "category": "Tanker",
+  "question": "What should be checked on tanker piping?",
+  "choices": [
+   "Leaks and condition",
+   "Paint quality",
+   "Manufacturer logo",
+   "Serial number only"
+  ],
+  "answer": "Leaks and condition"
+ },
+ {
+  "category": "Tanker",
+  "question": "Surge forces are strongest when cargo is:",
+  "choices": [
+   "Liquid",
+   "Dry bulk",
+   "Palletized",
+   "Crated"
+  ],
+  "answer": "Liquid"
+ },
+ {
+  "category": "Tanker",
+  "question": "Which driver action best helps maintain tanker stability?",
+  "choices": [
+   "Smooth acceleration and braking",
+   "Rapid lane changes",
+   "Frequent hard braking",
+   "Sharp turns"
+  ],
+  "answer": "Smooth acceleration and braking"
+ },
+ {
+  "category": "Tanker",
+  "question": "Why are tankers more prone to rollover than many other CMVs?",
+  "choices": [
+   "Higher center of gravity",
+   "Smaller wheels",
+   "Lighter frames",
+   "Different mirrors"
+  ],
+  "answer": "Higher center of gravity"
+ },
+ {
+  "category": "Tanker",
+  "question": "Before transporting a tanker load, drivers should verify:",
+  "choices": [
+   "Tank integrity and secure closures",
+   "Radio channels",
+   "Favorite routes",
+   "Cab temperature"
+  ],
+  "answer": "Tank integrity and secure closures"
+ },
+ {
+  "category": "Tanker",
+  "question": "The purpose of a tanker pre-trip inspection is to:",
+  "choices": [
+   "Ensure safe operation and detect defects",
+   "Increase speed",
+   "Reduce regulations",
+   "Improve route planning"
+  ],
+  "answer": "Ensure safe operation and detect defects"
+ },
+ {
+  "category": "Tanker",
+  "question": "When driving a tanker, anticipation is important because:",
+  "choices": [
+   "It reduces the need for abrupt maneuvers",
+   "It increases surge",
+   "It lowers visibility",
+   "It reduces cargo weight"
+  ],
+  "answer": "It reduces the need for abrupt maneuvers"
+ },
+ {
+  "category": "Tanker",
+  "question": "What is the most important principle of tanker driving?",
+  "choices": [
+   "Maintain vehicle control through smooth operation",
+   "Travel as fast as safely possible",
+   "Minimize stopping",
+   "Follow closely in traffic"
+  ],
+  "answer": "Maintain vehicle control through smooth operation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is a major challenge when operating doubles and triples?",
+  "choices": [
+   "Greater instability",
+   "Smaller mirrors",
+   "Lower fuel capacity",
+   "Reduced cargo space"
+  ],
+  "answer": "Greater instability"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Compared with single trailers, doubles and triples are generally:",
+  "choices": [
+   "Less stable",
+   "More stable",
+   "Easier to maneuver",
+   "Shorter"
+  ],
+  "answer": "Less stable"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is a converter dolly used for?",
+  "choices": [
+   "Connecting trailers",
+   "Increasing engine power",
+   "Cooling brakes",
+   "Adjusting cargo weight"
+  ],
+  "answer": "Connecting trailers"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "A converter dolly includes:",
+  "choices": [
+   "A fifth wheel",
+   "A fuel tank",
+   "A steering axle",
+   "An air compressor"
+  ],
+  "answer": "A fifth wheel"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The rear trailer in a double-trailer combination is more likely to:",
+  "choices": [
+   "Roll over",
+   "Use less fuel",
+   "Have stronger brakes",
+   "Track perfectly"
+  ],
+  "answer": "Roll over"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is the 'crack-the-whip' effect?",
+  "choices": [
+   "Rear trailers amplify steering movements",
+   "The engine loses power",
+   "The brakes overheat",
+   "The trailer disconnects"
+  ],
+  "answer": "Rear trailers amplify steering movements"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The crack-the-whip effect is strongest on:",
+  "choices": [
+   "The last trailer",
+   "The first trailer",
+   "The tractor",
+   "The converter dolly"
+  ],
+  "answer": "The last trailer"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Why should doubles and triples take curves slowly?",
+  "choices": [
+   "To reduce rollover risk",
+   "To improve fuel economy",
+   "To cool tires",
+   "To shorten stopping distance"
+  ],
+  "answer": "To reduce rollover risk"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Doubles and triples require:",
+  "choices": [
+   "Greater following distance",
+   "Less following distance",
+   "No extra space",
+   "Passenger-car spacing"
+  ],
+  "answer": "Greater following distance"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What should be inspected on a converter dolly?",
+  "choices": [
+   "Couplings and tires",
+   "Radio controls",
+   "Seat belts",
+   "Fuel receipts"
+  ],
+  "answer": "Couplings and tires"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "When coupling trailers, drivers should verify:",
+  "choices": [
+   "Secure locking devices",
+   "Paint color",
+   "Trailer logos",
+   "Cargo value"
+  ],
+  "answer": "Secure locking devices"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Air lines between units should be checked for:",
+  "choices": [
+   "Leaks and damage",
+   "Dust only",
+   "Company markings",
+   "Temperature"
+  ],
+  "answer": "Leaks and damage"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Why is offtracking important with doubles and triples?",
+  "choices": [
+   "Rear trailers track inside turns",
+   "Fuel mileage is reduced",
+   "Engines wear faster",
+   "Brakes lock sooner"
+  ],
+  "answer": "Rear trailers track inside turns"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Drivers should allow extra room during turns because:",
+  "choices": [
+   "Trailing units offtrack",
+   "Mirrors are larger",
+   "Fuel tanks extend wider",
+   "Engines are heavier"
+  ],
+  "answer": "Trailing units offtrack"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Emergency braking with doubles and triples should be:",
+  "choices": [
+   "Controlled and smooth",
+   "Sudden and aggressive",
+   "Completed in neutral",
+   "Avoided entirely"
+  ],
+  "answer": "Controlled and smooth"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What increases rollover risk for doubles and triples?",
+  "choices": [
+   "Excessive speed in curves",
+   "Proper spacing",
+   "Smooth steering",
+   "Good inspections"
+  ],
+  "answer": "Excessive speed in curves"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Before a trip, drivers should inspect:",
+  "choices": [
+   "Every coupling device",
+   "Only the tractor",
+   "Only the rear trailer",
+   "Only air lines"
+  ],
+  "answer": "Every coupling device"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What should be checked on trailer brakes?",
+  "choices": [
+   "Proper operation",
+   "Paint condition",
+   "Serial number",
+   "Mileage"
+  ],
+  "answer": "Proper operation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Triples generally require drivers to be especially aware of:",
+  "choices": [
+   "Stability issues",
+   "Radio channels",
+   "Fuel prices",
+   "GPS settings"
+  ],
+  "answer": "Stability issues"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is a primary goal of coupling inspections?",
+  "choices": [
+   "Prevent trailer separation",
+   "Reduce fuel use",
+   "Improve radio reception",
+   "Increase payload"
+  ],
+  "answer": "Prevent trailer separation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "When backing doubles or triples, drivers should:",
+  "choices": [
+   "Use caution and planning",
+   "Accelerate rapidly",
+   "Avoid mirrors",
+   "Ignore spotters"
+  ],
+  "answer": "Use caution and planning"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Why are doubles and triples more demanding to drive?",
+  "choices": [
+   "Additional articulated connections",
+   "Smaller engines",
+   "Different steering wheels",
+   "Larger fuel tanks"
+  ],
+  "answer": "Additional articulated connections"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The safest steering input with triples is:",
+  "choices": [
+   "Smooth and gradual",
+   "Sharp and aggressive",
+   "Rapid corrections",
+   "One-handed turns"
+  ],
+  "answer": "Smooth and gradual"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "A trailer separation can often be prevented through:",
+  "choices": [
+   "Proper coupling inspections",
+   "Increasing speed",
+   "Using larger tires",
+   "Frequent horn use"
+  ],
+  "answer": "Proper coupling inspections"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Drivers should inspect safety chains when required because they:",
+  "choices": [
+   "Help secure connections",
+   "Improve fuel economy",
+   "Cool the brakes",
+   "Support cargo"
+  ],
+  "answer": "Help secure connections"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Why should drivers avoid sudden lane changes?",
+  "choices": [
+   "They can destabilize rear trailers",
+   "They improve traction",
+   "They reduce visibility",
+   "They cool tires"
+  ],
+  "answer": "They can destabilize rear trailers"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The rear unit of a triple combination tends to:",
+  "choices": [
+   "React most dramatically to steering inputs",
+   "Have the shortest stopping distance",
+   "Carry the least weight always",
+   "Use different brakes"
+  ],
+  "answer": "React most dramatically to steering inputs"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Air systems on doubles and triples should be inspected for:",
+  "choices": [
+   "Leaks and proper connections",
+   "Brand names",
+   "Fuel contamination",
+   "Paint defects"
+  ],
+  "answer": "Leaks and proper connections"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "A major reason for increased following distance is:",
+  "choices": [
+   "Longer stopping distances",
+   "Engine temperature",
+   "Mirror size",
+   "Fuel range"
+  ],
+  "answer": "Longer stopping distances"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Converter dollies should be checked for:",
+  "choices": [
+   "Secure coupling and tire condition",
+   "Cargo damage",
+   "Engine problems",
+   "Trailer registration"
+  ],
+  "answer": "Secure coupling and tire condition"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Doubles and triples generally require:",
+  "choices": [
+   "More planning ahead",
+   "Less attention",
+   "Fewer inspections",
+   "Shorter routes"
+  ],
+  "answer": "More planning ahead"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The safest speed for a curve is:",
+  "choices": [
+   "A speed that maintains vehicle stability",
+   "The speed limit regardless of conditions",
+   "Maximum engine RPM",
+   "The same speed used by cars"
+  ],
+  "answer": "A speed that maintains vehicle stability"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is an important tire inspection item?",
+  "choices": [
+   "Proper inflation",
+   "Paint color",
+   "Manufacturer age only",
+   "Mud flap color"
+  ],
+  "answer": "Proper inflation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Drivers should inspect trailer lights to ensure:",
+  "choices": [
+   "Proper operation",
+   "Reduced fuel use",
+   "Better tracking",
+   "Improved braking"
+  ],
+  "answer": "Proper operation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "A key purpose of a tug test is to:",
+  "choices": [
+   "Verify secure coupling",
+   "Check tire wear",
+   "Test mirrors",
+   "Measure fuel consumption"
+  ],
+  "answer": "Verify secure coupling"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Braking distances for doubles and triples are often:",
+  "choices": [
+   "Longer than passenger vehicles",
+   "Shorter than passenger vehicles",
+   "Unchanged",
+   "Instant"
+  ],
+  "answer": "Longer than passenger vehicles"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The safest approach to emergency maneuvers is:",
+  "choices": [
+   "Avoid them through anticipation",
+   "Always swerve sharply",
+   "Accelerate",
+   "Close your following distance"
+  ],
+  "answer": "Avoid them through anticipation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What should drivers monitor frequently?",
+  "choices": [
+   "Mirrors and trailer tracking",
+   "Radio volume",
+   "Seat position",
+   "Window tint"
+  ],
+  "answer": "Mirrors and trailer tracking"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "An improperly secured coupling may result in:",
+  "choices": [
+   "Trailer separation",
+   "Better handling",
+   "Improved braking",
+   "Less offtracking"
+  ],
+  "answer": "Trailer separation"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Triples require extra caution because they:",
+  "choices": [
+   "Have multiple pivot points",
+   "Have no brakes",
+   "Cannot turn",
+   "Use hydraulic steering"
+  ],
+  "answer": "Have multiple pivot points"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The best way to reduce instability is:",
+  "choices": [
+   "Drive smoothly",
+   "Brake aggressively",
+   "Accelerate rapidly",
+   "Make sharp turns"
+  ],
+  "answer": "Drive smoothly"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What should be inspected on a fifth wheel?",
+  "choices": [
+   "Locking jaws and condition",
+   "Paint thickness",
+   "Logo placement",
+   "License plate"
+  ],
+  "answer": "Locking jaws and condition"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Rear trailer rollovers are often caused by:",
+  "choices": [
+   "Speed and sharp steering",
+   "Good inspections",
+   "Proper spacing",
+   "Low speeds"
+  ],
+  "answer": "Speed and sharp steering"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What is the purpose of checking electrical connections?",
+  "choices": [
+   "Ensure lights and signals work",
+   "Increase fuel economy",
+   "Improve cooling",
+   "Reduce tire wear"
+  ],
+  "answer": "Ensure lights and signals work"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Drivers should be alert for trailer sway because it:",
+  "choices": [
+   "Can lead to loss of control",
+   "Improves stability",
+   "Reduces stopping distance",
+   "Improves fuel economy"
+  ],
+  "answer": "Can lead to loss of control"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The safest following distance is one that:",
+  "choices": [
+   "Provides time for braking and reaction",
+   "Matches passenger cars",
+   "Eliminates mirror checks",
+   "Keeps other vehicles out"
+  ],
+  "answer": "Provides time for braking and reaction"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "A proper pre-trip inspection helps identify:",
+  "choices": [
+   "Mechanical and coupling defects",
+   "Fuel discounts",
+   "Weather forecasts",
+   "Traffic conditions only"
+  ],
+  "answer": "Mechanical and coupling defects"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "What should be done if a coupling defect is found?",
+  "choices": [
+   "Repair it before operating",
+   "Ignore it",
+   "Increase speed",
+   "Disconnect air lines"
+  ],
+  "answer": "Repair it before operating"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "Why should doubles and triples be driven defensively?",
+  "choices": [
+   "They are less forgiving of driver errors",
+   "They accelerate faster",
+   "They use more fuel",
+   "They have smaller mirrors"
+  ],
+  "answer": "They are less forgiving of driver errors"
+ },
+ {
+  "category": "Doubles & Triples",
+  "question": "The overall goal of doubles and triples inspections is:",
+  "choices": [
+   "Ensure safe operation of all units",
+   "Improve appearance",
+   "Reduce paperwork",
+   "Increase payload"
+  ],
+  "answer": "Ensure safe operation of all units"
+ },
+ {
+  "category": "Passenger",
+  "question": "What is a driver's primary responsibility when transporting passengers?",
+  "choices": [
+   "Passenger safety",
+   "Fuel efficiency",
+   "Route speed",
+   "Cargo capacity"
+  ],
+  "answer": "Passenger safety"
+ },
+ {
+  "category": "Passenger",
+  "question": "Before starting a trip, a passenger vehicle driver should:",
+  "choices": [
+   "Inspect the vehicle",
+   "Increase speed",
+   "Load extra fuel",
+   "Skip the walkaround"
+  ],
+  "answer": "Inspect the vehicle"
+ },
+ {
+  "category": "Passenger",
+  "question": "A passenger driver should ensure aisles are:",
+  "choices": [
+   "Clear of obstacles",
+   "Filled with luggage",
+   "Used for storage",
+   "Blocked during travel"
+  ],
+  "answer": "Clear of obstacles"
+ },
+ {
+  "category": "Passenger",
+  "question": "Emergency exits should be:",
+  "choices": [
+   "Inspected before trips",
+   "Locked at all times",
+   "Covered by luggage",
+   "Used for storage"
+  ],
+  "answer": "Inspected before trips"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passengers should enter and exit the vehicle:",
+  "choices": [
+   "Safely and carefully",
+   "While the vehicle is moving",
+   "Through emergency windows",
+   "Only from the rear"
+  ],
+  "answer": "Safely and carefully"
+ },
+ {
+  "category": "Passenger",
+  "question": "Before moving a passenger vehicle, the driver should:",
+  "choices": [
+   "Ensure passengers are seated or secure",
+   "Accelerate immediately",
+   "Turn off lights",
+   "Close mirrors"
+  ],
+  "answer": "Ensure passengers are seated or secure"
+ },
+ {
+  "category": "Passenger",
+  "question": "The smoothest driving style for passenger comfort is:",
+  "choices": [
+   "Gentle acceleration and braking",
+   "Hard braking",
+   "Sharp turns",
+   "Rapid lane changes"
+  ],
+  "answer": "Gentle acceleration and braking"
+ },
+ {
+  "category": "Passenger",
+  "question": "Why should drivers avoid sudden maneuvers?",
+  "choices": [
+   "Passengers may lose balance",
+   "Fuel costs rise",
+   "Mirrors vibrate",
+   "The radio may stop working"
+  ],
+  "answer": "Passengers may lose balance"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger vehicles generally require:",
+  "choices": [
+   "Extra caution when turning",
+   "No mirror usage",
+   "Higher speeds",
+   "Less stopping distance"
+  ],
+  "answer": "Extra caution when turning"
+ },
+ {
+  "category": "Passenger",
+  "question": "A driver should monitor passengers by:",
+  "choices": [
+   "Using mirrors when safe",
+   "Leaving the seat",
+   "Ignoring disturbances",
+   "Stopping frequently"
+  ],
+  "answer": "Using mirrors when safe"
+ },
+ {
+  "category": "Passenger",
+  "question": "The purpose of a passenger count is to:",
+  "choices": [
+   "Know who is onboard",
+   "Track fuel use",
+   "Inspect cargo",
+   "Check tire pressure"
+  ],
+  "answer": "Know who is onboard"
+ },
+ {
+  "category": "Passenger",
+  "question": "If a passenger becomes ill, the driver should:",
+  "choices": [
+   "Follow company procedures safely",
+   "Ignore the issue",
+   "Continue at higher speed",
+   "Stop in traffic lanes"
+  ],
+  "answer": "Follow company procedures safely"
+ },
+ {
+  "category": "Passenger",
+  "question": "Why are smooth stops important?",
+  "choices": [
+   "They reduce passenger injuries",
+   "They increase speed",
+   "They save tires only",
+   "They improve visibility"
+  ],
+  "answer": "They reduce passenger injuries"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passengers should be warned before:",
+  "choices": [
+   "Sharp turns or rough conditions",
+   "Fueling",
+   "Parking",
+   "Cleaning windows"
+  ],
+  "answer": "Sharp turns or rough conditions"
+ },
+ {
+  "category": "Passenger",
+  "question": "Wheelchair securement systems are used to:",
+  "choices": [
+   "Secure mobility devices safely",
+   "Increase capacity",
+   "Store luggage",
+   "Improve fuel economy"
+  ],
+  "answer": "Secure mobility devices safely"
+ },
+ {
+  "category": "Passenger",
+  "question": "A driver should know the location of:",
+  "choices": [
+   "Emergency equipment",
+   "Only the radio",
+   "Fuel receipts",
+   "Route maps only"
+  ],
+  "answer": "Emergency equipment"
+ },
+ {
+  "category": "Passenger",
+  "question": "Fire extinguishers should be:",
+  "choices": [
+   "Accessible and inspected",
+   "Removed",
+   "Stored outside",
+   "Used as wheel chocks"
+  ],
+  "answer": "Accessible and inspected"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger vehicle drivers should maintain:",
+  "choices": [
+   "Adequate following distance",
+   "Minimal following distance",
+   "The same distance as motorcycles",
+   "No following distance"
+  ],
+  "answer": "Adequate following distance"
+ },
+ {
+  "category": "Passenger",
+  "question": "What should a driver do before opening passenger doors?",
+  "choices": [
+   "Ensure it is safe",
+   "Accelerate",
+   "Turn off mirrors",
+   "Release parking brake"
+  ],
+  "answer": "Ensure it is safe"
+ },
+ {
+  "category": "Passenger",
+  "question": "Why is mirror usage important?",
+  "choices": [
+   "Monitor vehicle surroundings",
+   "Improve radio reception",
+   "Increase visibility inside luggage compartments",
+   "Reduce fuel use"
+  ],
+  "answer": "Monitor vehicle surroundings"
+ },
+ {
+  "category": "Passenger",
+  "question": "A passenger driver's attitude should be:",
+  "choices": [
+   "Professional and courteous",
+   "Aggressive",
+   "Indifferent",
+   "Unpredictable"
+  ],
+  "answer": "Professional and courteous"
+ },
+ {
+  "category": "Passenger",
+  "question": "If an emergency evacuation is necessary, the driver should:",
+  "choices": [
+   "Direct passengers calmly",
+   "Leave passengers behind",
+   "Block exits",
+   "Ignore procedures"
+  ],
+  "answer": "Direct passengers calmly"
+ },
+ {
+  "category": "Passenger",
+  "question": "What should be checked on passenger doors?",
+  "choices": [
+   "Proper operation",
+   "Paint color",
+   "Mileage",
+   "Window tint"
+  ],
+  "answer": "Proper operation"
+ },
+ {
+  "category": "Passenger",
+  "question": "Trip planning helps drivers:",
+  "choices": [
+   "Identify safe routes and stops",
+   "Avoid inspections",
+   "Reduce communication",
+   "Increase speed"
+  ],
+  "answer": "Identify safe routes and stops"
+ },
+ {
+  "category": "Passenger",
+  "question": "When transporting standing passengers, drivers should:",
+  "choices": [
+   "Drive especially smoothly",
+   "Accelerate harder",
+   "Take curves faster",
+   "Reduce mirror checks"
+  ],
+  "answer": "Drive especially smoothly"
+ },
+ {
+  "category": "Passenger",
+  "question": "A pre-trip inspection should include:",
+  "choices": [
+   "Emergency exits and safety equipment",
+   "Only the engine",
+   "Passenger tickets",
+   "Radio stations"
+  ],
+  "answer": "Emergency exits and safety equipment"
+ },
+ {
+  "category": "Passenger",
+  "question": "The safest approach to curves is to:",
+  "choices": [
+   "Slow before entering",
+   "Brake hard in the curve",
+   "Accelerate through",
+   "Shift into neutral"
+  ],
+  "answer": "Slow before entering"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger injuries are often caused by:",
+  "choices": [
+   "Sudden vehicle movements",
+   "Good driving practices",
+   "Routine inspections",
+   "Mirror checks"
+  ],
+  "answer": "Sudden vehicle movements"
+ },
+ {
+  "category": "Passenger",
+  "question": "Drivers should be alert for:",
+  "choices": [
+   "Passenger needs and roadway hazards",
+   "Fuel discounts",
+   "Radio updates only",
+   "Paint damage"
+  ],
+  "answer": "Passenger needs and roadway hazards"
+ },
+ {
+  "category": "Passenger",
+  "question": "What should drivers do at railroad crossings when required?",
+  "choices": [
+   "Follow applicable laws and procedures",
+   "Ignore the crossing",
+   "Speed up",
+   "Stop on the tracks"
+  ],
+  "answer": "Follow applicable laws and procedures"
+ },
+ {
+  "category": "Passenger",
+  "question": "A passenger loading area should be:",
+  "choices": [
+   "Safe and controlled",
+   "In active traffic",
+   "On steep grades",
+   "Blocked by cargo"
+  ],
+  "answer": "Safe and controlled"
+ },
+ {
+  "category": "Passenger",
+  "question": "Why should drivers avoid distractions?",
+  "choices": [
+   "To maintain safe vehicle control",
+   "To save fuel",
+   "To improve seat comfort",
+   "To reduce paperwork"
+  ],
+  "answer": "To maintain safe vehicle control"
+ },
+ {
+  "category": "Passenger",
+  "question": "What is the purpose of safety briefings?",
+  "choices": [
+   "Inform passengers about procedures",
+   "Reduce fuel consumption",
+   "Track schedules",
+   "Improve tire wear"
+  ],
+  "answer": "Inform passengers about procedures"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger handrails should be:",
+  "choices": [
+   "Secure and functional",
+   "Removed",
+   "Locked",
+   "Stored during trips"
+  ],
+  "answer": "Secure and functional"
+ },
+ {
+  "category": "Passenger",
+  "question": "What should a driver check regarding seats?",
+  "choices": [
+   "Condition and secure mounting",
+   "Color and fabric only",
+   "Manufacturer name",
+   "Age only"
+  ],
+  "answer": "Condition and secure mounting"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passengers should never be allowed to:",
+  "choices": [
+   "Interfere with safe vehicle operation",
+   "Sit quietly",
+   "Ask questions",
+   "Follow instructions"
+  ],
+  "answer": "Interfere with safe vehicle operation"
+ },
+ {
+  "category": "Passenger",
+  "question": "The best way to prevent falls is to:",
+  "choices": [
+   "Make smooth stops and starts",
+   "Accelerate rapidly",
+   "Take sharp turns",
+   "Brake late"
+  ],
+  "answer": "Make smooth stops and starts"
+ },
+ {
+  "category": "Passenger",
+  "question": "A driver should know how to use:",
+  "choices": [
+   "Emergency equipment",
+   "Only the radio",
+   "Entertainment systems",
+   "Navigation apps only"
+  ],
+  "answer": "Emergency equipment"
+ },
+ {
+  "category": "Passenger",
+  "question": "What should be checked on emergency windows?",
+  "choices": [
+   "Proper operation and markings",
+   "Paint quality",
+   "Tire pressure",
+   "Fuel level"
+  ],
+  "answer": "Proper operation and markings"
+ },
+ {
+  "category": "Passenger",
+  "question": "Good passenger service includes:",
+  "choices": [
+   "Clear communication",
+   "Aggressive driving",
+   "Frequent hard braking",
+   "Ignoring questions"
+  ],
+  "answer": "Clear communication"
+ },
+ {
+  "category": "Passenger",
+  "question": "The driver should remain calm during:",
+  "choices": [
+   "Emergencies and difficult situations",
+   "Routine fueling only",
+   "Seat cleaning",
+   "Maintenance scheduling"
+  ],
+  "answer": "Emergencies and difficult situations"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger vehicles often have a higher center of gravity, requiring:",
+  "choices": [
+   "Careful cornering",
+   "Higher speeds",
+   "Less braking",
+   "Shorter following distance"
+  ],
+  "answer": "Careful cornering"
+ },
+ {
+  "category": "Passenger",
+  "question": "A driver should secure the vehicle before:",
+  "choices": [
+   "Allowing passengers to board or exit",
+   "Checking mirrors",
+   "Starting the radio",
+   "Cleaning windows"
+  ],
+  "answer": "Allowing passengers to board or exit"
+ },
+ {
+  "category": "Passenger",
+  "question": "What is an important part of passenger management?",
+  "choices": [
+   "Maintaining order and safety",
+   "Increasing speed",
+   "Reducing stops",
+   "Tracking fuel purchases"
+  ],
+  "answer": "Maintaining order and safety"
+ },
+ {
+  "category": "Passenger",
+  "question": "Passenger comfort is improved by:",
+  "choices": [
+   "Smooth driving habits",
+   "Hard acceleration",
+   "Sharp steering",
+   "Frequent lane changes"
+  ],
+  "answer": "Smooth driving habits"
+ },
+ {
+  "category": "Passenger",
+  "question": "The safest drivers anticipate:",
+  "choices": [
+   "Traffic and passenger needs",
+   "Only fuel stops",
+   "Only weather",
+   "Only schedules"
+  ],
+  "answer": "Traffic and passenger needs"
+ },
+ {
+  "category": "Passenger",
+  "question": "A driver's inspection should verify:",
+  "choices": [
+   "All required safety equipment is present",
+   "The radio works",
+   "The paint is clean",
+   "The seats match"
+  ],
+  "answer": "All required safety equipment is present"
+ },
+ {
+  "category": "Passenger",
+  "question": "Why is professional behavior important?",
+  "choices": [
+   "It promotes passenger trust and safety",
+   "It lowers fuel costs",
+   "It reduces vehicle weight",
+   "It improves tire life"
+  ],
+  "answer": "It promotes passenger trust and safety"
+ },
+ {
+  "category": "Passenger",
+  "question": "The main goal of passenger transportation is:",
+  "choices": [
+   "Move passengers safely and efficiently",
+   "Maximize speed",
+   "Minimize stops",
+   "Increase vehicle mileage"
+  ],
+  "answer": "Move passengers safely and efficiently"
+ },
+ {
+  "category": "Passenger",
+  "question": "What is the purpose of passenger endorsement training?",
+  "choices": [
+   "Prepare drivers to safely transport passengers",
+   "Increase cargo capacity",
+   "Reduce paperwork",
+   "Improve fuel economy"
+  ],
+  "answer": "Prepare drivers to safely transport passengers"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What is the primary purpose of a pre-trip inspection?",
+  "choices": [
+   "Find safety defects",
+   "Improve fuel economy",
+   "Reduce paperwork",
+   "Increase speed"
+  ],
+  "answer": "Find safety defects"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Why should drivers inspect their vehicle before every trip?",
+  "choices": [
+   "Ensure safe operation",
+   "Improve radio reception",
+   "Reduce tire costs",
+   "Check routes"
+  ],
+  "answer": "Ensure safe operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should you check for under the vehicle?",
+  "choices": [
+   "Fluid leaks",
+   "Seat damage",
+   "Radio stations",
+   "Cargo labels"
+  ],
+  "answer": "Fluid leaks"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Engine oil should be checked for:",
+  "choices": [
+   "Proper level",
+   "Color only",
+   "Age only",
+   "Temperature only"
+  ],
+  "answer": "Proper level"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Low engine oil may lead to:",
+  "choices": [
+   "Engine damage",
+   "Better fuel economy",
+   "Lower tire wear",
+   "Improved cooling"
+  ],
+  "answer": "Engine damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Coolant levels should be checked to help prevent:",
+  "choices": [
+   "Overheating",
+   "Flat tires",
+   "Brake fade",
+   "Cargo shifts"
+  ],
+  "answer": "Overheating"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should be inspected on drive belts?",
+  "choices": [
+   "Cracks and wear",
+   "Paint color",
+   "Fuel level",
+   "Mileage"
+  ],
+  "answer": "Cracks and wear"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Steering hoses should be checked for:",
+  "choices": [
+   "Leaks and damage",
+   "Dust only",
+   "Logo placement",
+   "Paint"
+  ],
+  "answer": "Leaks and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should be checked on the steering linkage?",
+  "choices": [
+   "Condition and secure mounting",
+   "Cargo weight",
+   "Mirror position",
+   "Window tint"
+  ],
+  "answer": "Condition and secure mounting"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A loose steering component may:",
+  "choices": [
+   "Affect vehicle control",
+   "Improve handling",
+   "Reduce maintenance",
+   "Increase traction"
+  ],
+  "answer": "Affect vehicle control"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Leaf springs should be inspected for:",
+  "choices": [
+   "Cracks and missing pieces",
+   "Fuel leaks",
+   "Paint defects",
+   "Loose cargo"
+  ],
+  "answer": "Cracks and missing pieces"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Shock absorbers should be checked for:",
+  "choices": [
+   "Leaks and damage",
+   "Battery charge",
+   "Fuel level",
+   "Mileage"
+  ],
+  "answer": "Leaks and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Air suspension components should be:",
+  "choices": [
+   "Secure and undamaged",
+   "Painted weekly",
+   "Greased daily",
+   "Removed when empty"
+  ],
+  "answer": "Secure and undamaged"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Brake hoses should be checked for:",
+  "choices": [
+   "Leaks and abrasions",
+   "Mileage",
+   "Tread depth",
+   "Paint"
+  ],
+  "answer": "Leaks and abrasions"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Brake drums should not have:",
+  "choices": [
+   "Cracks",
+   "Labels",
+   "Road dust",
+   "Manufacturer markings"
+  ],
+  "answer": "Cracks"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Slack adjusters should be checked for:",
+  "choices": [
+   "Proper adjustment",
+   "Paint color",
+   "Fuel contamination",
+   "Mileage"
+  ],
+  "answer": "Proper adjustment"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Tires should be inspected for:",
+  "choices": [
+   "Proper inflation and damage",
+   "Radio signal",
+   "License plate condition",
+   "Mirror alignment"
+  ],
+  "answer": "Proper inflation and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A tire with exposed cord should be:",
+  "choices": [
+   "Removed from service",
+   "Inflated more",
+   "Used cautiously",
+   "Ignored"
+  ],
+  "answer": "Removed from service"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Why is tread depth important?",
+  "choices": [
+   "Provides traction",
+   "Improves paint quality",
+   "Increases horsepower",
+   "Supports mirrors"
+  ],
+  "answer": "Provides traction"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Rims should be checked for:",
+  "choices": [
+   "Cracks and bends",
+   "Fuel leaks",
+   "Cargo placement",
+   "Antenna position"
+  ],
+  "answer": "Cracks and bends"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Lug nuts should be:",
+  "choices": [
+   "Present and secure",
+   "Painted annually",
+   "Removed during inspections",
+   "Covered with grease"
+  ],
+  "answer": "Present and secure"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What may indicate a loose lug nut?",
+  "choices": [
+   "Rust trails",
+   "Clean paint",
+   "New tires",
+   "Low fuel"
+  ],
+  "answer": "Rust trails"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Wheel seals should not be:",
+  "choices": [
+   "Leaking",
+   "Labeled",
+   "Warm",
+   "Clean"
+  ],
+  "answer": "Leaking"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Reflectors should be:",
+  "choices": [
+   "Clean and intact",
+   "Removed at night",
+   "Covered with tape",
+   "Painted over"
+  ],
+  "answer": "Clean and intact"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Lights should be checked for:",
+  "choices": [
+   "Proper operation",
+   "Fuel economy",
+   "Tire balance",
+   "Cargo weight"
+  ],
+  "answer": "Proper operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Headlights should be:",
+  "choices": [
+   "Clean and functional",
+   "Covered during daylight",
+   "Removed when parked",
+   "Dim at all times"
+  ],
+  "answer": "Clean and functional"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Turn signals help:",
+  "choices": [
+   "Communicate intentions",
+   "Improve fuel economy",
+   "Cool brakes",
+   "Increase traction"
+  ],
+  "answer": "Communicate intentions"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Brake lights should activate when:",
+  "choices": [
+   "Brakes are applied",
+   "Headlights are on",
+   "Ignition is off",
+   "Horn is pressed"
+  ],
+  "answer": "Brakes are applied"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The windshield should be checked for:",
+  "choices": [
+   "Cracks and visibility",
+   "Fuel stains",
+   "Cargo weight",
+   "Door alignment"
+  ],
+  "answer": "Cracks and visibility"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Windshield wipers should be:",
+  "choices": [
+   "Operational",
+   "Removed in summer",
+   "Painted",
+   "Loose"
+  ],
+  "answer": "Operational"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Mirror inspection ensures:",
+  "choices": [
+   "Good visibility",
+   "Better fuel economy",
+   "Brighter lights",
+   "Less tire wear"
+  ],
+  "answer": "Good visibility"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Mirrors should be:",
+  "choices": [
+   "Clean and adjusted",
+   "Closed while driving",
+   "Painted monthly",
+   "Removed during rain"
+  ],
+  "answer": "Clean and adjusted"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The horn should be checked because it is:",
+  "choices": [
+   "A safety device",
+   "Required for fuel economy",
+   "Part of suspension",
+   "Used for cargo securement"
+  ],
+  "answer": "A safety device"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Seat belts should be inspected for:",
+  "choices": [
+   "Damage and proper operation",
+   "Fuel contamination",
+   "Paint chips",
+   "Mileage"
+  ],
+  "answer": "Damage and proper operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The fire extinguisher should be:",
+  "choices": [
+   "Charged and secured",
+   "Stored outside",
+   "Empty",
+   "Locked away"
+  ],
+  "answer": "Charged and secured"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Warning triangles should be:",
+  "choices": [
+   "Present and accessible",
+   "Stored at home",
+   "Discarded after use",
+   "Hidden in cargo"
+  ],
+  "answer": "Present and accessible"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Air pressure gauges are checked to:",
+  "choices": [
+   "Monitor brake system pressure",
+   "Measure fuel",
+   "Check coolant",
+   "Track mileage"
+  ],
+  "answer": "Monitor brake system pressure"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Low air warnings should:",
+  "choices": [
+   "Function properly",
+   "Remain disabled",
+   "Be ignored",
+   "Activate only when parked"
+  ],
+  "answer": "Function properly"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The parking brake should:",
+  "choices": [
+   "Hold the vehicle",
+   "Increase engine speed",
+   "Cool tires",
+   "Support cargo"
+  ],
+  "answer": "Hold the vehicle"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "An in-cab inspection includes checking:",
+  "choices": [
+   "Gauges and warning devices",
+   "Cargo straps only",
+   "Paint color",
+   "Radio quality"
+  ],
+  "answer": "Gauges and warning devices"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The clutch should be checked for:",
+  "choices": [
+   "Proper operation",
+   "Fuel economy",
+   "Tire wear",
+   "Seat adjustment"
+  ],
+  "answer": "Proper operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The steering wheel should have:",
+  "choices": [
+   "Minimal free play",
+   "Excessive movement",
+   "Loose mounting",
+   "No resistance"
+  ],
+  "answer": "Minimal free play"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Fuel tanks should be:",
+  "choices": [
+   "Secure and leak-free",
+   "Empty",
+   "Painted monthly",
+   "Removed during inspections"
+  ],
+  "answer": "Secure and leak-free"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Fuel tank straps should be:",
+  "choices": [
+   "Secure",
+   "Missing",
+   "Loose",
+   "Cracked intentionally"
+  ],
+  "answer": "Secure"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Battery boxes should be:",
+  "choices": [
+   "Securely mounted",
+   "Detached",
+   "Filled with water",
+   "Removed weekly"
+  ],
+  "answer": "Securely mounted"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Battery cables should be free of:",
+  "choices": [
+   "Corrosion and damage",
+   "Labels",
+   "Paint",
+   "Dust"
+  ],
+  "answer": "Corrosion and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Exhaust systems should be inspected for:",
+  "choices": [
+   "Leaks and secure mounting",
+   "Fuel contamination",
+   "Cargo damage",
+   "Hub wear"
+  ],
+  "answer": "Leaks and secure mounting"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "An exhaust leak could:",
+  "choices": [
+   "Create a safety hazard",
+   "Increase tire pressure",
+   "Improve engine cooling",
+   "Reduce stopping distance"
+  ],
+  "answer": "Create a safety hazard"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Frame members should be checked for:",
+  "choices": [
+   "Cracks and damage",
+   "Fuel levels",
+   "Cargo labels",
+   "Mirror condition"
+  ],
+  "answer": "Cracks and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The fifth wheel should be inspected for:",
+  "choices": [
+   "Damage and secure mounting",
+   "Engine leaks",
+   "Battery charge",
+   "Cab cleanliness"
+  ],
+  "answer": "Damage and secure mounting"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Kingpins should be inspected for:",
+  "choices": [
+   "Wear and cracks",
+   "Paint defects",
+   "Fuel leaks",
+   "Tire pressure"
+  ],
+  "answer": "Wear and cracks"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should be checked on the trailer apron?",
+  "choices": [
+   "Cracks and damage",
+   "Cargo labels",
+   "Reflector color",
+   "DOT number"
+  ],
+  "answer": "Cracks and damage"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Air lines should be:",
+  "choices": [
+   "Connected and undamaged",
+   "Loose",
+   "Crossed intentionally",
+   "Leaking"
+  ],
+  "answer": "Connected and undamaged"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Electrical lines should be checked for:",
+  "choices": [
+   "Wear and secure connections",
+   "Fuel contamination",
+   "Tread depth",
+   "Brake adjustment"
+  ],
+  "answer": "Wear and secure connections"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Trailer doors should:",
+  "choices": [
+   "Open, close, and latch properly",
+   "Remain unlocked",
+   "Be removed for inspections",
+   "Leak air"
+  ],
+  "answer": "Open, close, and latch properly"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Cargo securement devices should be:",
+  "choices": [
+   "Secure and undamaged",
+   "Hidden",
+   "Loose",
+   "Optional"
+  ],
+  "answer": "Secure and undamaged"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A shifted load may:",
+  "choices": [
+   "Affect vehicle stability",
+   "Improve handling",
+   "Reduce braking distance",
+   "Increase visibility"
+  ],
+  "answer": "Affect vehicle stability"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Trailer floors should be checked for:",
+  "choices": [
+   "Damage and structural integrity",
+   "Fuel economy",
+   "Radio signals",
+   "Headlight alignment"
+  ],
+  "answer": "Damage and structural integrity"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Mud flaps should be:",
+  "choices": [
+   "Secure and in good condition",
+   "Removed",
+   "Cracked intentionally",
+   "Painted weekly"
+  ],
+  "answer": "Secure and in good condition"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Why should vehicle inspections be systematic?",
+  "choices": [
+   "To avoid missing defects",
+   "To save fuel",
+   "To improve speed",
+   "To reduce paperwork"
+  ],
+  "answer": "To avoid missing defects"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Drivers should inspect the vehicle:",
+  "choices": [
+   "The same way every time",
+   "Randomly",
+   "Only at night",
+   "Only after driving"
+  ],
+  "answer": "The same way every time"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "An inspection report records:",
+  "choices": [
+   "Defects and conditions",
+   "Fuel prices",
+   "Weather forecasts",
+   "Traffic patterns"
+  ],
+  "answer": "Defects and conditions"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Defects found during inspection should be:",
+  "choices": [
+   "Reported and repaired",
+   "Ignored",
+   "Hidden",
+   "Documented only if severe"
+  ],
+  "answer": "Reported and repaired"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The service brake test checks:",
+  "choices": [
+   "Brake operation",
+   "Cargo securement",
+   "Mirror adjustment",
+   "Radio performance"
+  ],
+  "answer": "Brake operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The parking brake test verifies:",
+  "choices": [
+   "The vehicle remains stationary",
+   "Headlights work",
+   "The battery is charged",
+   "The doors latch"
+  ],
+  "answer": "The vehicle remains stationary"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The trailer brake test confirms:",
+  "choices": [
+   "Trailer brakes function properly",
+   "Cargo doors open",
+   "Tires rotate",
+   "Lights blink"
+  ],
+  "answer": "Trailer brakes function properly"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Reflective tape should be:",
+  "choices": [
+   "Visible and intact",
+   "Removed",
+   "Covered",
+   "Painted"
+  ],
+  "answer": "Visible and intact"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Marker lights help other drivers:",
+  "choices": [
+   "See the vehicle",
+   "Save fuel",
+   "Monitor speed",
+   "Avoid inspections"
+  ],
+  "answer": "See the vehicle"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Clearance lights indicate:",
+  "choices": [
+   "Vehicle dimensions",
+   "Fuel level",
+   "Cargo type",
+   "Wheel size"
+  ],
+  "answer": "Vehicle dimensions"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A cracked mirror should be:",
+  "choices": [
+   "Repaired or replaced",
+   "Ignored",
+   "Painted",
+   "Removed permanently"
+  ],
+  "answer": "Repaired or replaced"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Loose body panels should be inspected because they may:",
+  "choices": [
+   "Become roadway hazards",
+   "Improve fuel economy",
+   "Reduce noise",
+   "Increase cooling"
+  ],
+  "answer": "Become roadway hazards"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Safety equipment inspections help ensure:",
+  "choices": [
+   "Emergency readiness",
+   "Better fuel mileage",
+   "More horsepower",
+   "Faster loading"
+  ],
+  "answer": "Emergency readiness"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should be checked on mud flaps?",
+  "choices": [
+   "Secure mounting and condition",
+   "Fuel pressure",
+   "Battery voltage",
+   "Tire size"
+  ],
+  "answer": "Secure mounting and condition"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A walkaround inspection should cover:",
+  "choices": [
+   "The entire vehicle",
+   "Only the tractor",
+   "Only tires",
+   "Only lights"
+  ],
+  "answer": "The entire vehicle"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Visible damage should be evaluated because it may indicate:",
+  "choices": [
+   "A safety problem",
+   "Fuel contamination",
+   "Dispatch errors",
+   "Route changes"
+  ],
+  "answer": "A safety problem"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Drivers should inspect coupling devices to prevent:",
+  "choices": [
+   "Trailer separation",
+   "Brake fade",
+   "Low fuel",
+   "Battery drain"
+  ],
+  "answer": "Trailer separation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "Why are pre-trip inspections required?",
+  "choices": [
+   "Promote safe operation",
+   "Increase cargo capacity",
+   "Reduce route planning",
+   "Improve radio quality"
+  ],
+  "answer": "Promote safe operation"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "What should be done before operating a vehicle with a major defect?",
+  "choices": [
+   "Repair the defect",
+   "Increase following distance",
+   "Reduce speed only",
+   "Ignore it"
+  ],
+  "answer": "Repair the defect"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "A proper inspection helps drivers:",
+  "choices": [
+   "Identify problems before they become dangerous",
+   "Increase speed",
+   "Improve tire appearance",
+   "Reduce cargo weight"
+  ],
+  "answer": "Identify problems before they become dangerous"
+ },
+ {
+  "category": "Vehicle Inspection",
+  "question": "The ultimate goal of a vehicle inspection is:",
+  "choices": [
+   "Safe operation of the vehicle",
+   "Passing time",
+   "Reducing paperwork",
+   "Lower insurance costs"
+  ],
+  "answer": "Safe operation of the vehicle"
+ }
+];
+
+var SECTIONS = {};
+QUESTIONS.forEach(function(q){(SECTIONS[q.category]=SECTIONS[q.category]||[]).push(q);});
+var PASS = 0.8, game = document.getElementById("game"), home = document.getElementById("home");
+var order, i, score, missed, current, answered, name;
+function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t}return a}
+function best(n){try{return localStorage.getItem("permit-best-"+n)}catch(e){return null}}
+function saveBest(n,p){try{var b=+localStorage.getItem("permit-best-"+n)||0;if(p>b)localStorage.setItem("permit-best-"+n,p)}catch(e){}}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function showHome(){
+  game.style.display="none";home.style.display="block";
+  var g=document.getElementById("sections");g.innerHTML="";
+  Object.keys(SECTIONS).forEach(function(n){
+    var b=el("button","sq sec");b.type="button";
+    b.appendChild(el("h4",null,n));
+    var b2=best(n);
+    b.appendChild(el("small",null,SECTIONS[n].length+" questions"+(b2?" · Best: "+b2+"%":"")));
+    b.appendChild(el("small",null,"Start →"));
+    b.onclick=function(){start(n,SECTIONS[n])};
+    g.appendChild(b);
+  });
+}
+function start(n,qs){name=n;order=shuffle(qs);i=0;score=0;missed=[];home.style.display="none";game.style.display="block";window.scrollTo(0,0);next();}
+function next(){
+  if(i>=order.length)return done();
+  current=order[i];answered=false;
+  game.innerHTML="";
+  game.appendChild(el("div","prog",name+" · Question "+(i+1)+" of "+order.length));
+  var bar=el("div","bar");var fill=el("i");fill.style.width=(i/order.length*100)+"%";bar.appendChild(fill);game.appendChild(bar);
+  game.appendChild(el("p","q",current.question));
+  var od=el("div","opts");
+  shuffle(current.choices).forEach(function(c){
+    var b=el("button","opt",c);b.type="button";
+    b.onclick=function(){pick(b,c,od)};
+    od.appendChild(b);
+  });
+  game.appendChild(od);
+}
+function pick(btn,c,od){
+  if(answered)return;answered=true;
+  var right=c===current.answer;
+  od.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.textContent===current.answer)x.classList.add("ok")});
+  if(right){score++}else{btn.classList.add("bad");missed.push({q:current,chose:c})}
+  game.appendChild(el("div","fb "+(right?"ok":"bad"),right?"Correct.":"Not quite. The correct answer is: "+current.answer));
+  var r=el("div","row");var nb=el("button","btn",i+1>=order.length?"See results":"Next question");nb.type="button";nb.onclick=function(){i++;next()};r.appendChild(nb);game.appendChild(r);
+  nb.focus();
+}
+function done(){
+  var pct=Math.round(score/order.length*100);saveBest(name,pct);
+  game.innerHTML="";
+  game.appendChild(el("div","prog",name+" · Results"));
+  game.appendChild(el("p","score",score+" / "+order.length+" ("+pct+"%)"));
+  var passed=score/order.length>=PASS;
+  game.appendChild(el("span","pill "+(passed?"pass":"keep"),passed?"Practice goal reached (80%)":"Keep practicing — goal is 80%"));
+  if(missed.length){
+    game.appendChild(el("h3",null,"Review these"));game.lastChild.style.marginTop="20px";
+    var ul=el("ul","review");
+    missed.forEach(function(m){var li=el("li");li.appendChild(el("b",null,m.q.question));li.appendChild(el("span","w","Your answer: "+m.chose));li.appendChild(document.createElement("br"));li.appendChild(el("span","a","Correct: "+m.q.answer));ul.appendChild(li)});
+    game.appendChild(ul);
+  }
+  var r=el("div","row");
+  if(missed.length){var b1=el("button","btn","Retry missed questions");b1.type="button";b1.onclick=function(){start(name,missed.map(function(m){return m.q}))};r.appendChild(b1)}
+  var b2=el("button","btn alt","Restart section");b2.type="button";b2.onclick=function(){start(name,SECTIONS[name])};r.appendChild(b2);
+  var b3=el("button","btn alt","All sections");b3.type="button";b3.onclick=showHome;r.appendChild(b3);
+  game.appendChild(r);
+}
+showHome();
+</script>
+</body>
+</html>
