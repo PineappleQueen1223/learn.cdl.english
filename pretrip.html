@@ -50,14 +50,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 
 <main class="wrap">
   <h1>Pre-Trip Inspection</h1>
-  <p class="sub">Each square is one part you check. Take the quiz at the bottom to see where you are.</p>
   <div id="groups"></div>
 
-  <section id="quiz">
-    <h2>Check your level</h2>
-    <p class="sub">10 questions. Pick the correct English term for each Spanish word.</p>
-    <div class="quiz" id="quizbox"></div>
-  </section>
 </main>
 
 <footer><div class="wrap">TGA Truck Driving School &middot; <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div></footer>
@@ -129,45 +123,6 @@ function speak(t){
 }
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 
-var box=document.getElementById("quizbox"), qs, idx, score, missed;
-function start(){
-  qs=shuffle(ALL).slice(0,10); idx=0; score=0; missed=[]; show();
-}
-function show(){
-  if(idx>=qs.length){return finish()}
-  var q=qs[idx];
-  var wrong=shuffle(ALL.filter(function(x){return x!==q})).slice(0,3);
-  var opts=shuffle([q].concat(wrong));
-  box.innerHTML='<div class="prog"></div><p class="q"></p><div class="opts"></div>';
-  box.querySelector(".prog").textContent="Question "+(idx+1)+" of "+qs.length;
-  box.querySelector(".q").textContent="What is \""+q.es+"\" in English?";
-  var od=box.querySelector(".opts");
-  opts.forEach(function(o){
-    var b=document.createElement("button"); b.className="opt"; b.textContent=o.en;
-    b.onclick=function(){
-      var all=od.querySelectorAll(".opt");
-      all.forEach(function(x){x.disabled=true; if(x.textContent===q.en)x.classList.add("ok")});
-      if(o===q){score++}else{b.classList.add("bad");missed.push(q)}
-      setTimeout(function(){idx++;show()},900);
-    };
-    od.appendChild(b);
-  });
-}
-function finish(){
-  var level=score>=9?"Test ready":score>=6?"Getting there":"Just starting";
-  var msg=score>=9?"You know the pre-trip terms well. Practice saying them out loud.":score>=6?"You know many terms. Review the squares you missed.":"Start with the squares above, then retake the quiz.";
-  box.innerHTML='<div class="result"><h3></h3><p></p><div class="miss-wrap"></div><button class="btn">Retake quiz</button></div>';
-  box.querySelector("h3").textContent=score+" / "+qs.length+" — "+level;
-  box.querySelector("p").textContent=msg;
-  if(missed.length){
-    var ul=document.createElement("ul"); ul.className="miss";
-    missed.forEach(function(m){var li=document.createElement("li");li.textContent=m.en+" ("+m.es+")";ul.appendChild(li)});
-    var lab=document.createElement("div");lab.textContent="Review these:";
-    box.querySelector(".miss-wrap").appendChild(lab);box.querySelector(".miss-wrap").appendChild(ul);
-  }
-  box.querySelector(".btn").onclick=start;
-}
-start();
 </script>
 </body>
 </html>
