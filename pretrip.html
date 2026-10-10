@@ -24,7 +24,7 @@ section{padding:24px 0}
 .group{margin-bottom:28px}
 .group h3{color:var(--gold);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.sq{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:170px}
+.sq{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:90px;justify-content:center}
 .sq h4{margin:0;font-size:18px}
 .es{color:var(--green);font-size:15px}
 .chk{color:var(--mute);font-size:14px;flex:1}
@@ -50,7 +50,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 
 <main class="wrap">
   <h1>Pre-Trip Inspection</h1>
-  <p class="sub">Each square is one part you check. Tap <b>Listen</b> to hear the term, then learn what to look for and what to say to the examiner. Take the quiz at the bottom to see where you are.</p>
+  <p class="sub">Each square is one part you check. Take the quiz at the bottom to see where you are.</p>
   <div id="groups"></div>
 
   <section id="quiz">
@@ -117,12 +117,8 @@ GROUPS.forEach(function(g){
   g.parts.forEach(function(p){
     var o={en:p[0],es:p[1],chk:p[2],say:p[3]}; ALL.push(o);
     var s=document.createElement("div"); s.className="sq";
-    s.innerHTML='<h4></h4><div class="es"></div><div class="chk"></div><div class="say"></div><div><button class="btn alt sm">Listen</button></div>';
+    s.innerHTML="<h4></h4>";
     s.querySelector("h4").textContent=o.en;
-    s.querySelector(".es").textContent=o.es;
-    s.querySelector(".chk").textContent="Check: "+o.chk;
-    s.querySelector(".say").textContent='Say: "'+o.say+'"';
-    s.querySelector("button").onclick=function(){speak(o.en+". "+o.say)};
     grid.appendChild(s);
   });
   wrap.appendChild(grid); gdiv.appendChild(wrap);
