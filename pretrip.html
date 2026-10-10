@@ -41,7 +41,12 @@ section{padding:24px 0}
 .miss{color:var(--mute);margin:12px 0 16px;padding-left:18px}
 .lets{font-size:clamp(26px,5vw,38px);font-weight:700;color:var(--green);text-align:center;margin:56px 0 0}
 #groups{margin-top:48px}
-#groups .grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+#groups .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#groups .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#groups .grid{grid-template-columns:1fr}}
+#groups a.sq{text-decoration:none;color:var(--text);border-color:var(--green);background:#143026;transition:transform .15s}
+#groups a.sq:hover{transform:translateY(-2px)}
+#groups a.sq small{color:var(--green);font-size:14px}
 #groups .sq{min-height:140px;align-items:center;text-align:center}
 #groups .sq h4{font-size:22px}
 .quiz{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:24px 0}.q{font-size:26px;font-weight:700;margin:0 0 14px}.opts{display:grid;gap:10px}.opt{text-align:left;background:transparent;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:17px;cursor:pointer}.opt:hover{border-color:var(--green)}.opt.ok{border-color:var(--green);background:#143026}.opt.bad{border-color:var(--red);background:#35201c}.prog{color:var(--mute);font-size:14px;margin-bottom:8px}.result h3{font-size:32px;margin:0 0 8px}.miss{color:var(--mute);margin:8px 0 16px;padding-left:18px}
@@ -69,6 +74,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 var NAMES=["Engine compartment","In the cab","Lights and signals","Wheels, brakes, and suspension","Coupling and trailer"];
 var grid=document.createElement("div");grid.className="grid";
 NAMES.forEach(function(n){var s=document.createElement("div");s.className="sq";var h=document.createElement("h4");h.textContent=n;s.appendChild(h);grid.appendChild(s);});
+var ia=document.createElement("a");ia.className="sq";ia.href="pretrip3d.html";ia.innerHTML="<h4>Interactive Pre-Trip</h4><small>3D truck walkaround &rarr;</small>";grid.appendChild(ia);
 document.getElementById("groups").appendChild(grid);
 
 var PARTS=[["Dipstick / oil level", "varilla del aceite"], ["Coolant", "refrigerante"], ["Power steering fluid", "líquido de la dirección"], ["Belts", "bandas / correas"], ["Hoses", "mangueras"], ["Air compressor", "compresor de aire"], ["Battery", "batería"], ["Steering wheel", "volante"], ["Gauges", "indicadores"], ["Mirrors", "espejos"], ["Horn", "bocina"], ["Windshield wipers", "limpiaparabrisas"], ["Seat belt", "cinturón de seguridad"], ["Emergency equipment", "equipo de emergencia"], ["Headlights", "faros"], ["Turn signals", "direccionales"], ["Brake lights", "luces de freno"], ["Hazard lights", "luces de emergencia"], ["Reflectors", "reflectores"], ["Tires", "llantas"], ["Rims", "rines"], ["Lug nuts", "tuercas de rueda"], ["Hub seal", "sello del cubo"], ["Brake drum", "tambor de freno"], ["Slack adjuster", "ajustador de holgura"], ["Springs and shock absorbers", "resortes y amortiguadores"], ["Air lines", "mangueras de aire"], ["Fifth wheel", "quinta rueda"], ["Kingpin", "perno rey"], ["Landing gear", "patas de apoyo"], ["Mud flaps", "guardafangos"], ["Cargo doors", "puertas de carga"], ["Fuel tank", "tanque de combustible"]];
