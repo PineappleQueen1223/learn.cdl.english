@@ -34,6 +34,7 @@ section{padding:40px 0}
 .price{font-size:14px;color:var(--mute);margin-bottom:12px}
 .plan{border-color:var(--green);background:linear-gradient(180deg,#183029,var(--panel))}
 .plan ul{margin:0 0 16px;padding-left:18px;color:var(--mute)}
+details{margin:0 0 16px}summary{cursor:pointer;color:var(--green);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--mute)}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;text-align:center}
 </style>
 </head>
@@ -97,21 +98,22 @@ var LINKS = {
   "conversation": ""
 };
 var LESSONS = [
-  {id:"pre-trip", tag:"Inspection", name:"Pre-Trip Inspection", desc:"Name every part, describe what you check, and say it clearly to the examiner."},
-  {id:"air-brakes", tag:"Inspection", name:"Air Brake Inspection", desc:"The air brake test step by step, with the exact words and phrases you need."},
-  {id:"road-exam", tag:"Skills test", name:"Road Exam", desc:"Understand the examiner's instructions and speak up during the driving test."},
-  {id:"permit-test", tag:"Knowledge test", name:"Permit Test", desc:"Key vocabulary and question patterns for the written CDL permit test."},
-  {id:"endorsements", tag:"Knowledge test", name:"Endorsements", desc:"Language for Hazmat, Tanker, Doubles/Triples, Passenger, and more."},
-  {id:"conversation", tag:"On the job", name:"Conversational Commercial Talk", desc:"Real conversations with dispatchers, shippers, receivers, and officers."}
+  {id:"pre-trip", covers:["Engine compartment", "Cab and in-cab checks", "Lights and signals", "Coupling system", "Wheels, tires, and rims", "Suspension and brake lines", "Emergency equipment", "How to say each check out loud"], tag:"Inspection", name:"Pre-Trip Inspection", desc:"Name every part, describe what you check, and say it clearly to the examiner."},
+  {id:"air-brakes", covers:["Compressor, governor, and air tanks", "Cut-in and cut-out pressure", "Leakage test", "Low air warning", "Spring brake pop-out", "Service and parking brake tests", "Words and phrases for the exam"], tag:"Inspection", name:"Air Brake Inspection", desc:"The air brake test step by step, with the exact words and phrases you need."},
+  {id:"road-exam", covers:["Examiner commands and questions", "Turns, lanes, and intersections", "Railroad crossings", "Backing and parking", "Shifting and speed", "What to say while driving"], tag:"Skills test", name:"Road Exam", desc:"Understand the examiner's instructions and speak up during the driving test."},
+  {id:"permit-test", covers:["General knowledge vocabulary", "Traffic signs and signals", "Air brakes questions", "Combination vehicles", "How test questions are worded"], tag:"Knowledge test", name:"Permit Test", desc:"Key vocabulary and question patterns for the written CDL permit test."},
+  {id:"endorsements", covers:["Hazmat (H)", "Tanker (N)", "Doubles/Triples (T)", "Passenger (P)", "School Bus (S)", "Vocabulary for each knowledge test"], tag:"Knowledge test", name:"Endorsements", desc:"Language for Hazmat, Tanker, Doubles/Triples, Passenger, and more."},
+  {id:"conversation", covers:["Calls with dispatchers", "Checking in with shippers and receivers", "Delays and detention", "Weigh stations and fuel stops", "Roadside inspections", "Emergencies and breakdowns"], tag:"On the job", name:"Conversational Commercial Talk", desc:"Real conversations with dispatchers, shippers, receivers, and officers."}
 ];
 var grid = document.getElementById("grid");
 LESSONS.forEach(function(l){
   var d = document.createElement("div");
   d.className = "card";
-  d.innerHTML = '<div class="tag"></div><h3></h3><p></p><div><button class="btn alt buy">Buy this lesson</button></div>';
+  d.innerHTML = '<div class="tag"></div><h3></h3><p></p><details><summary>What does this cover?</summary><ul></ul></details><div><button class="btn alt buy">Buy this lesson</button></div>';
   d.querySelector(".tag").textContent = l.tag;
   d.querySelector("h3").textContent = l.name;
   d.querySelector("p").textContent = l.desc;
+  l.covers.forEach(function(c){var li=document.createElement("li");li.textContent=c;d.querySelector("ul").appendChild(li);});
   d.querySelector(".buy").dataset.product = l.id;
   grid.appendChild(d);
 });
