@@ -35,6 +35,7 @@ section{padding:40px 0}
 .plan{border-color:var(--green);background:linear-gradient(180deg,#183029,var(--panel))}
 .plan ul{margin:0 0 16px;padding-left:18px;color:var(--mute)}
 details{margin:0 0 16px}summary{cursor:pointer;color:var(--green);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--mute)}
+.btn.sm{padding:8px 14px;font-size:14px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;text-align:center}
 </style>
 </head>
@@ -98,7 +99,7 @@ var LINKS = {
   "conversation": ""
 };
 var LESSONS = [
-  {id:"pre-trip", covers:["Engine compartment", "Cab and in-cab checks", "Lights and signals", "Coupling system", "Wheels, tires, and rims", "Suspension and brake lines", "Emergency equipment", "How to say each check out loud"], tag:"Inspection", name:"Pre-Trip Inspection", desc:"Name every part, describe what you check, and say it clearly to the examiner."},
+  {id:"pre-trip", href:"pretrip.html", covers:["Engine compartment", "Cab and in-cab checks", "Lights and signals", "Coupling system", "Wheels, tires, and rims", "Suspension and brake lines", "Emergency equipment", "How to say each check out loud"], tag:"Inspection", name:"Pre-Trip Inspection", desc:"Name every part, describe what you check, and say it clearly to the examiner."},
   {id:"air-brakes", covers:["Compressor, governor, and air tanks", "Cut-in and cut-out pressure", "Leakage test", "Low air warning", "Spring brake pop-out", "Service and parking brake tests", "Words and phrases for the exam"], tag:"Inspection", name:"Air Brake Inspection", desc:"The air brake test step by step, with the exact words and phrases you need."},
   {id:"road-exam", covers:["Examiner commands and questions", "Turns, lanes, and intersections", "Railroad crossings", "Backing and parking", "Shifting and speed", "What to say while driving"], tag:"Skills test", name:"Road Exam", desc:"Understand the examiner's instructions and speak up during the driving test."},
   {id:"permit-test", covers:["General knowledge vocabulary", "Traffic signs and signals", "Air brakes questions", "Combination vehicles", "How test questions are worded"], tag:"Knowledge test", name:"Permit Test", desc:"Key vocabulary and question patterns for the written CDL permit test."},
@@ -114,6 +115,7 @@ LESSONS.forEach(function(l){
   d.querySelector("h3").textContent = l.name;
   d.querySelector("p").textContent = l.desc;
   l.covers.forEach(function(c){var li=document.createElement("li");li.textContent=c;d.querySelector("ul").appendChild(li);});
+  if(l.href){var a=document.createElement("a");a.href=l.href;a.className="btn sm";a.textContent="Open lesson";a.style.marginLeft="8px";d.querySelector(".buy").parentNode.appendChild(a);}
   d.querySelector(".buy").dataset.product = l.id;
   grid.appendChild(d);
 });
