@@ -32,17 +32,17 @@
    type (Barlow is modeled on US highway lettering).
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* ---- BRAND ---------------------------------------------- */
-  --tga-oxblood:    #2A1110; /* the wordmark ink — deepest maroon */
-  --tga-maroon:     #5C1A1D; /* PRIMARY brand color */
-  --tga-maroon-700: #7A2226; /* lifted maroon — hovers, gradients */
-  --tga-red:        #C0202A; /* hot action red — CTAs, highlights (from truck fleet numbers) */
-  --tga-red-700:    #9C1820; /* pressed red */
-  --tga-amber:      #E8A22E; /* highway amber — used sparingly for accents/badges */
-  --tga-navy:       #1E2A66; /* patriotic / CNG diamond blue — secondary, rare */
+  --tga-oxblood:    #131946; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #0A3161; /* PRIMARY brand color */
+  --tga-maroon-700: #14487F; /* lifted maroon — hovers, gradients */
+  --tga-red:        #BA0C2F; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #8F0A24; /* pressed red */
+  --tga-amber:      #FFCB05; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #0A3161; /* patriotic / CNG diamond blue — secondary, rare */
 
   /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
   --tga-ink:        #1B1817; /* near-black warm — body text on light */
@@ -55,7 +55,7 @@
   --asphalt-300:    #C9C2BB; /* borders, dividers */
   --asphalt-200:    #E4DFD9; /* hairlines, input borders */
   --asphalt-100:    #F0ECE7; /* subtle fills */
-  --concrete:       #F5F2ED; /* default page background (off-white) */
+  --concrete:       #FAF9F5; /* default page background (off-white) */
   --white:          #FFFFFF;
 
   /* ---- SEMANTIC ------------------------------------------- */
@@ -63,7 +63,7 @@
   --fg-2: var(--asphalt-600);    /* secondary text */
   --fg-3: var(--asphalt-500);    /* tertiary / captions */
   --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
-  --fg-on-dark-muted:  #C9B7B4;  /* muted text on maroon */
+  --fg-on-dark-muted:  #B9C6DD;  /* muted text on maroon */
 
   --bg-1: var(--white);          /* cards / surfaces */
   --bg-2: var(--concrete);       /* page background */
@@ -83,10 +83,10 @@
   --danger:  var(--tga-red);
 
   /* ---- TYPE FAMILIES ------------------------------------- */
-  --font-display:   'Archivo', 'Arial Black', sans-serif;        /* big punchy headlines */
-  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif; /* kickers, labels, stats, signage */
-  --font-body:      'Barlow', system-ui, sans-serif;             /* body + UI */
-  --font-mono:      'Barlow Semi Condensed', ui-monospace, monospace; /* plate numbers, codes */
+  --font-display:   'Montserrat', Arial, sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Montserrat', Arial, sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Montserrat', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Montserrat', ui-monospace, monospace; /* plate numbers, codes */
 
   /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
   --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
@@ -249,7 +249,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .plabel i { width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--tga-red); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(27,24,23,.4); flex: none; }
   .plabel span { margin: -5px 0 0 0; position: relative; left: 6px; background: rgba(255,255,255,.95); border: 1px solid var(--asphalt-300); color: var(--tga-ink); font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 12px; padding: 3px 7px; border-radius: 3px; white-space: nowrap; transition: background 170ms, color 170ms; }
   .plabel.focus { z-index: 2; } .plabel.focus span { background: var(--tga-red); border-color: var(--tga-red); color: #fff; }
-  ul.items li.focus label { background: #F7E9E9; }
+  ul.items li.focus label { background: #E5EBFA; }
   @keyframes ring { from { transform: scale(.85); opacity: .9; } to { transform: scale(1.45); opacity: 0; } }
   .vbar { position: absolute; left: 16px; bottom: 16px; display: flex; gap: 8px; align-items: center; }
   .chip { background: rgba(255,255,255,.92); border: 1px solid var(--asphalt-200); border-radius: var(--r-sm); font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--asphalt-700); padding: 0 12px; height: 36px; display: flex; align-items: center; }
@@ -283,7 +283,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .steps h2 { font-family: var(--font-condensed); font-weight: 800; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: var(--asphalt-500); margin: 4px 12px 8px; display: flex; justify-content: space-between; }
   .srow { appearance: none; width: 100%; border: 0; background: transparent; display: grid; grid-template-columns: 30px minmax(0,1fr) auto; gap: 12px; align-items: center; text-align: left; padding: 8px 12px; border-radius: var(--r-sm); cursor: pointer; font-family: var(--font-body); color: var(--tga-ink); min-height: 44px; }
   .srow:hover { background: var(--asphalt-100); }
-  .srow.active { background: #F7E9E9; }
+  .srow.active { background: #E5EBFA; }
   .srow .n { width: 28px; height: 28px; border-radius: 50%; background: var(--asphalt-100); border: 1px solid var(--asphalt-300); display: grid; place-items: center; font-family: var(--font-condensed); font-weight: 800; font-size: 15px; color: var(--asphalt-700); }
   .srow.active .n { background: var(--tga-red); border-color: var(--tga-red); color: #fff; }
   .srow.done .n { background: var(--success); border-color: var(--success); color: #fff; }
@@ -299,6 +299,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     .card { max-height: none; }
     .htitle span { display: none; }
   }
+
+/* match truckdriversed.com */
+h1{text-transform:none!important;font-weight:700!important;letter-spacing:-.01em!important;font-size:28px!important}
+header::after{background:var(--tga-red)!important;height:4px!important;bottom:-4px!important}
+.btn,.sq h4,.logo,.tag,.kick{letter-spacing:.06em!important}
 </style>
 </head>
 <body>
