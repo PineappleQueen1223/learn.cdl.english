@@ -1,0 +1,1612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permit Test Practice · CDL English Academy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+:root {
+  /* ---- BRAND ---------------------------------------------- */
+  --tga-oxblood:    #131946; /* the wordmark ink — deepest maroon */
+  --tga-maroon:     #0A3161; /* PRIMARY brand color */
+  --tga-maroon-700: #14487F; /* lifted maroon — hovers, gradients */
+  --tga-red:        #BA0C2F; /* hot action red — CTAs, highlights (from truck fleet numbers) */
+  --tga-red-700:    #8F0A24; /* pressed red */
+  --tga-amber:      #FFCB05; /* highway amber — used sparingly for accents/badges */
+  --tga-navy:       #0A3161; /* patriotic / CNG diamond blue — secondary, rare */
+
+  /* ---- NEUTRALS — "asphalt", warm-gray ------------------- */
+  --tga-ink:        #1B1817; /* near-black warm — body text on light */
+  --asphalt-900:    #262220;
+  --asphalt-800:    #34302D;
+  --asphalt-700:    #4A4541;
+  --asphalt-600:    #635C57;
+  --asphalt-500:    #837B74; /* muted text */
+  --asphalt-400:    #A39B93;
+  --asphalt-300:    #C9C2BB; /* borders, dividers */
+  --asphalt-200:    #E4DFD9; /* hairlines, input borders */
+  --asphalt-100:    #F0ECE7; /* subtle fills */
+  --concrete:       #FAF9F5; /* default page background (off-white) */
+  --white:          #FFFFFF;
+
+  /* ---- SEMANTIC ------------------------------------------- */
+  --fg-1: var(--tga-ink);        /* primary text */
+  --fg-2: var(--asphalt-600);    /* secondary text */
+  --fg-3: var(--asphalt-500);    /* tertiary / captions */
+  --fg-on-dark:        #F7F3EE;  /* text on maroon/ink */
+  --fg-on-dark-muted:  #B9C6DD;  /* muted text on maroon */
+
+  --bg-1: var(--white);          /* cards / surfaces */
+  --bg-2: var(--concrete);       /* page background */
+  --bg-3: var(--asphalt-100);    /* sunken / inset */
+  --bg-dark: var(--tga-oxblood); /* dark sections */
+
+  --border-1: var(--asphalt-200);
+  --border-2: var(--asphalt-300);
+  --border-strong: var(--asphalt-700);
+
+  --accent:       var(--tga-red);
+  --accent-press: var(--tga-red-700);
+  --link:         var(--tga-maroon);
+
+  --success: #2E7D46;
+  --warning: var(--tga-amber);
+  --danger:  var(--tga-red);
+
+  /* ---- TYPE FAMILIES ------------------------------------- */
+  --font-display:   'Montserrat', Arial, sans-serif;        /* big punchy headlines */
+  --font-condensed: 'Montserrat', Arial, sans-serif; /* kickers, labels, stats, signage */
+  --font-body:      'Montserrat', system-ui, sans-serif;             /* body + UI */
+  --font-mono:      'Montserrat', ui-monospace, monospace; /* plate numbers, codes */
+
+  /* ---- TYPE SCALE (fluid-ish, fixed here) ---------------- */
+  --fs-display:  clamp(48px, 7vw, 88px); /* @kind font */
+  --fs-h1:       clamp(38px, 5vw, 60px); /* @kind font */
+  --fs-h2:       clamp(30px, 3.4vw, 42px); /* @kind font */
+  --fs-h3:       26px;
+  --fs-h4:       21px;
+  --fs-lg:       19px;
+  --fs-body:     17px;
+  --fs-sm:       15px;
+  --fs-xs:       13px;
+  --fs-kicker:   14px;
+
+  /* ---- RADII --------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---- SPACING (4pt base) -------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- SHADOWS — low, grounded, asphalt-tinted ----------- */
+  --shadow-sm: 0 1px 2px rgba(27,24,23,.10);
+  --shadow-md: 0 4px 14px rgba(27,24,23,.10);
+  --shadow-lg: 0 14px 36px rgba(27,24,23,.16);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ---- MOTION -------------------------------------------- */
+  --ease: cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --dur: 170ms; /* @kind other */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--concrete);color:var(--tga-ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--tga-maroon)}a:hover{color:var(--tga-red)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:var(--tga-maroon);color:var(--fg-on-dark);position:relative;margin-bottom:6px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:url(../assets/tread-motif.png) repeat-x center/auto 6px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg-on-dark);font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:16px}
+.logo img{height:36px;display:block}
+.btn{display:inline-block;background:var(--tga-red);color:#fff;font-family:var(--font-condensed);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:16px;border:1px solid transparent;border-radius:var(--r-sm);padding:12px 22px;text-decoration:none;cursor:pointer;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.btn:hover{background:var(--tga-red-700);color:#fff}.btn:active{transform:translateY(1px)}
+.btn.alt{background:#fff;color:var(--tga-maroon);border-color:var(--asphalt-300)}
+.btn.alt:hover{border-color:var(--tga-maroon);background:#fff;color:var(--tga-maroon)}
+header .btn.alt{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+header .btn.alt:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.btn.sm{padding:7px 14px;font-size:14px}
+h1,h2,h3,h4{font-family:var(--font-display);text-transform:uppercase;color:var(--tga-ink)}
+h1{font-weight:900;letter-spacing:-.015em;line-height:1}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;line-height:1.05;margin:0 0 8px}
+h3{font-weight:800;font-size:22px;line-height:1.1;margin:0 0 6px}
+.hero{padding:64px 0 48px;text-align:center;background:var(--white);border-bottom:1px solid var(--asphalt-200)}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--tga-red)}
+.hero p{color:var(--asphalt-600);max-width:620px;margin:0 auto 28px;font-size:19px}
+.hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sub{color:var(--asphalt-600);margin:0 0 28px}
+section{padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;transition:box-shadow var(--dur)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card p{color:var(--asphalt-600);margin:0 0 16px;flex:1}
+.tag,.kick{font-family:var(--font-condensed);font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tga-red);margin-bottom:6px}
+.plan{border-top-color:var(--tga-red);background:#fff}
+.plan ul{margin:0 0 16px;padding-left:18px;color:var(--asphalt-600)}
+details{margin:0 0 16px}summary{cursor:pointer;color:var(--tga-maroon);font-weight:600}details ul{margin:10px 0 0;padding-left:18px;color:var(--asphalt-600)}
+footer{background:var(--tga-oxblood);color:var(--fg-on-dark-muted);padding:28px 0;font-size:14px;text-align:center;margin-top:30px}
+footer a{color:#fff}
+/* pre-trip page */
+.sub2{color:var(--asphalt-600)}
+.lets{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,5vw,40px);color:var(--tga-maroon);text-align:center;margin:48px 0 0;letter-spacing:-.01em}
+#groups{margin-top:40px}
+.sq{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;justify-content:center;align-items:center;text-align:center}
+.sq h4{margin:0;font-family:var(--font-condensed);font-weight:800;font-size:22px;letter-spacing:.04em}
+#groups .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#groups .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#groups .grid{grid-template-columns:1fr}}
+#groups a.sq{text-decoration:none;color:#fff;background:var(--tga-maroon);border-color:var(--tga-maroon);border-top-color:var(--tga-red);transition:background var(--dur),transform var(--dur)}
+#groups a.sq h4{color:#fff}
+#groups a.sq:hover{background:var(--tga-maroon-700);transform:translateY(-2px)}
+#groups a.sq small{font-family:var(--font-condensed);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-on-dark-muted);font-size:14px}
+.quiz{background:#fff;border:1px solid var(--asphalt-200);border-top:4px solid var(--tga-maroon);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:24px;margin:24px 0}
+.prog{font-family:var(--font-condensed);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--asphalt-500);font-size:14px;margin-bottom:8px}
+.q{font-family:var(--font-display);font-weight:800;font-size:28px;text-transform:uppercase;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:#fff;color:var(--tga-ink);border:1px solid var(--asphalt-300);border-radius:var(--r-sm);padding:12px 14px;font-family:var(--font-body);font-size:17px;cursor:pointer;transition:border-color var(--dur),background var(--dur)}
+.opt:hover{border-color:var(--tga-maroon);background:var(--asphalt-100)}
+.opt.ok{border-color:var(--success);background:#E5F1E8}
+.opt.bad{border-color:var(--tga-red);background:#E5EBFA}
+.result h3{font-size:34px}
+.miss{color:var(--asphalt-600);margin:8px 0 16px;padding-left:18px}
+
+/* match truckdriversed.com */
+h1,h2,h3{text-transform:none!important;letter-spacing:-.01em!important}
+h1{font-weight:700!important}h2,h3{font-weight:700!important}
+.lets,.q{text-transform:none!important;font-weight:700!important}
+header::after{background:var(--tga-red)!important;height:4px!important;bottom:-4px!important}
+.btn,.sq h4,.logo,.tag,.kick{letter-spacing:.06em!important}
+
+.bar{height:6px;background:var(--asphalt-200);border-radius:3px;overflow:hidden;margin:0 0 20px}.bar i{display:block;height:100%;width:0;background:var(--tga-red);transition:width .3s}
+.fb{margin:16px 0 0;padding:12px 14px;border-radius:var(--r-sm);font-weight:600}
+.fb.ok{background:#E5F1E8;color:#1F5A32}.fb.bad{background:#FBE9EC;color:#8F0A24}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.score{font-size:48px;font-weight:800;color:var(--tga-maroon);margin:0}
+.pill{display:inline-block;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.pill.pass{background:#E5F1E8;color:#1F5A32}.pill.keep{background:#FBE9EC;color:#8F0A24}
+.sec{cursor:pointer;text-align:left;font:inherit;align-items:flex-start;text-align:left}
+.sec:hover{box-shadow:var(--shadow-md)}.sec small{color:var(--asphalt-600);font-weight:500}
+.review{padding:0;list-style:none}.review li{padding:12px 0;border-top:1px solid var(--asphalt-200)}.review b{display:block}.review .a{color:#1F5A32}.review .w{color:#8F0A24}
+#sections{display:block}
+.grp{padding:20px 0 4px}.grp h2{margin:0 0 4px}.grp .sub{margin:0 0 16px}
+.grid.g3{grid-template-columns:repeat(3,1fr)}.grid.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.grid.g3,.grid.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid.g3,.grid.g4{grid-template-columns:1fr}}
+#sections .sq h4{font-size:19px}
+.grp h2,.grp>.sub{display:none}.grp{padding-top:8px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="./"><img src="../assets/tga-logo-white.png" alt="TGA Truck Driving School"><span>CDL English Academy</span></a>
+  <a class="btn alt sm" href="./#lessons">All lessons</a>
+</div></header>
+<main class="wrap">
+  <h1 style="font-size:clamp(34px,5vw,52px);margin:36px 0 0">Permit Test Practice</h1>
+  <p class="sub" style="margin-top:8px">Pick a section, answer each question, and see right away how you did.</p>
+  <div id="home">
+    <div id="sections"></div>
+  </div>
+  <div class="quiz" id="game" style="display:none"></div>
+</main>
+<footer><div class="wrap">TGA Truck Driving School &middot; <a href="mailto:caroline@tgatruckschool.com">caroline@tgatruckschool.com</a></div></footer>
+<script>
+var QUESTIONS = [
+ {
+  "category": "General Knowledge",
+  "question": "What is the primary purpose of a pre-trip inspection?",
+  "choices": [
+   "Save fuel",
+   "Find safety defects",
+   "Improve comfort",
+   "Check paperwork"
+  ],
+  "answer": "Find safety defects"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why should drivers check mirrors frequently?",
+  "choices": [
+   "To improve fuel economy",
+   "To monitor traffic conditions",
+   "To cool the vehicle",
+   "To reduce engine wear"
+  ],
+  "answer": "To monitor traffic conditions"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the safest action when feeling drowsy while driving?",
+  "choices": [
+   "Open a window",
+   "Drink soda",
+   "Stop and rest",
+   "Increase speed"
+  ],
+  "answer": "Stop and rest"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Which factor increases stopping distance?",
+  "choices": [
+   "Reduced weight",
+   "Dry pavement",
+   "Higher speed",
+   "Fresh tires"
+  ],
+  "answer": "Higher speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What should you do before changing lanes?",
+  "choices": [
+   "Accelerate immediately",
+   "Check mirrors and blind spots",
+   "Sound the horn continuously",
+   "Turn off headlights"
+  ],
+  "answer": "Check mirrors and blind spots"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of vehicle inspection reports?",
+  "choices": [
+   "Track attendance",
+   "Document vehicle defects",
+   "Record routes",
+   "Calculate pay"
+  ],
+  "answer": "Document vehicle defects"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "When driving in rain, traction is generally:",
+  "choices": [
+   "Improved",
+   "Reduced",
+   "Unaffected",
+   "Doubled"
+  ],
+  "answer": "Reduced"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why is maintaining following distance important?",
+  "choices": [
+   "Allows faster travel",
+   "Provides reaction time",
+   "Reduces paperwork",
+   "Improves radio signal"
+  ],
+  "answer": "Provides reaction time"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Which condition can lead to skids?",
+  "choices": [
+   "Smooth acceleration",
+   "Excessive speed",
+   "Good traction",
+   "Light loads"
+  ],
+  "answer": "Excessive speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is a blind spot?",
+  "choices": [
+   "A damaged mirror",
+   "Area not visible in mirrors",
+   "A dark road",
+   "A traffic zone"
+  ],
+  "answer": "Area not visible in mirrors"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What should a driver do when visibility becomes poor?",
+  "choices": [
+   "Increase speed",
+   "Use caution and reduce speed",
+   "Close mirrors",
+   "Ignore conditions"
+  ],
+  "answer": "Use caution and reduce speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Road conditions are most likely to be slippery:",
+  "choices": [
+   "After several hours of rain",
+   "During sunny weather",
+   "Early in a light rain",
+   "After sweeping"
+  ],
+  "answer": "Early in a light rain"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What can cause hydroplaning?",
+  "choices": [
+   "Deep water on roadway",
+   "Low radio volume",
+   "Cold weather only",
+   "Heavy cargo only"
+  ],
+  "answer": "Deep water on roadway"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "A driver should signal before turning to:",
+  "choices": [
+   "Warn other road users",
+   "Reduce fuel use",
+   "Test lighting",
+   "Check brakes"
+  ],
+  "answer": "Warn other road users"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "The best way to handle a tire blowout is to:",
+  "choices": [
+   "Brake hard",
+   "Maintain control and slow gradually",
+   "Turn sharply",
+   "Accelerate aggressively"
+  ],
+  "answer": "Maintain control and slow gradually"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of hazard awareness?",
+  "choices": [
+   "Avoid planning",
+   "Identify risks early",
+   "Reduce inspections",
+   "Increase speed"
+  ],
+  "answer": "Identify risks early"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Why should cargo be secured?",
+  "choices": [
+   "For appearance",
+   "To prevent shifting",
+   "For paperwork",
+   "To improve radio reception"
+  ],
+  "answer": "To prevent shifting"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "When approaching a work zone, drivers should:",
+  "choices": [
+   "Speed up",
+   "Follow signs and reduce speed",
+   "Ignore cones",
+   "Use opposite lane"
+  ],
+  "answer": "Follow signs and reduce speed"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "Fatigue affects driving by:",
+  "choices": [
+   "Improving concentration",
+   "Reducing alertness",
+   "Reducing stopping distance",
+   "Improving reaction time"
+  ],
+  "answer": "Reducing alertness"
+ },
+ {
+  "category": "General Knowledge",
+  "question": "What is the purpose of lane positioning?",
+  "choices": [
+   "Reduce mirror checks",
+   "Maintain safety and visibility",
+   "Increase cargo weight",
+   "Shorten vehicle length"
+  ],
+  "answer": "Maintain safety and visibility"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the primary purpose of a fifth wheel?",
+  "choices": [
+   "Support engine weight",
+   "Connect tractor and trailer",
+   "Control braking pressure",
+   "Provide suspension"
+  ],
+  "answer": "Connect tractor and trailer"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before coupling, the trailer should be:",
+  "choices": [
+   "Higher than the fifth wheel",
+   "At the proper height",
+   "Fully loaded",
+   "Moving slowly"
+  ],
+  "answer": "At the proper height"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A trailer that is too high during coupling may:",
+  "choices": [
+   "Improve traction",
+   "Cause improper coupling",
+   "Reduce offtracking",
+   "Increase fuel efficiency"
+  ],
+  "answer": "Cause improper coupling"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What locks around the trailer kingpin?",
+  "choices": [
+   "Air compressor",
+   "Fifth-wheel jaws",
+   "Slack adjuster",
+   "Brake chamber"
+  ],
+  "answer": "Fifth-wheel jaws"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "After coupling, a visual inspection should confirm:",
+  "choices": [
+   "The trailer lights are off",
+   "The jaws are locked around the kingpin",
+   "The wheels are spinning",
+   "The cargo doors are open"
+  ],
+  "answer": "The jaws are locked around the kingpin"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is a tug test used for?",
+  "choices": [
+   "Testing suspension",
+   "Checking trailer brakes",
+   "Verifying coupling security",
+   "Checking fuel level"
+  ],
+  "answer": "Verifying coupling security"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before connecting air lines, drivers should inspect for:",
+  "choices": [
+   "Leaks and damage",
+   "Cargo weight",
+   "Engine temperature",
+   "Mirror adjustment"
+  ],
+  "answer": "Leaks and damage"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Glad hands are used to:",
+  "choices": [
+   "Connect air lines",
+   "Attach mirrors",
+   "Secure cargo",
+   "Adjust suspension"
+  ],
+  "answer": "Connect air lines"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What can happen if air lines are crossed?",
+  "choices": [
+   "Improved braking",
+   "Brake malfunction",
+   "Better fuel economy",
+   "Reduced tire wear"
+  ],
+  "answer": "Brake malfunction"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Trailer hand valves should not be used for:",
+  "choices": [
+   "Testing brakes",
+   "Parking",
+   "Routine driving control",
+   "Checking response"
+  ],
+  "answer": "Routine driving control"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles generally require:",
+  "choices": [
+   "Less stopping distance",
+   "More stopping distance",
+   "No braking adjustments",
+   "Smaller mirrors"
+  ],
+  "answer": "More stopping distance"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Offtracking occurs when:",
+  "choices": [
+   "The engine misfires",
+   "Trailer wheels follow a different path than tractor wheels",
+   "Fuel pressure drops",
+   "The trailer is empty"
+  ],
+  "answer": "Trailer wheels follow a different path than tractor wheels"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Offtracking is most noticeable during:",
+  "choices": [
+   "Straight driving",
+   "Turning",
+   "Parking only",
+   "Refueling"
+  ],
+  "answer": "Turning"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles are more likely to roll over because they:",
+  "choices": [
+   "Are lighter",
+   "Have a higher center of gravity",
+   "Use smaller tires",
+   "Have shorter wheelbases"
+  ],
+  "answer": "Have a higher center of gravity"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "To reduce rollover risk, drivers should:",
+  "choices": [
+   "Take curves slowly",
+   "Accelerate through curves",
+   "Turn sharply",
+   "Ignore load placement"
+  ],
+  "answer": "Take curves slowly"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is trailer swing?",
+  "choices": [
+   "Movement of cargo",
+   "Outward movement of the trailer during turns",
+   "Engine vibration",
+   "Brake fade"
+  ],
+  "answer": "Outward movement of the trailer during turns"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When backing a combination vehicle, drivers should:",
+  "choices": [
+   "Use small steering corrections",
+   "Turn steering wheel rapidly",
+   "Avoid mirrors",
+   "Increase speed"
+  ],
+  "answer": "Use small steering corrections"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A jackknife occurs when:",
+  "choices": [
+   "The trailer disconnects",
+   "The tractor and trailer fold toward each other",
+   "The cargo shifts",
+   "The suspension fails"
+  ],
+  "answer": "The tractor and trailer fold toward each other"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Which condition increases jackknife risk?",
+  "choices": [
+   "Excessive braking",
+   "Proper spacing",
+   "Moderate speed",
+   "Dry pavement"
+  ],
+  "answer": "Excessive braking"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "During coupling, landing gear should be:",
+  "choices": [
+   "Damaged",
+   "Inspected for condition",
+   "Removed",
+   "Lubricated daily"
+  ],
+  "answer": "Inspected for condition"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before moving a newly connected trailer, drivers should:",
+  "choices": [
+   "Complete a brake check",
+   "Disconnect airlines",
+   "Retract mirrors",
+   "Unload cargo"
+  ],
+  "answer": "Complete a brake check"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The emergency air line is commonly associated with:",
+  "choices": [
+   "Supplying trailer air pressure",
+   "Engine cooling",
+   "Cargo temperature",
+   "ABS sensors only"
+  ],
+  "answer": "Supplying trailer air pressure"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be checked on the kingpin?",
+  "choices": [
+   "Cracks and wear",
+   "Paint color",
+   "Tire pressure",
+   "Fuel level"
+  ],
+  "answer": "Cracks and wear"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "A damaged kingpin can:",
+  "choices": [
+   "Improve handling",
+   "Create coupling hazards",
+   "Increase traction",
+   "Reduce offtracking"
+  ],
+  "answer": "Create coupling hazards"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The trailer service line is primarily used for:",
+  "choices": [
+   "Applying trailer brakes",
+   "Fuel delivery",
+   "Cooling systems",
+   "Lighting circuits"
+  ],
+  "answer": "Applying trailer brakes"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When inspecting the fifth wheel, drivers should look for:",
+  "choices": [
+   "Cracks and damage",
+   "Engine leaks",
+   "Seat belt wear",
+   "Low coolant"
+  ],
+  "answer": "Cracks and damage"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What helps prevent improper coupling?",
+  "choices": [
+   "Visual inspection",
+   "Driving immediately",
+   "Skipping brake checks",
+   "Higher speed"
+  ],
+  "answer": "Visual inspection"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles require extra caution because:",
+  "choices": [
+   "They turn like passenger cars",
+   "They handle differently than single vehicles",
+   "They use bicycle brakes",
+   "They can't back up"
+  ],
+  "answer": "They handle differently than single vehicles"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What may happen if cargo shifts inside a trailer?",
+  "choices": [
+   "Improved balance",
+   "Loss of stability",
+   "Better braking",
+   "Increased mileage"
+  ],
+  "answer": "Loss of stability"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "When uncoupling, trailer wheels should be:",
+  "choices": [
+   "Blocked if necessary",
+   "Removed",
+   "Lubricated",
+   "Turned sideways"
+  ],
+  "answer": "Blocked if necessary"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the purpose of landing gear?",
+  "choices": [
+   "Support the trailer when disconnected",
+   "Cool the brakes",
+   "Hold fuel tanks",
+   "Control steering"
+  ],
+  "answer": "Support the trailer when disconnected"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Drivers should avoid sudden steering because it may:",
+  "choices": [
+   "Reduce visibility",
+   "Cause rollover",
+   "Increase cooling",
+   "Improve tracking"
+  ],
+  "answer": "Cause rollover"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The heavier the combination vehicle, the more important it is to:",
+  "choices": [
+   "Maintain space ahead",
+   "Drive faster",
+   "Reduce inspections",
+   "Ignore grades"
+  ],
+  "answer": "Maintain space ahead"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Before uncoupling, trailer air pressure should be:",
+  "choices": [
+   "Properly secured",
+   "Released from tires",
+   "Ignored",
+   "Increased"
+  ],
+  "answer": "Properly secured"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be checked after releasing fifth-wheel locking jaws?",
+  "choices": [
+   "Trailer support",
+   "Fuel level",
+   "Horn operation",
+   "Seat position"
+  ],
+  "answer": "Trailer support"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles need wider turns because of:",
+  "choices": [
+   "Offtracking",
+   "Engine size",
+   "Wheel color",
+   "Fuel capacity"
+  ],
+  "answer": "Offtracking"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Trailer air connections should be:",
+  "choices": [
+   "Secure",
+   "Loose",
+   "Optional",
+   "Disconnected"
+  ],
+  "answer": "Secure"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the safest way to approach coupling?",
+  "choices": [
+   "Straight alignment",
+   "Sharp angles",
+   "High speed",
+   "Reverse acceleration"
+  ],
+  "answer": "Straight alignment"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The purpose of a trailer brake check is to:",
+  "choices": [
+   "Verify brake operation",
+   "Measure fuel use",
+   "Adjust mirrors",
+   "Inspect cargo"
+  ],
+  "answer": "Verify brake operation"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Why should drivers avoid excessive speed on curves?",
+  "choices": [
+   "Risk of rollover",
+   "Lower fuel economy only",
+   "Bright headlights",
+   "ABS activation"
+  ],
+  "answer": "Risk of rollover"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is one sign of improper trailer coupling?",
+  "choices": [
+   "Gap between fifth wheel and trailer apron",
+   "Clean mirrors",
+   "Inflated tires",
+   "Level cargo"
+  ],
+  "answer": "Gap between fifth wheel and trailer apron"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Combination vehicles require planning because they:",
+  "choices": [
+   "Need more maneuvering space",
+   "Use less road",
+   "Stop instantly",
+   "Turn tighter"
+  ],
+  "answer": "Need more maneuvering space"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should be done before retracting landing gear?",
+  "choices": [
+   "Ensure trailer is properly coupled",
+   "Disconnect airlines",
+   "Remove kingpin",
+   "Unload cargo"
+  ],
+  "answer": "Ensure trailer is properly coupled"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Which component joins the trailer to the fifth wheel?",
+  "choices": [
+   "Kingpin",
+   "Slack adjuster",
+   "Air compressor",
+   "Drive shaft"
+  ],
+  "answer": "Kingpin"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Empty trailers may be more difficult to handle because they:",
+  "choices": [
+   "Can bounce more easily",
+   "Are too long",
+   "Have larger engines",
+   "Use more brakes"
+  ],
+  "answer": "Can bounce more easily"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "During backing, the driver's primary reference should be:",
+  "choices": [
+   "Mirrors",
+   "Radio",
+   "Dashboard lights",
+   "GPS only"
+  ],
+  "answer": "Mirrors"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What should a driver do if uncertain about trailer clearance?",
+  "choices": [
+   "Get out and look",
+   "Accelerate",
+   "Continue blindly",
+   "Sound horn repeatedly"
+  ],
+  "answer": "Get out and look"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "Proper coupling inspections help prevent:",
+  "choices": [
+   "Trailer separation",
+   "Fuel theft",
+   "Weather delays",
+   "Engine overheating"
+  ],
+  "answer": "Trailer separation"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "The best way to control a combination vehicle on downgrades is to:",
+  "choices": [
+   "Use proper speed and gear selection",
+   "Coast in neutral",
+   "Turn off engine",
+   "Brake continuously"
+  ],
+  "answer": "Use proper speed and gear selection"
+ },
+ {
+  "category": "Combination Vehicles",
+  "question": "What is the main goal of combination vehicle inspections?",
+  "choices": [
+   "Ensure safe operation",
+   "Increase cargo volume",
+   "Reduce paperwork",
+   "Improve paint condition"
+  ],
+  "answer": "Ensure safe operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What provides the force used in an air brake system?",
+  "choices": [
+   "Hydraulic fluid",
+   "Compressed air",
+   "Engine oil",
+   "Coolant"
+  ],
+  "answer": "Compressed air"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the primary function of the air compressor?",
+  "choices": [
+   "Cool the brakes",
+   "Compress air for the brake system",
+   "Lubricate components",
+   "Charge the battery"
+  ],
+  "answer": "Compress air for the brake system"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Where is compressed air typically stored?",
+  "choices": [
+   "Fuel tanks",
+   "Air tanks",
+   "Engine block",
+   "Radiator"
+  ],
+  "answer": "Air tanks"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the purpose of an air governor?",
+  "choices": [
+   "Control engine speed",
+   "Control air compressor cut-in and cut-out pressure",
+   "Adjust mirrors",
+   "Regulate fuel pressure"
+  ],
+  "answer": "Control air compressor cut-in and cut-out pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What can water in the air brake system cause?",
+  "choices": [
+   "Brake damage and freezing",
+   "Better braking",
+   "More horsepower",
+   "Improved fuel economy"
+  ],
+  "answer": "Brake damage and freezing"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Why are air tank drains important?",
+  "choices": [
+   "Increase fuel efficiency",
+   "Remove moisture and contaminants",
+   "Improve tire pressure",
+   "Control suspension"
+  ],
+  "answer": "Remove moisture and contaminants"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What happens when the brake pedal is pressed?",
+  "choices": [
+   "Air pressure applies the brakes",
+   "Fuel is injected",
+   "The compressor stops",
+   "The tires lock automatically"
+  ],
+  "answer": "Air pressure applies the brakes"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The foundation brakes are located:",
+  "choices": [
+   "At the wheels",
+   "In the engine",
+   "On top of the trailer",
+   "Inside the fuel tank"
+  ],
+  "answer": "At the wheels"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What component pushes the brake linkage?",
+  "choices": [
+   "Governor",
+   "Brake chamber",
+   "Alternator",
+   "Radiator"
+  ],
+  "answer": "Brake chamber"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Slack adjusters help:",
+  "choices": [
+   "Maintain proper brake adjustment",
+   "Control fuel flow",
+   "Adjust mirrors",
+   "Inflate tires"
+  ],
+  "answer": "Maintain proper brake adjustment"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What may indicate an air leak?",
+  "choices": [
+   "Hissing sound",
+   "Clear mirrors",
+   "Good braking",
+   "Warm engine"
+  ],
+  "answer": "Hissing sound"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What warning should activate when air pressure becomes dangerously low?",
+  "choices": [
+   "Low air warning device",
+   "Turn signal",
+   "Cruise control",
+   "ABS lamp only"
+  ],
+  "answer": "Low air warning device"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Spring brakes are primarily used for:",
+  "choices": [
+   "Parking and emergencies",
+   "Cooling",
+   "Steering",
+   "Suspension"
+  ],
+  "answer": "Parking and emergencies"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What causes spring brakes to release?",
+  "choices": [
+   "Air pressure",
+   "Gravity",
+   "Fuel pressure",
+   "Engine speed"
+  ],
+  "answer": "Air pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A major air leak can cause:",
+  "choices": [
+   "Automatic spring brake application",
+   "Improved braking",
+   "Better traction",
+   "Engine shutdown"
+  ],
+  "answer": "Automatic spring brake application"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of the low-air warning system is to:",
+  "choices": [
+   "Alert the driver to unsafe pressure levels",
+   "Improve mileage",
+   "Reduce emissions",
+   "Monitor cargo"
+  ],
+  "answer": "Alert the driver to unsafe pressure levels"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "ABS stands for:",
+  "choices": [
+   "Automatic Brake System",
+   "Anti-lock Braking System",
+   "Air Brake Support",
+   "Automatic Balance System"
+  ],
+  "answer": "Anti-lock Braking System"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of ABS is to:",
+  "choices": [
+   "Prevent wheel lock during hard braking",
+   "Increase speed",
+   "Reduce vehicle weight",
+   "Control steering wheel movement"
+  ],
+  "answer": "Prevent wheel lock during hard braking"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "During an inspection, brake hoses should be checked for:",
+  "choices": [
+   "Cracks and leaks",
+   "Paint damage only",
+   "Fuel contamination",
+   "Cargo weight"
+  ],
+  "answer": "Cracks and leaks"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake drums should be inspected for:",
+  "choices": [
+   "Cracks and excessive wear",
+   "Fuel level",
+   "Electrical output",
+   "Mirror alignment"
+  ],
+  "answer": "Cracks and excessive wear"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Excessive brake heat can lead to:",
+  "choices": [
+   "Brake fade",
+   "Improved braking",
+   "Less stopping distance",
+   "More horsepower"
+  ],
+  "answer": "Brake fade"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake fade occurs when:",
+  "choices": [
+   "Brakes become less effective",
+   "Brakes become stronger",
+   "Engine stalls",
+   "Tires cool down"
+  ],
+  "answer": "Brakes become less effective"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The best way to prevent brake fade on downgrades is to:",
+  "choices": [
+   "Use proper speed and gear selection",
+   "Ride the brakes continuously",
+   "Shift into neutral",
+   "Accelerate downhill"
+  ],
+  "answer": "Use proper speed and gear selection"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should be tested before driving?",
+  "choices": [
+   "Brake system operation",
+   "Radio volume",
+   "Cargo temperature",
+   "Phone signal"
+  ],
+  "answer": "Brake system operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Air pressure build-up should be:",
+  "choices": [
+   "Monitored during inspection",
+   "Ignored",
+   "Disabled",
+   "Reset frequently"
+  ],
+  "answer": "Monitored during inspection"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is a common function of the air gauge?",
+  "choices": [
+   "Show system pressure",
+   "Measure fuel level",
+   "Measure temperature",
+   "Track mileage"
+  ],
+  "answer": "Show system pressure"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A driver should never:",
+  "choices": [
+   "Ignore low air pressure warnings",
+   "Inspect brakes",
+   "Monitor gauges",
+   "Drain tanks"
+  ],
+  "answer": "Ignore low air pressure warnings"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What can happen if brakes are out of adjustment?",
+  "choices": [
+   "Reduced braking performance",
+   "Improved stopping",
+   "Better tire life",
+   "Lower air usage"
+  ],
+  "answer": "Reduced braking performance"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The parking brake control is commonly identified by:",
+  "choices": [
+   "A yellow knob",
+   "A green light",
+   "A blue switch",
+   "A black button"
+  ],
+  "answer": "A yellow knob"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The trailer air supply control is often identified by:",
+  "choices": [
+   "A red knob",
+   "A white lever",
+   "A yellow pedal",
+   "A blue light"
+  ],
+  "answer": "A red knob"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Before moving a vehicle, air pressure should:",
+  "choices": [
+   "Reach operating range",
+   "Be zero",
+   "Be ignored",
+   "Be reduced"
+  ],
+  "answer": "Reach operating range"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should happen when spring brakes are applied?",
+  "choices": [
+   "Vehicle remains secured",
+   "Engine stalls",
+   "ABS turns off",
+   "Trailer detaches"
+  ],
+  "answer": "Vehicle remains secured"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A straight truck equipped with air brakes should have:",
+  "choices": [
+   "A functioning low-air warning device",
+   "An open air tank",
+   "Disabled spring brakes",
+   "No pressure gauges"
+  ],
+  "answer": "A functioning low-air warning device"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Air brake inspections should include checking:",
+  "choices": [
+   "Leaks, pressure, and warning devices",
+   "Seat cushions only",
+   "Paint condition",
+   "Radio settings"
+  ],
+  "answer": "Leaks, pressure, and warning devices"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the purpose of emergency brakes?",
+  "choices": [
+   "Stop or hold the vehicle if normal air pressure is lost",
+   "Increase speed",
+   "Reduce fuel costs",
+   "Stabilize cargo"
+  ],
+  "answer": "Stop or hold the vehicle if normal air pressure is lost"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The brake chamber converts air pressure into:",
+  "choices": [
+   "Mechanical force",
+   "Fuel pressure",
+   "Electrical energy",
+   "Heat only"
+  ],
+  "answer": "Mechanical force"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should drivers do if they discover a significant air leak?",
+  "choices": [
+   "Repair before operating",
+   "Ignore it",
+   "Increase speed",
+   "Drain fuel tanks"
+  ],
+  "answer": "Repair before operating"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Why is checking air pressure important?",
+  "choices": [
+   "Ensures safe brake operation",
+   "Improves paint quality",
+   "Tracks mileage",
+   "Improves GPS accuracy"
+  ],
+  "answer": "Ensures safe brake operation"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Brake system defects should be:",
+  "choices": [
+   "Reported and repaired",
+   "Ignored",
+   "Covered with tape",
+   "Used for training only"
+  ],
+  "answer": "Reported and repaired"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What may result from driving with insufficient air pressure?",
+  "choices": [
+   "Brake failure risk",
+   "Better braking",
+   "Improved fuel economy",
+   "Faster acceleration"
+  ],
+  "answer": "Brake failure risk"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The purpose of a brake check is to:",
+  "choices": [
+   "Verify brake response",
+   "Check fuel consumption",
+   "Test cargo weight",
+   "Measure tire age"
+  ],
+  "answer": "Verify brake response"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "A driver descending a mountain grade should:",
+  "choices": [
+   "Control speed before the downgrade",
+   "Coast downhill",
+   "Shift into neutral",
+   "Ignore brake temperature"
+  ],
+  "answer": "Control speed before the downgrade"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What does excessive brake use on long downgrades increase?",
+  "choices": [
+   "Brake fade risk",
+   "Tire pressure",
+   "Horsepower",
+   "Fuel efficiency"
+  ],
+  "answer": "Brake fade risk"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What should be inspected on slack adjusters?",
+  "choices": [
+   "Proper movement and condition",
+   "Paint color",
+   "Fuel level",
+   "Electrical wiring only"
+  ],
+  "answer": "Proper movement and condition"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "An air brake vehicle should be parked using:",
+  "choices": [
+   "Spring brakes",
+   "Cruise control",
+   "ABS",
+   "Service brakes only"
+  ],
+  "answer": "Spring brakes"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is one purpose of the service brake system?",
+  "choices": [
+   "Slow and stop the vehicle",
+   "Cool the engine",
+   "Power the lights",
+   "Adjust suspension"
+  ],
+  "answer": "Slow and stop the vehicle"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "Drivers should check brake drums and linings for:",
+  "choices": [
+   "Wear and damage",
+   "Paint color",
+   "Fuel leaks",
+   "Battery charge"
+  ],
+  "answer": "Wear and damage"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "When air pressure drops too low, spring brakes may:",
+  "choices": [
+   "Apply automatically",
+   "Release automatically",
+   "Inflate tires",
+   "Lock steering"
+  ],
+  "answer": "Apply automatically"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "The safest response to a brake system warning is to:",
+  "choices": [
+   "Investigate immediately",
+   "Ignore it until later",
+   "Increase speed",
+   "Mute the alarm"
+  ],
+  "answer": "Investigate immediately"
+ },
+ {
+  "category": "Air Brakes",
+  "question": "What is the overall purpose of regular air brake inspections?",
+  "choices": [
+   "Ensure safe vehicle operation",
+   "Increase cargo capacity",
+   "Improve paint quality",
+   "Reduce paperwork"
+  ],
+  "answer": "Ensure safe vehicle operation"
+ }
+];
+
+var SECTIONS = {};
+QUESTIONS.forEach(function(q){(SECTIONS[q.category]=SECTIONS[q.category]||[]).push(q);});
+var PASS = 0.8, game = document.getElementById("game"), home = document.getElementById("home");
+var order, i, score, missed, current, answered, name;
+function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t}return a}
+function best(n){try{return localStorage.getItem("permit-best-"+n)}catch(e){return null}}
+function saveBest(n,p){try{var b=+localStorage.getItem("permit-best-"+n)||0;if(p>b)localStorage.setItem("permit-best-"+n,p)}catch(e){}}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+var GROUPS = [
+  {title:"Permit", sub:"Core knowledge tests for your commercial learner's permit.", cats:["General Knowledge","Combination Vehicles","Air Brakes"], cols:3},
+  {title:"Endorsements", sub:"Extra knowledge tests for HazMat, Tanker, Doubles/Triples, and Passenger.", cats:["HazMat","Tanker","Doubles & Triples","Passenger"], cols:4}
+];
+function showHome(){
+  game.style.display="none";home.style.display="block";
+  var root=document.getElementById("sections");root.innerHTML="";
+  var shown={};
+  function card(n){
+    var b=el("button","sq sec");b.type="button";
+    b.appendChild(el("h4",null,n));
+    var b2=best(n);
+    b.appendChild(el("small",null,SECTIONS[n].length+" questions"+(b2?" · Best: "+b2+"%":"")));
+    b.appendChild(el("small",null,"Start →"));
+    b.onclick=function(){start(n,SECTIONS[n])};
+    return b;
+  }
+  GROUPS.forEach(function(g){
+    var cats=g.cats.filter(function(c){return SECTIONS[c]});
+    if(!cats.length)return;
+    var wrap=el("section","grp");wrap.id=g.title.toLowerCase();
+    wrap.appendChild(el("h2",null,g.title));
+    wrap.appendChild(el("p","sub",g.sub));
+    var grid=el("div","grid g"+g.cols);
+    cats.forEach(function(c){shown[c]=1;grid.appendChild(card(c))});
+    wrap.appendChild(grid);root.appendChild(wrap);
+  });
+  var other=Object.keys(SECTIONS).filter(function(c){return !shown[c]});
+  if(other.length){
+    var wrap=el("section","grp");wrap.appendChild(el("h2",null,"More"));
+    var grid=el("div","grid g4");other.forEach(function(c){grid.appendChild(card(c))});
+    wrap.appendChild(grid);root.appendChild(wrap);
+  }
+}
+function start(n,qs){name=n;order=shuffle(qs);i=0;score=0;missed=[];home.style.display="none";game.style.display="block";window.scrollTo(0,0);next();}
+function next(){
+  if(i>=order.length)return done();
+  current=order[i];answered=false;
+  game.innerHTML="";
+  game.appendChild(el("div","prog",name+" · Question "+(i+1)+" of "+order.length));
+  var bar=el("div","bar");var fill=el("i");fill.style.width=(i/order.length*100)+"%";bar.appendChild(fill);game.appendChild(bar);
+  game.appendChild(el("p","q",current.question));
+  var od=el("div","opts");
+  shuffle(current.choices).forEach(function(c){
+    var b=el("button","opt",c);b.type="button";
+    b.onclick=function(){pick(b,c,od)};
+    od.appendChild(b);
+  });
+  game.appendChild(od);
+}
+function pick(btn,c,od){
+  if(answered)return;answered=true;
+  var right=c===current.answer;
+  od.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.textContent===current.answer)x.classList.add("ok")});
+  if(right){score++}else{btn.classList.add("bad");missed.push({q:current,chose:c})}
+  game.appendChild(el("div","fb "+(right?"ok":"bad"),right?"Correct.":"Not quite. The correct answer is: "+current.answer));
+  var r=el("div","row");var nb=el("button","btn",i+1>=order.length?"See results":"Next question");nb.type="button";nb.onclick=function(){i++;next()};r.appendChild(nb);game.appendChild(r);
+  nb.focus();
+}
+function done(){
+  var pct=Math.round(score/order.length*100);saveBest(name,pct);
+  game.innerHTML="";
+  game.appendChild(el("div","prog",name+" · Results"));
+  game.appendChild(el("p","score",score+" / "+order.length+" ("+pct+"%)"));
+  var passed=score/order.length>=PASS;
+  game.appendChild(el("span","pill "+(passed?"pass":"keep"),passed?"Practice goal reached (80%)":"Keep practicing — goal is 80%"));
+  if(missed.length){
+    game.appendChild(el("h3",null,"Review these"));game.lastChild.style.marginTop="20px";
+    var ul=el("ul","review");
+    missed.forEach(function(m){var li=el("li");li.appendChild(el("b",null,m.q.question));li.appendChild(el("span","w","Your answer: "+m.chose));li.appendChild(document.createElement("br"));li.appendChild(el("span","a","Correct: "+m.q.answer));ul.appendChild(li)});
+    game.appendChild(ul);
+  }
+  var r=el("div","row");
+  if(missed.length){var b1=el("button","btn","Retry missed questions");b1.type="button";b1.onclick=function(){start(name,missed.map(function(m){return m.q}))};r.appendChild(b1)}
+  var b2=el("button","btn alt","Restart section");b2.type="button";b2.onclick=function(){start(name,SECTIONS[name])};r.appendChild(b2);
+  var b3=el("button","btn alt","All sections");b3.type="button";b3.onclick=showHome;r.appendChild(b3);
+  game.appendChild(r);
+}
+showHome();
+if(location.hash){var tg=document.getElementById(location.hash.slice(1));if(tg)tg.scrollIntoView();}
+</script>
+</body>
+</html>
